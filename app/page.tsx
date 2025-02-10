@@ -8,6 +8,7 @@ import Contact from "@/app/components/Contact"
 import GitHubStats from "@/app/components/GitHubStats"
 import Education from "@/app/components/Education"
 import Certificates from "@/app/components/Certificates"
+import Testimonials from "@/app/components/Testimonials"
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Projects />
       <Skills />
       <Experience />
+      <Testimonials />
       <Certificates />
       <Blog />
       <GitHubStats />

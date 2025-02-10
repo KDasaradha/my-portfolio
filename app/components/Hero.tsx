@@ -123,8 +123,10 @@ export default function Hero() {
               <span ref={el}></span>
             </p>
             <p className="text-lg text-muted-foreground">
-              Backend Developer with 2 years of experience, specializing in Python, FastAPI, and microservices
-              architecture.
+              Junior Backend Developer with 1.7+ years of experience in designing and deploying high-performance 
+              RESTful APIs using Python, FastAPI, and PostgreSQL. Passionate about microservices architecture, API security, 
+              and optimizing database performance. I thrive on solving complex problems and delivering robust, 
+              scalable solutions.
             </p>
             <p className="text-sm text-primary">🌟 Currently Learning: AWS Cloud, React, Next.js</p>
             <div className="space-x-4">
@@ -145,7 +147,8 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/profile-picture.jpg"
+              // src="./images/3d-illustration-girl-with-glasses-laptop-her-hands.png"
+              src="./images/captivating-cartoon.png"
               alt="Kesari Dasaradh"
               width={400}
               height={400}
