@@ -192,73 +192,468 @@
 
 
 
-// SkillCategories.tsx
+// // SkillCategories.tsx
+// "use client"
+
+// import { motion } from "framer-motion"
+
+// const skillCategories = [
+//   {
+//     category: "Backend Development",
+//     items: ["Python", "FastAPI", "SQLAlchemy ORM"],
+//   },
+//   { category: "Databases", items: ["PostgreSQL", "MySQL"] },
+//   {
+//     category: "API Development",
+//     items: ["RESTful API Design", "JWT", "OAuth"],
+//   },
+//   { category: "DevOps", items: ["Docker", "Jenkins", "CI/CD Pipelines"] },
+//   { category: "Tools", items: ["Git", "GitHub", "SonarQube"] },
+//   { category: "Web Technologies", items: ["HTML", "CSS"] },
+// ]
+
+// interface SkillCategoryCardProps {
+//   category: string
+//   items: string[]
+// }
+
+// function SkillCategoryCard({ category, items }: SkillCategoryCardProps) {
+//   return (
+//     <motion.div
+//       whileHover={{ scale: 1.05 }}
+//       transition={{ duration: 0.3 }}
+//       className="bg-white dark:bg-gray-800 rounded-lg shadow p-6"
+//     >
+//       <h4 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+//         {category}
+//       </h4>
+//       <div className="flex flex-wrap gap-2">
+//         {items.map((item, index) => (
+//           <span
+//             key={index}
+//             className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium"
+//           >
+//             {item}
+//           </span>
+//         ))}
+//       </div>
+//     </motion.div>
+//   )
+// }
+
+// export default function SkillCategoriesGrid() {
+//   return (
+//     <section id="skills" className="py-20 bg-secondary/10">
+//       <div className="container mx-auto px-6 lg:px-12">
+//         <motion.h2
+//           className="text-4xl font-bold text-center mb-12 gradient-text"
+//           initial={{ opacity: 0, y: -20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6 }}
+//         >
+//           Skill Categories
+//         </motion.h2>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+//           {skillCategories.map((cat, index) => (
+//             <SkillCategoryCard key={index} category={cat.category} items={cat.items} />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   )
+// }
+
 "use client"
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { Code2, Database, Server, GitBranch, Wrench, Layout } from "lucide-react";
 
 const skillCategories = [
   {
     category: "Backend Development",
     items: ["Python", "FastAPI", "SQLAlchemy ORM"],
+    icon: Server,
+    gradient: "from-blue-500 to-cyan-500",
   },
-  { category: "Databases", items: ["PostgreSQL", "MySQL"] },
+  { 
+    category: "Databases", 
+    items: ["PostgreSQL", "MySQL"],
+    icon: Database,
+    gradient: "from-green-500 to-emerald-500",
+  },
   {
     category: "API Development",
     items: ["RESTful API Design", "JWT", "OAuth"],
+    icon: Code2,
+    gradient: "from-purple-500 to-pink-500",
   },
-  { category: "DevOps", items: ["Docker", "Jenkins", "CI/CD Pipelines"] },
-  { category: "Tools", items: ["Git", "GitHub", "SonarQube"] },
-  { category: "Web Technologies", items: ["HTML", "CSS"] },
-]
+  { 
+    category: "DevOps", 
+    items: ["Docker", "Jenkins", "CI/CD Pipelines"],
+    icon: GitBranch,
+    gradient: "from-orange-500 to-red-500",
+  },
+  { 
+    category: "Tools", 
+    items: ["Git", "GitHub", "SonarQube"],
+    icon: Wrench,
+    gradient: "from-yellow-500 to-orange-500",
+  },
+  { 
+    category: "Web Technologies", 
+    items: ["HTML", "CSS"],
+    icon: Layout,
+    gradient: "from-indigo-500 to-purple-500",
+  },
+];
 
 interface SkillCategoryCardProps {
-  category: string
-  items: string[]
+  category: string;
+  items: string[];
+  icon: React.ElementType;
+  gradient: string;
+  index: number;
 }
 
-function SkillCategoryCard({ category, items }: SkillCategoryCardProps) {
+function SkillCategoryCard({ category, items, icon: Icon, gradient, index }: SkillCategoryCardProps) {
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white dark:bg-gray-800 rounded-lg shadow p-6"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ 
+        scale: 1.03,
+        boxShadow: "0 10px 30px -10px rgba(0,0,0,0.2)",
+      }}
+      className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-700"
     >
-      <h4 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-        {category}
-      </h4>
+      <div className={`absolute top-0 right-0 w-24 h-24 -mr-8 -mt-8 bg-gradient-to-br ${gradient} opacity-10 rounded-full`} />
+      
+      <div className="flex items-center mb-6">
+        <div className={`p-3 rounded-lg bg-gradient-to-br ${gradient} bg-opacity-10`}>
+          <Icon className={`w-6 h-6 bg-gradient-to-br ${gradient} [&>path]:fill-transparent`} />
+        </div>
+        <h4 className="text-xl font-bold ml-4 text-gray-900 dark:text-gray-100">
+          {category}
+        </h4>
+      </div>
+
       <div className="flex flex-wrap gap-2">
-        {items.map((item, index) => (
-          <span
-            key={index}
-            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium"
+        {items.map((item, idx) => (
+          <motion.span
+            key={idx}
+            whileHover={{ scale: 1.05 }}
+            className={`bg-gradient-to-r ${gradient} bg-opacity-10 text-gray-800 dark:text-gray-200 
+              px-4 py-1.5 rounded-full text-sm font-medium border border-transparent
+              hover:border-current transition-colors duration-200`}
           >
             {item}
-          </span>
+          </motion.span>
         ))}
       </div>
     </motion.div>
-  )
+  );
 }
 
 export default function SkillCategoriesGrid() {
   return (
-    <section id="skills" className="py-20 bg-secondary/10">
+    <section id="skills" className="py-24 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-6 lg:px-12">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-12 gradient-text"
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          Skill Categories
-        </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Skill Categories
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Explore my diverse range of technical skills and expertise across different domains
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((cat, index) => (
-            <SkillCategoryCard key={index} category={cat.category} items={cat.items} />
+            <SkillCategoryCard 
+              key={index}
+              index={index}
+              category={cat.category}
+              items={cat.items}
+              icon={cat.icon}
+              gradient={cat.gradient}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
+
+// "use client"
+
+// import { useState, useMemo, useRef } from "react"
+// import { motion, AnimatePresence } from "framer-motion"
+// import { Search, Moon, Sun, Download } from "lucide-react"
+// import { Input } from "@/components/ui/input"
+// import { Button } from "@/components/ui/button"
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+// import { useTheme } from "next-themes"
+// import { useVirtual } from "react-virtual"
+// import { useTranslation } from "next-i18next"
+
+// const skillCategories = [
+//   {
+//     category: "Backend Development",
+//     items: [
+//       { name: "Python", level: 90 },
+//       { name: "FastAPI", level: 85 },
+//       { name: "SQLAlchemy ORM", level: 80 },
+//     ],
+//   },
+//   {
+//     category: "Databases",
+//     items: [
+//       { name: "PostgreSQL", level: 85 },
+//       { name: "MySQL", level: 80 },
+//     ],
+//   },
+//   {
+//     category: "API Development",
+//     items: [
+//       { name: "RESTful API Design", level: 90 },
+//       { name: "JWT", level: 85 },
+//       { name: "OAuth", level: 80 },
+//     ],
+//   },
+//   {
+//     category: "DevOps",
+//     items: [
+//       { name: "Docker", level: 85 },
+//       { name: "Jenkins", level: 80 },
+//       { name: "CI/CD Pipelines", level: 85 },
+//     ],
+//   },
+//   {
+//     category: "Tools",
+//     items: [
+//       { name: "Git", level: 90 },
+//       { name: "GitHub", level: 90 },
+//       { name: "SonarQube", level: 80 },
+//     ],
+//   },
+//   {
+//     category: "Web Technologies",
+//     items: [
+//       { name: "HTML", level: 95 },
+//       { name: "CSS", level: 90 },
+//     ],
+//   },
+// ]
+
+// interface SkillItemProps {
+//   name: string
+//   level: number
+// }
+
+// function SkillItem({ name, level }: SkillItemProps) {
+//   const { t } = useTranslation()
+
+//   return (
+//     <motion.div
+//       whileHover={{ scale: 1.05 }}
+//       className="bg-primary/10 rounded-full px-3 py-1 text-sm font-medium text-primary"
+//     >
+//       <div className="flex items-center justify-between">
+//         <span>{t(name)}</span>
+//         <div className="w-16 h-1 bg-primary/20 rounded-full ml-2">
+//           <motion.div
+//             className="h-full bg-primary rounded-full"
+//             initial={{ width: 0 }}
+//             animate={{ width: `${level}%` }}
+//             transition={{ duration: 1, ease: "easeInOut" }}
+//           />
+//         </div>
+//       </div>
+//     </motion.div>
+//   )
+// }
+
+// interface SkillCategoryCardProps {
+//   category: string
+//   items: SkillItemProps[]
+// }
+
+// function SkillCategoryCard({ category, items }: SkillCategoryCardProps) {
+//   const { t } = useTranslation()
+
+//   return (
+//     <motion.div
+//       whileHover={{ scale: 1.02 }}
+//       transition={{ duration: 0.3 }}
+//       className="bg-card text-card-foreground rounded-lg shadow-lg p-6"
+//     >
+//       <h4 className="text-xl font-bold mb-4">{t(category)}</h4>
+//       <div className="flex flex-wrap gap-2">
+//         {items.map((item, index) => (
+//           <SkillItem key={index} name={item.name} level={item.level} />
+//         ))}
+//       </div>
+//     </motion.div>
+//   )
+// }
+
+// function SkillLegend() {
+//   const { t } = useTranslation()
+//   return (
+//     <div className="flex justify-center items-center space-x-4 mb-4">
+//       <span className="text-sm">{t("Beginner")}</span>
+//       <div className="w-32 h-2 bg-primary/20 rounded-full">
+//         <div className="w-1/4 h-full bg-primary rounded-full" />
+//       </div>
+//       <div className="w-32 h-2 bg-primary/20 rounded-full">
+//         <div className="w-1/2 h-full bg-primary rounded-full" />
+//       </div>
+//       <div className="w-32 h-2 bg-primary/20 rounded-full">
+//         <div className="w-3/4 h-full bg-primary rounded-full" />
+//       </div>
+//       <div className="w-32 h-2 bg-primary/20 rounded-full">
+//         <div className="w-full h-full bg-primary rounded-full" />
+//       </div>
+//       <span className="text-sm">{t("Expert")}</span>
+//     </div>
+//   )
+// }
+
+// export default function SkillCategoriesGrid() {
+//   const [searchTerm, setSearchTerm] = useState("")
+//   const [activeTab, setActiveTab] = useState("all")
+//   const { theme, setTheme } = useTheme()
+//   const { t } = useTranslation()
+
+//   const filteredCategories = useMemo(() => {
+//     return skillCategories
+//       .map((category) => ({
+//         ...category,
+//         items: category.items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase())),
+//       }))
+//       .filter((category) => activeTab === "all" || category.category.toLowerCase() === activeTab.toLowerCase())
+//   }, [searchTerm, activeTab])
+
+//   const parentRef = useRef()
+//   const rowVirtualizer = useVirtual({
+//     size: filteredCategories.length,
+//     parentRef,
+//     estimateSize: React.useCallback(() => 250, []),
+//     overscan: 5,
+//   })
+
+//   const handleKeyDown = (e: React.KeyboardEvent) => {
+//     if (e.key === "ArrowRight") {
+//       const currentIndex = skillCategories.findIndex((cat) => cat.category.toLowerCase() === activeTab)
+//       const nextIndex = (currentIndex + 1) % skillCategories.length
+//       setActiveTab(skillCategories[nextIndex].category.toLowerCase())
+//     } else if (e.key === "ArrowLeft") {
+//       const currentIndex = skillCategories.findIndex((cat) => cat.category.toLowerCase() === activeTab)
+//       const prevIndex = (currentIndex - 1 + skillCategories.length) % skillCategories.length
+//       setActiveTab(skillCategories[prevIndex].category.toLowerCase())
+//     }
+//   }
+
+//   const handleDownloadResume = () => {
+//     // Implement resume download logic here
+//     console.log("Downloading resume...")
+//   }
+
+//   return (
+//     <section id="skills" className="py-20 bg-secondary/10">
+//       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+//         <motion.h2
+//           className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+//           initial={{ opacity: 0, y: -20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6 }}
+//         >
+//           {t("Skill Categories")}
+//         </motion.h2>
+//         <div className="flex justify-between items-center mb-8">
+//           <div className="relative max-w-md">
+//             <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+//             <Input
+//               type="text"
+//               placeholder={t("Search skills...")}
+//               className="pl-10"
+//               value={searchTerm}
+//               onChange={(e) => setSearchTerm(e.target.value)}
+//             />
+//           </div>
+//           <div className="flex space-x-4">
+//             <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+//               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+//             </Button>
+//             <Button onClick={handleDownloadResume}>
+//               <Download className="h-4 w-4 mr-2" />
+//               {t("Download Resume")}
+//             </Button>
+//           </div>
+//         </div>
+//         <SkillLegend />
+//         <Tabs defaultValue="all" className="mb-8" onKeyDown={handleKeyDown}>
+//           <TabsList>
+//             <TabsTrigger value="all">{t("All")}</TabsTrigger>
+//             {skillCategories.map((cat, index) => (
+//               <TabsTrigger key={index} value={cat.category.toLowerCase()}>
+//                 {t(cat.category)}
+//               </TabsTrigger>
+//             ))}
+//           </TabsList>
+//           <TabsContent value="all">
+//             <div ref={parentRef} style={{ height: `600px`, overflow: "auto" }}>
+//               <div
+//                 style={{
+//                   height: `${rowVirtualizer.totalSize}px`,
+//                   width: "100%",
+//                   position: "relative",
+//                 }}
+//               >
+//                 {rowVirtualizer.virtualItems.map((virtualRow) => (
+//                   <div
+//                     key={virtualRow.index}
+//                     style={{
+//                       position: "absolute",
+//                       top: 0,
+//                       left: 0,
+//                       width: "100%",
+//                       height: `${virtualRow.size}px`,
+//                       transform: `translateY(${virtualRow.start}px)`,
+//                     }}
+//                   >
+//                     <AnimatePresence>
+//                       <motion.div
+//                         initial={{ opacity: 0, y: 20 }}
+//                         animate={{ opacity: 1, y: 0 }}
+//                         exit={{ opacity: 0, y: -20 }}
+//                         transition={{ duration: 0.2 }}
+//                       >
+//                         <SkillCategoryCard
+//                           category={filteredCategories[virtualRow.index].category}
+//                           items={filteredCategories[virtualRow.index].items}
+//                         />
+//                       </motion.div>
+//                     </AnimatePresence>
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </TabsContent>
+//           {skillCategories.map((cat, index) => (
+//             <TabsContent key={index} value={cat.category.toLowerCase()}>
+//               <SkillCategoryCard category={cat.category} items={cat.items} />
+//             </TabsContent>
+//           ))}
+//         </Tabs>
+//       </div>
+//     </section>
+//   )
+// }
+
