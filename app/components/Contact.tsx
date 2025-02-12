@@ -1,3 +1,4 @@
+// Contact.tsx - Updated with OAuth2 API Call
 "use client"
 
 import { useState } from "react";
@@ -12,7 +13,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/components/ui/card";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Mail } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { FaTwitter } from "react-icons/fa";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -36,9 +39,12 @@ export default function Contact() {
       setName("");
       setEmail("");
       setMessage("");
+    // } catch (error) {
+    //   console.error("Failed to send email:", error);
+    //   setStatus("error");
     } catch (error) {
-      console.error("Failed to send email:", error);
-      setStatus("error");
+      console.error("Error sending email:", error);
+      return res.status(500).json({ error: `Failed to send email: ${error.message}` });
     } finally {
       setTimeout(() => setStatus("idle"), 3000);
     }
@@ -83,7 +89,7 @@ export default function Contact() {
                 <h3 className="text-xl font-semibold mb-4">Social Links</h3>
                 <ul className="space-y-4">
                   <li className="flex items-center space-x-4">
-                    <Linkedin className="text-primary" size={24} />
+                    <SiLinkedin className="text-primary" size={24} />
                     <a
                       href="https://www.linkedin.com/in/dasaradha-rami-reddy-kesari-b8471417b"
                       target="_blank"
@@ -94,7 +100,7 @@ export default function Contact() {
                     </a>
                   </li>
                   <li className="flex items-center space-x-4">
-                    <Github className="text-primary" size={24} />
+                    <SiGithub className="text-primary" size={24} />
                     <a
                       href="https://github.com/KDasaradha"
                       target="_blank"
@@ -105,7 +111,7 @@ export default function Contact() {
                     </a>
                   </li>
                   <li className="flex items-center space-x-4">
-                    <Twitter className="text-primary" size={24} />
+                    <FaTwitter className="text-primary" size={24} />
                     <a
                       href="https://twitter.com/your-twitter-handle"
                       target="_blank"
