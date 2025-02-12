@@ -5,7 +5,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import Typed from "typed.js"
-import TechStack from "@/app/components/TechStack"
+import Skills from "@/app/components/Skills";
 import Particles from "react-tsparticles"
 import { loadSlim } from "tsparticles-slim"
 import type { Container, Engine } from "tsparticles-engine"
@@ -156,7 +156,7 @@ export default function Hero() {
             />
           </motion.div>
         </div>
-        <TechStack />
+        <Skills />
       </div>
     </section>
   )

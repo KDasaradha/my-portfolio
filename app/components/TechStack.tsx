@@ -1,154 +1,16 @@
-// "use client"
+"use client";
 
-// import { motion } from "framer-motion"
-// import { SiPython, SiFastapi, SiPostgresql, SiDocker, SiJenkins, SiReact } from "react-icons/si"
-// import { FaAws } from "react-icons/fa"
-// import { useMemo } from "react"
-
-// const technologies = [
-//   { name: "Python", icon: SiPython },
-//   { name: "FastAPI", icon: SiFastapi },
-//   { name: "PostgreSQL", icon: SiPostgresql },
-//   { name: "Docker", icon: SiDocker },
-//   { name: "Jenkins", icon: SiJenkins },
-//   { name: "AWS", icon: FaAws },
-//   { name: "React", icon: SiReact },
-// ]
-
-// const animationProps = {
-//   initial: { opacity: 0, y: 20 },
-//   animate: { opacity: 1, y: 0 },
-//   whileHover: { scale: 1.1 },
-//   transition: (index: number) => ({ duration: 0.3, delay: index * 0.1 }),
-// }
-
-// export default function TechStack() {
-//   const techList = useMemo(
-//     () =>
-//       technologies.map((tech, index) => (
-//         <motion.div
-//           key={tech.name}
-//           className="flex flex-col items-center p-4 rounded-lg shadow-md dark:bg-gray-800 bg-gray-100"
-//           {...animationProps}
-//           transition={animationProps.transition(index)}
-//         >
-//           <tech.icon className="text-4xl mb-2 text-primary" aria-label={tech.name} title={tech.name} />
-//           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{tech.name}</span>
-//         </motion.div>
-//       )),
-//     []
-//   )
-
-//   return (
-//     <div className="mt-16">
-//       <h3 className="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">
-//         Tech Stack I'm Using
-//       </h3>
-//       <div className="flex flex-wrap justify-center gap-6">{techList}</div>
-//     </div>
-//   )
-// }
-
-
-
-// "use client"
-
-// import { motion } from "framer-motion"
-// import { useMemo } from "react"
-// import {
-//   SiPython,
-//   SiFastapi,
-//   SiPostgresql,
-//   SiDocker,
-//   SiJenkins,
-//   SiReact,
-//   SiNextdotjs,
-//   SiRapid,
-//   SiMailgun,
-//   SiOpencv,
-// } from "react-icons/si"
-// import { FaAws } from "react-icons/fa"
-// import { DiDatabase } from "react-icons/di"      // For SQLAlchemy
-// import { TbLetterP } from "react-icons/tb"         // For Pydantic
-// import { IoLogoBuffer } from "react-icons/io5"     // For Pillow
-// import { MdCode } from "react-icons/md"            // For Fabric JSON
-
-// // Extended technology array
-// const technologies = [
-//   { name: "Python", icon: SiPython },
-//   { name: "FastAPI", icon: SiFastapi },
-//   { name: "SQLAlchemy", icon: DiDatabase },
-//   { name: "Pydantic", icon: TbLetterP },
-//   { name: "OpenCV", icon: SiOpencv },
-//   { name: "Pillow", icon: IoLogoBuffer },
-//   { name: "Next.js", icon: SiNextdotjs },
-//   { name: "Third-Party APIs", icon: SiRapid },
-//   { name: "Mailgun", icon: SiMailgun },
-//   { name: "Fabric JSON", icon: MdCode },
-//   { name: "PostgreSQL", icon: SiPostgresql },
-//   { name: "Docker", icon: SiDocker },
-//   { name: "Jenkins", icon: SiJenkins },
-//   { name: "AWS", icon: FaAws },
-//   { name: "React", icon: SiReact },
-// ]
-
-// // Animation properties
-// const animationProps = {
-//   initial: { opacity: 0, y: 20 },
-//   animate: { opacity: 1, y: 0 },
-//   whileHover: { scale: 1.1 },
-//   // Function to provide a staggered delay for each card
-//   transition: (index: number) => ({ duration: 0.3, delay: index * 0.1 }),
-// }
-
-// export default function TechStack() {
-//   const techList = useMemo(
-//     () =>
-//       technologies.map((tech, index) => {
-//         // Destructure the icon component
-//         const Icon = tech.icon
-//         return (
-//           <motion.div
-//             key={tech.name}
-//             className="flex flex-col items-center p-4 rounded-lg shadow-md dark:bg-gray-800 bg-gray-100 cursor-pointer"
-//             initial={animationProps.initial}
-//             animate={animationProps.animate}
-//             whileHover={animationProps.whileHover}
-//             transition={animationProps.transition(index)}
-//             title={tech.name}
-//             aria-label={tech.name}
-//           >
-//             <Icon className="text-4xl mb-2 text-primary" />
-//             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-//               {tech.name}
-//             </span>
-//           </motion.div>
-//         )
-//       }),
-//     []
-//   )
-
-//   return (
-//     <div className="mt-16">
-//       <h3 className="text-2xl font-semibold mb-4 text-center text-gray-800 dark:text-gray-200">
-//         Tech Stack I'm Using
-//       </h3>
-//       <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-5 justify-items-center">
-//         {techList}
-//       </div>
-//     </div>
-//   )
-// }
-
-
-"use client"
-
-import { useState, useMemo } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Search, ChevronDown, ChevronUp } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, ChevronDown, ChevronUp } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import {
   SiPython,
   SiFastapi,
@@ -160,15 +22,20 @@ import {
   SiRapid,
   SiMailgun,
   SiOpencv,
-} from "react-icons/si"
-import { FaAws } from "react-icons/fa"
-import { DiDatabase } from "react-icons/di"
-import { TbLetterP } from "react-icons/tb"
-import { IoLogoBuffer } from "react-icons/io5"
-import { MdCode } from "react-icons/md"
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa";
+import { DiDatabase } from "react-icons/di";
+import { TbLetterP } from "react-icons/tb";
+import { IoLogoBuffer } from "react-icons/io5";
+import { MdCode } from "react-icons/md";
 
 const technologies = [
-  { name: "Python", icon: SiPython, category: "Backend", description: "High-level programming language" },
+  {
+    name: "Python",
+    icon: SiPython,
+    category: "Backend",
+    description: "High-level programming language",
+  },
   {
     name: "FastAPI",
     icon: SiFastapi,
@@ -179,13 +46,15 @@ const technologies = [
     name: "SQLAlchemy",
     icon: DiDatabase,
     category: "Backend",
-    description: "SQL toolkit and Object-Relational Mapping (ORM) library for Python",
+    description:
+      "SQL toolkit and Object-Relational Mapping (ORM) library for Python",
   },
   {
     name: "Pydantic",
     icon: TbLetterP,
     category: "Backend",
-    description: "Data validation and settings management using Python type annotations",
+    description:
+      "Data validation and settings management using Python type annotations",
   },
   {
     name: "OpenCV",
@@ -193,16 +62,36 @@ const technologies = [
     category: "Data Processing",
     description: "Computer vision and machine learning software library",
   },
-  { name: "Pillow", icon: IoLogoBuffer, category: "Data Processing", description: "Python Imaging Library" },
+  {
+    name: "Pillow",
+    icon: IoLogoBuffer,
+    category: "Data Processing",
+    description: "Python Imaging Library",
+  },
   {
     name: "Next.js",
     icon: SiNextdotjs,
     category: "Frontend",
     description: "React framework for production-grade applications",
   },
-  { name: "Third-Party APIs", icon: SiRapid, category: "Integration", description: "External service integrations" },
-  { name: "Mailgun", icon: SiMailgun, category: "Integration", description: "Email automation service" },
-  { name: "Fabric JSON", icon: MdCode, category: "Data Processing", description: "JSON manipulation library" },
+  {
+    name: "Third-Party APIs",
+    icon: SiRapid,
+    category: "Integration",
+    description: "External service integrations",
+  },
+  {
+    name: "Mailgun",
+    icon: SiMailgun,
+    category: "Integration",
+    description: "Email automation service",
+  },
+  {
+    name: "Fabric JSON",
+    icon: MdCode,
+    category: "Data Processing",
+    description: "JSON manipulation library",
+  },
   {
     name: "PostgreSQL",
     icon: SiPostgresql,
@@ -215,17 +104,29 @@ const technologies = [
     category: "DevOps",
     description: "Platform for developing, shipping, and running applications",
   },
-  { name: "Jenkins", icon: SiJenkins, category: "DevOps", description: "Open-source automation server" },
-  { name: "AWS", icon: FaAws, category: "Cloud", description: "Comprehensive cloud computing platform" },
+  {
+    name: "Jenkins",
+    icon: SiJenkins,
+    category: "DevOps",
+    description: "Open-source automation server",
+  },
+  {
+    name: "AWS",
+    icon: FaAws,
+    category: "Cloud",
+    description: "Comprehensive cloud computing platform",
+  },
   {
     name: "React",
     icon: SiReact,
     category: "Frontend",
     description: "JavaScript library for building user interfaces",
   },
-]
+];
 
-const categories = Array.from(new Set(technologies.map((tech) => tech.category)))
+const categories = Array.from(
+  new Set(technologies.map((tech) => tech.category))
+);
 
 const animationProps = {
   initial: { opacity: 0, y: 20 },
@@ -233,22 +134,22 @@ const animationProps = {
   exit: { opacity: 0, y: -20 },
   whileHover: { scale: 1.05 },
   transition: { duration: 0.2 },
-}
+};
 
 export default function TechStack() {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [showAll, setShowAll] = useState(false)
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [showAll, setShowAll] = useState(false);
 
   const filteredTech = useMemo(() => {
     return technologies.filter(
       (tech) =>
         (selectedCategory === "All" || tech.category === selectedCategory) &&
-        tech.name.toLowerCase().includes(searchTerm.toLowerCase()),
-    )
-  }, [searchTerm, selectedCategory])
+        tech.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [searchTerm, selectedCategory]);
 
-  const visibleTech = showAll ? filteredTech : filteredTech.slice(0, 8)
+  const visibleTech = showAll ? filteredTech : filteredTech.slice(0, 8);
 
   return (
     <div className="mt-16 px-4 sm:px-6 lg:px-8">
@@ -284,10 +185,13 @@ export default function TechStack() {
           ))}
         </div>
       </div>
-      <motion.div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4" layout>
+      <motion.div
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4"
+        layout
+      >
         <AnimatePresence>
           {visibleTech.map((tech) => {
-            const Icon = tech.icon
+            const Icon = tech.icon;
             return (
               <motion.div key={tech.name} {...animationProps}>
                 <TooltipProvider>
@@ -295,7 +199,9 @@ export default function TechStack() {
                     <TooltipTrigger asChild>
                       <div className="flex flex-col items-center p-4 rounded-lg shadow-md bg-card text-card-foreground cursor-pointer">
                         <Icon className="text-4xl mb-2 text-primary" />
-                        <span className="text-sm font-medium text-center">{tech.name}</span>
+                        <span className="text-sm font-medium text-center">
+                          {tech.name}
+                        </span>
                       </div>
                     </TooltipTrigger>
                     <TooltipContent>
@@ -304,7 +210,7 @@ export default function TechStack() {
                   </Tooltip>
                 </TooltipProvider>
               </motion.div>
-            )
+            );
           })}
         </AnimatePresence>
       </motion.div>
@@ -326,6 +232,5 @@ export default function TechStack() {
         </div>
       )}
     </div>
-  )
+  );
 }
-

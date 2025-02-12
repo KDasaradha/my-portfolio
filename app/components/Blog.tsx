@@ -1,32 +1,43 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card"
-import { Button } from "@/app/components/ui/button"
+import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
+import { Button } from "@/app/components/ui/button";
 
 const blogPosts = [
   {
     title: "Why I Chose FastAPI for Scalable API Development",
-    description: "Exploring the benefits of FastAPI and how it improved our development process.",
+    description:
+      "Exploring the benefits of FastAPI and how it improved our development process.",
     date: "2023-05-15",
     readTime: "5 min read",
     link: "#",
   },
   {
     title: "Optimizing PostgreSQL Queries for High-Performance APIs",
-    description: "Tips and tricks to boost your PostgreSQL query performance in API applications.",
+    description:
+      "Tips and tricks to boost your PostgreSQL query performance in API applications.",
     date: "2023-06-22",
     readTime: "8 min read",
     link: "#",
   },
   {
-    title: "A Step-by-Step Guide to Implementing CI/CD Pipelines with Jenkins & Docker",
-    description: "Learn how to set up a robust CI/CD pipeline using Jenkins and Docker.",
+    title:
+      "A Step-by-Step Guide to Implementing CI/CD Pipelines with Jenkins & Docker",
+    description:
+      "Learn how to set up a robust CI/CD pipeline using Jenkins and Docker.",
     date: "2023-07-30",
     readTime: "10 min read",
     link: "#",
   },
-]
+];
 
 export default function Blog() {
   return (
@@ -55,7 +66,11 @@ export default function Blog() {
                 </CardContent>
                 <CardFooter>
                   <Button asChild>
-                    <a href={post.link} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Read More
                     </a>
                   </Button>
@@ -66,6 +81,5 @@ export default function Blog() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

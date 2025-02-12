@@ -1,8 +1,13 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
-import { FaExternalLinkAlt } from "react-icons/fa"
+import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const certificates = [
   {
@@ -23,7 +28,7 @@ const certificates = [
     date: "January 2023",
     link: "https://www.linkedin.com/learning/certificates/2bec5c2b498a769ec38fa6815e385f9db919526f2c8ca66c42d7f8fb23bfe429?u=126637874",
   },
-]
+];
 
 export default function Certificates() {
   return (
@@ -48,11 +53,15 @@ export default function Certificates() {
             >
               <Card className="hover:shadow-lg transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="text-lg font-semibold">{cert.title}</CardTitle>
+                  <CardTitle className="text-lg font-semibold">
+                    {cert.title}
+                  </CardTitle>
                   <p className="text-muted-foreground text-sm">{cert.issuer}</p>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">{cert.date}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {cert.date}
+                  </p>
                   <div className="mt-3 flex items-center gap-2">
                     <FaExternalLinkAlt className="text-blue-500" />
                     <a
@@ -71,5 +80,5 @@ export default function Certificates() {
         </div>
       </div>
     </section>
-  )
+  );
 }
