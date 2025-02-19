@@ -50,7 +50,7 @@ const projects: Project[] = [
     title: "InstaDe (Instant Poster Generator)",
     description:
       "A dynamic poster generator that leverages web scraping, AI-powered content prompts, and Fabric JSON to create effective marketing posters.",
-    image: "/instade-screenshot.jpg",
+    image: "./images/instade-screenshot.png",
     techStack: [
       "Python",
       "FastAPI",
@@ -60,7 +60,7 @@ const projects: Project[] = [
       "React.js",
     ],
     github: "https://github.com/johndoe/instade",
-    demo: "https://instade-demo.vercel.app",
+    demo: "https://develop.instade.ai/",
     challenge:
       "Initially, we used web scraping to gather marketing content and Python imaging libraries (Pillow, OpenCV) to design templates. However, the approach suffered from slow dynamic rendering and an unresponsive editor panel.",
     solution:
@@ -78,10 +78,10 @@ const projects: Project[] = [
     title: "School Management System (Advanced ERP)",
     description:
       "A scalable backend system supporting comprehensive school operations such as User Management, RBAC, Curriculum, Fees, Vendor Management, and Real-time Chat.",
-    image: "/school-erp-screenshot.jpg",
+    image: "./images/school-erp-screenshot.jpg",
     techStack: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy ORM", "Docker"],
     github: "https://github.com/johndoe/school-erp",
-    demo: "https://school-erp-demo.vercel.app",
+    demo: "https://myschoolitaly-app.vercel.app/",
     challenge:
       "High latency during peak usage and the need to maintain data isolation for multiple schools were major obstacles.",
     solution:
@@ -98,10 +98,10 @@ const projects: Project[] = [
     title: "SHOU (HRMS, Payroll & Animation Production Pipeline)",
     description:
       "An integrated platform that combines HRMS, payroll management, and an animation production pipeline to streamline operations and provide real-time updates.",
-    image: "/shou-screenshot.jpg",
+    image: "./images/shou-screenshot.jpg",
     techStack: ["FastAPI", "PostgreSQL", "Docker", "Jenkins", "Nginx"],
     github: "https://github.com/johndoe/shou",
-    demo: "https://shou-demo.vercel.app",
+    demo: "https://getshou.com/",
     challenge:
       "Integrating disparate systems like HRMS, payroll calculations, and animation production into one platform posed significant integration and real-time update challenges.",
     solution:
