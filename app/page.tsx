@@ -9,6 +9,7 @@ import Education from "@/app/components/Education";
 import Certificates from "@/app/components/Certificates";
 import Testimonials from "@/app/components/Testimonials";
 import TechStack from "@/app/components/TechStack";
+import MkDocsLink from "@/app/components/MkDocsLink";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Certificates />
       <Blog />
       <GitHubStats />
+      <MkDocsLink />
       <Contact />
     </>
   );

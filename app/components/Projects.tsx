@@ -78,7 +78,7 @@ const projects: Project[] = [
     title: "School Management System (Advanced ERP)",
     description:
       "A scalable backend system supporting comprehensive school operations such as User Management, RBAC, Curriculum, Fees, Vendor Management, and Real-time Chat.",
-    image: "./images/school-erp-screenshot.jpg",
+    image: "./images/school-erp-screenshot.png",
     techStack: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy ORM", "Docker"],
     github: "https://github.com/johndoe/school-erp",
     demo: "https://myschoolitaly-app.vercel.app/",
@@ -98,7 +98,7 @@ const projects: Project[] = [
     title: "SHOU (HRMS, Payroll & Animation Production Pipeline)",
     description:
       "An integrated platform that combines HRMS, payroll management, and an animation production pipeline to streamline operations and provide real-time updates.",
-    image: "./images/shou-screenshot.jpg",
+    image: "./images/shou-screenshot.png",
     techStack: ["FastAPI", "PostgreSQL", "Docker", "Jenkins", "Nginx"],
     github: "https://github.com/johndoe/shou",
     demo: "https://getshou.com/",
