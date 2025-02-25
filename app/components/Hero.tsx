@@ -1,25 +1,96 @@
-// "use client"
-
-// import { useEffect, useRef } from "react"
-// import Image from "next/image"
-// import { motion } from "framer-motion"
-// import { Button } from "@/app/components/ui/button"
-// import Typed from "typed.js"
+// "use client";
+// import { useEffect, useRef } from "react";
+// import { useTheme } from "next-themes";  // Import the hook
+// import Image from "next/image";
+// import { motion } from "framer-motion";
+// import { Button } from "@/app/components/ui/button";
+// import Typed from "typed.js";
 // import Skills from "@/app/components/Skills";
-// import Particles from "react-tsparticles"
-// import { loadSlim } from "tsparticles-slim"
-// import type { Container, Engine } from "tsparticles-engine"
+// import Particles from "react-tsparticles";
+// import { loadSlim } from "tsparticles-slim";
+// import type { Container, Engine } from "tsparticles-engine";
 
 // export default function Hero() {
-//   const el = useRef(null)
+//   const el = useRef(null);
+//   const { theme } = useTheme();  // Use the useTheme hook to access the current theme
 
 //   const particlesInit = async (engine: Engine) => {
-//     await loadSlim(engine)
-//   }
+//     await loadSlim(engine);
+//   };
 
 //   const particlesLoaded = async (container: Container | undefined) => {
-//     console.log(container)
-//   }
+//     console.log(container);
+//   };
+
+//   const particlesOptions = {
+//     background: {
+//       color: {
+//         value: "transparent",
+//       },
+//     },
+//     fpsLimit: 120,
+//     interactivity: {
+//       events: {
+//         onClick: {
+//           enable: true,
+//           mode: "push",
+//         },
+//         onHover: {
+//           enable: true,
+//           mode: "repulse",
+//         },
+//         resize: true,
+//       },
+//       modes: {
+//         push: {
+//           quantity: 4,
+//         },
+//         repulse: {
+//           distance: 200,
+//           duration: 0.4,
+//         },
+//       },
+//     },
+//     particles: {
+//       color: {
+//         value: theme === "dark" ? "#ffffff" : "#5ba8eb", // Change particle color based on the theme
+//       },
+//       links: {
+//         color: theme === "dark" ? "#ffffff" : "#5ba8eb", // Change link color based on the theme
+//         distance: 150,
+//         enable: true,
+//         opacity: 0.5,
+//         width: 1,
+//       },
+//       move: {
+//         direction: "none" as const,
+//         enable: true,
+//         outModes: {
+//           default: "bounce" as const,
+//         },
+//         random: false,
+//         speed: 1,
+//         straight: false,
+//       },
+//       number: {
+//         density: {
+//           enable: true,
+//           area: 800,
+//         },
+//         value: 80,
+//       },
+//       opacity: {
+//         value: 0.5,
+//       },
+//       shape: {
+//         type: "circle",
+//       },
+//       size: {
+//         value: { min: 1, max: 5 },
+//       },
+//     },
+//     detectRetina: true,
+//   };
 
 //   useEffect(() => {
 //     const typed = new Typed(el.current, {
@@ -27,12 +98,12 @@
 //       typeSpeed: 50,
 //       backSpeed: 50,
 //       loop: true,
-//     })
+//     });
 
 //     return () => {
-//       typed.destroy()
-//     }
-//   }, [])
+//       typed.destroy();
+//     };
+//   }, []);
 
 //   return (
 //     <section className="relative py-20 md:py-32 overflow-hidden">
@@ -40,75 +111,7 @@
 //         id="tsparticles"
 //         init={particlesInit}
 //         loaded={particlesLoaded}
-//         options={{
-//           background: {
-//             color: {
-//               value: "transparent",
-//             },
-//           },
-//           fpsLimit: 120,
-//           interactivity: {
-//             events: {
-//               onClick: {
-//                 enable: true,
-//                 mode: "push",
-//               },
-//               onHover: {
-//                 enable: true,
-//                 mode: "repulse",
-//               },
-//               resize: true,
-//             },
-//             modes: {
-//               push: {
-//                 quantity: 4,
-//               },
-//               repulse: {
-//                 distance: 200,
-//                 duration: 0.4,
-//               },
-//             },
-//           },
-//           particles: {
-//             color: {
-//               value: "#ffffff",
-//             },
-//             links: {
-//               color: "#ffffff",
-//               distance: 150,
-//               enable: true,
-//               opacity: 0.5,
-//               width: 1,
-//             },
-//             move: {
-//               direction: "none",
-//               enable: true,
-//               outModes: {
-//                 default: "bounce",
-//               },
-//               random: false,
-//               speed: 1,
-//               straight: false,
-//             },
-//             number: {
-//               density: {
-//                 enable: true,
-//                 area: 800,
-//               },
-//               value: 80,
-//             },
-//             opacity: {
-//               value: 0.5,
-//             },
-//             shape: {
-//               type: "circle",
-//             },
-//             size: {
-//               value: { min: 1, max: 5 },
-//             },
-//           },
-//           detectRetina: true,
-//         }}
+//         options={particlesOptions}
 //       />
 //       <div className="container mx-auto px-4 relative z-10">
 //         <div className="flex flex-col md:flex-row items-center justify-between">
@@ -147,7 +150,6 @@
 //             transition={{ duration: 0.5 }}
 //           >
 //             <Image
-//               // src="./images/3d-illustration-girl-with-glasses-laptop-her-hands.png"
 //               src="./images/captivating-cartoon.png"
 //               alt="Kesari Dasaradh"
 //               width={400}
@@ -159,14 +161,15 @@
 //         <Skills />
 //       </div>
 //     </section>
-//   )
+//   );
 // }
+
 
 
 
 "use client";
 import { useEffect, useRef } from "react";
-import { useTheme } from "next-themes";  // Import the hook
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
@@ -178,7 +181,7 @@ import type { Container, Engine } from "tsparticles-engine";
 
 export default function Hero() {
   const el = useRef(null);
-  const { theme } = useTheme();  // Use the useTheme hook to access the current theme
+  const { theme } = useTheme();
 
   const particlesInit = async (engine: Engine) => {
     await loadSlim(engine);
@@ -190,70 +193,39 @@ export default function Hero() {
 
   const particlesOptions = {
     background: {
-      color: {
-        value: "transparent",
-      },
+      color: { value: "transparent" },
     },
     fpsLimit: 120,
     interactivity: {
       events: {
-        onClick: {
-          enable: true,
-          mode: "push",
-        },
-        onHover: {
-          enable: true,
-          mode: "repulse",
-        },
+        onClick: { enable: true, mode: "push" },
+        onHover: { enable: true, mode: "repulse" },
         resize: true,
       },
       modes: {
-        push: {
-          quantity: 4,
-        },
-        repulse: {
-          distance: 200,
-          duration: 0.4,
-        },
+        push: { quantity: 4 },
+        repulse: { distance: 200, duration: 0.4 },
       },
     },
     particles: {
-      color: {
-        value: theme === "dark" ? "#ffffff" : "#5ba8eb", // Change particle color based on the theme
-      },
+      color: { value: theme === "dark" ? "#ffffff" : "#5ba8eb" },
       links: {
-        color: theme === "dark" ? "#ffffff" : "#5ba8eb", // Change link color based on the theme
+        color: theme === "dark" ? "#ffffff" : "#5ba8eb",
         distance: 150,
         enable: true,
-        opacity: 0.5,
+        opacity: 0.3, // Lower opacity to avoid distraction
         width: 1,
       },
       move: {
-        direction: "none",
+        direction: "none" as const,
         enable: true,
-        outModes: {
-          default: "bounce",
-        },
-        random: false,
+        outModes: { default: "bounce" as const},
         speed: 1,
-        straight: false,
       },
-      number: {
-        density: {
-          enable: true,
-          area: 800,
-        },
-        value: 80,
-      },
-      opacity: {
-        value: 0.5,
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 1, max: 5 },
-      },
+      number: { density: { enable: true, area: 800 }, value: 80 },
+      opacity: { value: 0.3 }, // Reduce opacity for better readability
+      shape: { type: "circle" },
+      size: { value: { min: 1, max: 5 } },
     },
     detectRetina: true,
   };
@@ -273,12 +245,11 @@ export default function Hero() {
 
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={particlesOptions}
-      />
+      {/* Particles Background */}
+      <div className="absolute top-0 left-0 w-full h-full -z-10">
+        <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={particlesOptions} />
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <motion.div
