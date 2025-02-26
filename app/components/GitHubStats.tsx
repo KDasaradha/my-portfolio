@@ -162,11 +162,95 @@
 // }
 
 
+// "use client";
+
+// import { motion } from "framer-motion";
+// import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
+// import { useEffect, useState } from "react";
+
+// export default function GitHubStats() {
+//   const [stats, setStats] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+
+//   useEffect(() => {
+//     const fetchGitHubStats = async () => {
+//       try {
+//         const response = await fetch("/api/github-stats");
+//         if (!response.ok) throw new Error("Failed to fetch GitHub stats");
+//         const data = await response.json();
+//         setStats(data);
+//       } catch (err) {
+//         if (err instanceof Error) {
+//           setError(err.message);
+//         } else {
+//           setError("An unknown error occurred");
+//         }
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchGitHubStats();
+//   }, []);
+
+//   if (loading) return <p className="text-center">Loading GitHub stats...</p>;
+//   if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+
+//   const labels = {
+//     repos: "Repositories",
+//     stars: "Stars",
+//     forks: "Forks",
+//     followers: "Followers",
+//     contributions: "Contributions",
+//     pullRequests: "Pull Requests",
+//     issues: "Issues",
+//     gists: "Gists",
+//     topLanguage: "Top Language",
+//     createdAt: "Joined GitHub",
+//     lastContribution: "Last Contribution",
+//   };
+
+//   return (
+//     <section id="github-stats" className="py-20 bg-secondary/10">
+//       <div className="container mx-auto px-4">
+//         <h2 className="text-3xl font-bold mb-12 text-center">
+//           <span className="gradient-text">GitHub Activity</span>
+//         </h2>
+//         <div className="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+//           {stats && Object.entries(stats).map(([key, value]: [keyof typeof stats, any]) => (
+//             <motion.div
+//               key={String(key)}
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.5 }}
+//             >
+//               <Card>
+//                 <CardHeader>
+//                   <CardTitle className="text-center">{labels[key as keyof typeof labels]}</CardTitle>
+//                 </CardHeader>
+//                 <CardContent>
+//                   <p className="text-2xl font-bold text-center">
+//                     {typeof value === "string" ? value : (value as number).toLocaleString()}
+//                   </p>
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { useEffect, useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export default function GitHubStats() {
   const [stats, setStats] = useState(null);
@@ -194,8 +278,8 @@ export default function GitHubStats() {
     fetchGitHubStats();
   }, []);
 
-  if (loading) return <p className="text-center">Loading GitHub stats...</p>;
-  if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+  if (loading) return <p className="text-center text-lg text-muted-foreground">Loading GitHub stats...</p>;
+  if (error) return <p className="text-center text-red-500 text-lg">Error: {error}</p>;
 
   const labels = {
     repos: "Repositories",
@@ -212,29 +296,26 @@ export default function GitHubStats() {
   };
 
   return (
-    <section id="github-stats" className="py-20 bg-secondary/10">
+    <section id="github-stats" className="py-20 bg-transparent text-foreground">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center">
-          <span className="gradient-text">GitHub Activity</span>
+        <h2 className="text-4xl font-extrabold mb-12 text-center text-primary">
+          GitHub Activity
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="flex flex-wrap justify-center gap-6">
           {stats && Object.entries(stats).map(([key, value]: [keyof typeof stats, any]) => (
             <motion.div
               key={String(key)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
             >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-center">{labels[key as keyof typeof labels]}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-2xl font-bold text-center">
-                    {typeof value === "string" ? value : (value as number).toLocaleString()}
-                  </p>
+                <Card className="flex flex-col items-center px-6 py-3 rounded-xl bg-secondary text-secondary-foreground shadow-lg hover:shadow-xl transition-all">
+                <Badge variant="secondary" className="mb-2 text-sm font-medium">{labels[key as keyof typeof labels]}</Badge>
+                <CardContent className="text-xl font-bold text-primary">
+                  {typeof value === "string" ? value : (value as number).toLocaleString()}
                 </CardContent>
-              </Card>
+                </Card>
             </motion.div>
           ))}
         </div>

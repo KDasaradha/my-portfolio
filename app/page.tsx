@@ -11,7 +11,7 @@ import Testimonials from "@/app/components/Testimonials";
 import TechStack from "@/app/components/TechStack";
 import MkDocsLink from "@/app/components/MkDocsLink";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Hero />

@@ -19,6 +19,7 @@ const blogPosts = [
     date: "2023-05-15",
     readTime: "5 min read",
     link: "#",
+    tags: ["FastAPI", "API", "Development"],
   },
   {
     title: "Optimizing PostgreSQL Queries for High-Performance APIs",
@@ -27,6 +28,7 @@ const blogPosts = [
     date: "2023-06-22",
     readTime: "8 min read",
     link: "#",
+    tags: ["PostgreSQL", "Performance", "API"],
   },
   {
     title:
@@ -36,6 +38,7 @@ const blogPosts = [
     date: "2023-07-30",
     readTime: "10 min read",
     link: "#",
+    tags: ["CI/CD", "Jenkins", "Docker"],
   },
 ];
 
@@ -47,12 +50,12 @@ export default function Blog() {
           <span className="gradient-text">Latest from the Blog</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
+          {blogPosts.map((post) => (
             <motion.div
-              key={index}
+              key={post.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               <Card className="h-full flex flex-col">
                 <CardHeader>
@@ -63,6 +66,16 @@ export default function Blog() {
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <p>{post.description}</p>
+                  <div className="mt-4">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-block bg-primary/10 text-primary px-2 py-1 rounded-full text-sm mr-2"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </CardContent>
                 <CardFooter>
                   <Button asChild>
@@ -70,6 +83,7 @@ export default function Blog() {
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Read more about ${post.title}`}
                     >
                       Read More
                     </a>

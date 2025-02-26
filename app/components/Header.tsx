@@ -1,27 +1,47 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useTheme } from "next-themes"
-import { Moon, Sun, Menu, X } from "lucide-react"
-import { Button } from "@/app/components/ui/button"
-import Link from "next/link"
+import { useState, useEffect, useMemo } from "react";
+import { useTheme } from "next-themes";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
+import Link from "next/link";
 
 export default function Header() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null
+  const navItems = useMemo(
+    () => [
+      { name: "Home", href: "#home" },
+      { name: "About", href: "#about" },
+      { name: "Projects", href: "#projects" },
+      { name: "Skills", href: "#skills" },
+      { name: "Experience", href: "#experience" },
+      { name: "Education", href: "#education" },
+      { name: "Contact", href: "#contact" },
+    ],
+    []
+  );
 
-  const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
-  ]
+  const handleNavClick = (href: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleMobileNavClick = (href: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b">
@@ -34,13 +54,7 @@ export default function Header() {
                 <Link
                   href={item.href}
                   className="hover:text-primary transition-colors"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    const target = document.querySelector(item.href)
-                    if (target) {
-                      target.scrollIntoView({ behavior: "smooth" })
-                    }
-                  }}
+                  onClick={handleNavClick(item.href)}
                 >
                   {item.name}
                 </Link>
@@ -54,6 +68,7 @@ export default function Header() {
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="rounded-full"
+            aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </Button>
@@ -62,27 +77,21 @@ export default function Header() {
             size="icon"
             className="md:hidden rounded-full"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </Button>
         </div>
       </div>
       {isMenuOpen && (
-        <nav className="md:hidden bg-background border-b">
+        <nav className="md:hidden bg-background border-b" role="navigation">
           <ul className="flex flex-col p-4">
             {navItems.map((item) => (
               <li key={item.name}>
                 <Link
                   href={item.href}
                   className="block py-2 hover:text-primary transition-colors"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    setIsMenuOpen(false)
-                    const target = document.querySelector(item.href)
-                    if (target) {
-                      target.scrollIntoView({ behavior: "smooth" })
-                    }
-                  }}
+                  onClick={handleMobileNavClick(item.href)}
                 >
                   {item.name}
                 </Link>
@@ -92,6 +101,5 @@ export default function Header() {
         </nav>
       )}
     </header>
-  )
+  );
 }
-

@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -30,10 +30,11 @@ import {
   TabsTrigger,
 } from "@/app/components/ui/tabs";
 
+// Define the Project type with an array of images
 type Project = {
   title: string;
   description: string;
-  image: string;
+  images: string[]; // Updated from image: string
   techStack: string[];
   github: string;
   demo: string;
@@ -45,12 +46,17 @@ type Project = {
   thoughtProcess: string;
 };
 
+// Updated projects array with multiple images and new project
 const projects: Project[] = [
   {
     title: "InstaDe (Instant Poster Generator)",
     description:
-      "A dynamic poster generator that leverages web scraping, AI-powered content prompts, and Fabric JSON to create effective marketing posters.",
-    image: "./images/instade-screenshot.png",
+      "A dynamic poster generator utilizing web scraping, AI-driven content prompts, and Fabric JSON to produce effective marketing materials.",
+    images: [
+      "./images/instade-screenshot.png",
+      "./images/instade-screenshot.png",
+      "./images/instade-screenshot.png",
+    ],
     techStack: [
       "Python",
       "FastAPI",
@@ -62,61 +68,132 @@ const projects: Project[] = [
     github: "https://github.com/johndoe/instade",
     demo: "https://develop.instade.ai/",
     challenge:
-      "Initially, we used web scraping to gather marketing content and Python imaging libraries (Pillow, OpenCV) to design templates. However, the approach suffered from slow dynamic rendering and an unresponsive editor panel.",
+      "Initially, we employed web scraping to collect marketing content and Python imaging libraries (Pillow, OpenCV) to create templates. However, this approach resulted in inefficient dynamic rendering and an unresponsive editor interface.",
     solution:
-      "We transitioned to using Fabric JSON for dynamic template generation, which allowed for efficient, real-time rendering and a much-improved interactive editor.",
+      "We adopted Fabric JSON for dynamic template generation, enabling efficient real-time rendering and a significantly enhanced interactive editor.",
     impact:
-      "Enabled instant poster creation with dynamic content, boosting design efficiency by 60% and significantly reducing manual intervention.",
+      "Facilitated instant poster creation with dynamic content, increasing design efficiency by 60% and substantially reducing manual effort.",
     beforeMetrics:
-      "Static templates with limited interactivity and slow rendering",
+      "Static templates with limited interactivity and inefficient rendering.",
     afterMetrics:
-      "Dynamic, real-time editing with interactive poster generation",
+      "Dynamic, real-time editing with seamless interactive poster generation.",
     thoughtProcess:
-      "Our initial tests revealed bottlenecks in the rendering process. After analyzing alternative approaches, we recognized that Fabric JSON could offer the flexibility and performance required. Extensive prototyping and testing confirmed that the new approach met our performance and usability targets.",
+      "Initial testing exposed bottlenecks in the rendering process. After evaluating alternatives, we determined that Fabric JSON provided the necessary flexibility and performance. Rigorous prototyping and testing validated that this solution achieved our performance and usability goals.",
   },
   {
     title: "School Management System (Advanced ERP)",
     description:
-      "A scalable backend system supporting comprehensive school operations such as User Management, RBAC, Curriculum, Fees, Vendor Management, and Real-time Chat.",
-    image: "./images/school-erp-screenshot.png",
+      "A scalable backend system supporting comprehensive school operations, including user management, role-based access control (RBAC), curriculum management, fee processing, vendor coordination, and real-time chat.",
+    images: [
+      "./images/school-erp-screenshot.png",
+      "./images/school-erp-screenshot.png",
+      "./images/school-erp-screenshot.png",
+    ],
     techStack: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy ORM", "Docker"],
     github: "https://github.com/johndoe/school-erp",
     demo: "https://myschoolitaly-app.vercel.app/",
     challenge:
-      "High latency during peak usage and the need to maintain data isolation for multiple schools were major obstacles.",
+      "High latency during peak usage and the requirement for data isolation across multiple schools presented significant challenges.",
     solution:
-      "We implemented asynchronous FastAPI endpoints, optimized database queries, and designed a multi-tenant architecture with Dockerized deployments.",
+      "We introduced asynchronous FastAPI endpoints, optimized database queries, and implemented a multi-tenant architecture using Dockerized deployments.",
     impact:
-      "Reduced API response times by 30% and enabled the system to scale efficiently, supporting hundreds of schools.",
-    beforeMetrics: "500ms average response time, limited school support",
+      "Decreased API response times by 30% and enabled efficient scaling to support hundreds of schools.",
+    beforeMetrics:
+      "Average response time of 500 ms with limited school capacity.",
     afterMetrics:
-      "350ms average response time, scalable to hundreds of schools",
+      "Average response time of 350 ms with scalability for hundreds of schools.",
     thoughtProcess:
-      "We began by benchmarking our existing endpoints under load and identified query inefficiencies. After exploring asynchronous solutions and multi-tenancy models, we adopted a combination of async processing and optimized query techniques, which was validated through rigorous load testing.",
+      "We started by benchmarking existing endpoints under load, pinpointing query inefficiencies. After researching asynchronous solutions and multi-tenancy frameworks, we integrated async processing with optimized queries, a solution confirmed by extensive load testing.",
   },
   {
     title: "SHOU (HRMS, Payroll & Animation Production Pipeline)",
     description:
-      "An integrated platform that combines HRMS, payroll management, and an animation production pipeline to streamline operations and provide real-time updates.",
-    image: "./images/shou-screenshot.png",
+      "An integrated platform that unifies HRMS, payroll management, and an animation production pipeline to streamline operations and deliver real-time updates.",
+    images: [
+      "./images/shou-screenshot.png",
+      "./images/shou-screenshot.png",
+      "./images/shou-screenshot.png",
+    ],
     techStack: ["FastAPI", "PostgreSQL", "Docker", "Jenkins", "Nginx"],
     github: "https://github.com/johndoe/shou",
     demo: "https://getshou.com/",
     challenge:
-      "Integrating disparate systems like HRMS, payroll calculations, and animation production into one platform posed significant integration and real-time update challenges.",
+      "Integrating diverse systems—HRMS, payroll processing, and animation production—into a cohesive platform presented substantial challenges in synchronization and real-time functionality.",
     solution:
-      "We designed a modular microservices architecture with clear interfaces and adopted an event-driven approach for real-time updates. Jenkins was integrated for streamlined CI/CD.",
+      "We developed a modular microservices architecture with well-defined interfaces, adopting an event-driven model for real-time updates and integrating Jenkins for efficient CI/CD workflows.",
     impact:
-      "Reduced payroll processing time by 80% and improved overall system efficiency by 60%.",
+      "Reduced payroll processing time by 80% and enhanced overall system efficiency by 60%.",
     beforeMetrics:
-      "Payroll processing in 5 minutes with lengthy render job assignments",
+      "Payroll processing took 5 minutes with prolonged render job scheduling.",
     afterMetrics:
-      "Payroll processing in 1 minute with efficient render job management",
+      "Payroll processing completed in 1 minute with optimized render job management.",
     thoughtProcess:
-      "Facing complex integration challenges, we broke the project into modular components and focused on establishing robust communication channels between services. Iterative testing and continuous integration helped refine our solution and ensure real-time responsiveness.",
+      "Confronted with complex integration hurdles, we decomposed the project into modular components, prioritizing robust inter-service communication. Iterative testing and continuous integration refined the solution, ensuring real-time performance.",
+  },
+  {
+    title: "AWS Full-Stack CI/CD Pipeline (In Progress)",
+    description:
+      "Developing a full-stack application using React, Next.js, and FastAPI, with deployment on AWS featuring a CI/CD pipeline.",
+    images: [
+      "/images/aws-project-screenshot1.png",
+      "/images/aws-project-screenshot2.png",
+      "/images/aws-project-screenshot3.png",
+    ],
+    techStack: [
+      "React",
+      "Next.js",
+      "FastAPI",
+      "AWS (EC2, S3, VPC)",
+      "Docker",
+      "Jenkins",
+    ],
+    github: "https://github.com/yourusername/aws-fullstack",
+    demo: "#", // Placeholder until live
+    challenge:
+      "Acquiring proficiency in cloud deployment and full-stack integration despite limited prior experience.",
+    solution:
+      "Mastering AWS services (EC2, S3, VPC) and establishing a CI/CD pipeline using Jenkins and GitHub Actions.",
+    impact:
+      "Currently in progress: Building expertise in cloud infrastructure and full-stack development.",
+    beforeMetrics: "Not applicable.",
+    afterMetrics: "Not applicable.",
+    thoughtProcess:
+      "We initiated the project using the AWS Free Tier, incrementally constructed the infrastructure, and aligned development with full-stack objectives.",
   },
 ];
 
+// Carousel component for auto-scrolling images
+const Carousel = ({ images }: { images: string[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (images.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000); // Rotate every 3 seconds
+      return () => clearInterval(interval); // Cleanup interval on unmount
+    }
+  }, [images]);
+
+  return (
+    <div className="relative w-full h-48 overflow-hidden rounded-lg mb-4">
+      {images.map((img, index) => (
+        <Image
+          key={img}
+          src={img}
+          alt={`Project image ${index + 1}`}
+          width={400}
+          height={200}
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Main Projects component
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -129,27 +206,26 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
             >
-              <Card className="h-full flex flex-col">
+              <Card className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow duration-300 border-t-8 border-blue-500">
                 <CardHeader>
                   <CardTitle>{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={400}
-                    height={200}
-                    className="rounded-lg mb-4 w-full object-cover"
-                  />
+                  <Carousel images={project.images} />
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.techStack.map((tech, i) => (
-                      <Badge key={i} variant="secondary">
+                      <Badge
+                        key={`${project.title}-${tech}`}
+                        variant="secondary"
+                      >
                         {tech}
                       </Badge>
                     ))}
