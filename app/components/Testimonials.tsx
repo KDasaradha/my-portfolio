@@ -1,7 +1,13 @@
 // Testimonials.tsx
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
+import { motion } from "framer-motion";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
 
 const testimonials = [
   {
@@ -22,29 +28,78 @@ const testimonials = [
     content:
       "The energy and commitment Kesari brings to every project are infectious. His proficiency in building efficient and secure APIs using FastAPI and SQLAlchemy ORM has significantly boosted our system’s performance. His proactive approach to learning and testing new ideas continuously sets him apart.",
   },
-]
+];
+
+// Animation Variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Testimonials() {
   return (
     <section id="testimonials" className="py-20 bg-secondary/10">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center">
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="gradient-text">What People Say</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        </motion.h2>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {testimonials.map((testimonial, index) => (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle>{testimonial.name}</CardTitle>
-                <p className="text-sm text-muted-foreground">{testimonial.position}</p>
-              </CardHeader>
-              <CardContent>
-                <p className="italic">&ldquo;{testimonial.content}&rdquo;</p>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              whileHover={{ scale: 1.02 }}
+              className="transition-transform duration-300"
+            >
+              <Card className="h-full shadow-lg dark:shadow-gray-800">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold">
+                    {testimonial.name}
+                  </CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.position}
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <p className="italic text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
