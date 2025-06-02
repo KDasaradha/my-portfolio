@@ -10,12 +10,17 @@ import Certificates from "@/app/components/Certificates";
 import Testimonials from "@/app/components/Testimonials";
 import TechStack from "@/app/components/TechStack";
 import MkDocsLink from "@/app/components/MkDocsLink";
+import PerformanceMetrics from "@/app/components/PerformanceMetrics";
+import ScrollProgress from "@/app/components/ScrollProgress";
+import BackToTop from "@/app/components/BackToTop";
 
 export default function HomePage() {
   return (
     <>
+      <ScrollProgress />
       <Hero />
       <About />
+      <PerformanceMetrics />
       <Education />
       <Projects />
       <Experience />
@@ -26,6 +31,7 @@ export default function HomePage() {
       <GitHubStats />
       <MkDocsLink />
       <Contact />
+      <BackToTop />
     </>
   );
 }

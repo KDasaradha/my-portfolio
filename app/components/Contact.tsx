@@ -125,7 +125,7 @@ export default function Contact() {
 
                 <div className="flex flex-wrap gap-4 mt-6">
                   <a
-                    href="/Kesari%20Dasaradha%20Rami%20Reddy%20Resume%20Final.pdf"
+                    href="/Dasaradha_Kesari_Developer_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -134,7 +134,7 @@ export default function Contact() {
                     </Button>
                   </a>
                   <a
-                    href="/Kesari%20Dasaradha%20Rami%20Reddy%20Resume%20Final.pdf"
+                    href="/Dasaradha_Kesari_Developer_Resume.pdf"
                     download
                   >
                     <Button className="bg-gradient-to-r from-green-500 to-teal-600 text-white shadow-md hover:opacity-90">

@@ -10,21 +10,77 @@ import type React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Kesari Dasaradh - Backend Developer Portfolio",
+  title: "Kesari Dasaradh - Backend Developer | Python, FastAPI, Microservices Expert",
   description:
-    "Experienced backend developer specializing in Python, FastAPI, and microservices architecture.",
+    "Results-driven Backend Developer with 2 years of experience in Python, FastAPI, microservices architecture, and DevOps. Specialized in API security, performance optimization, and CI/CD automation. Based in Andhra Pradesh, India.",
+  keywords: [
+    "Backend Developer",
+    "Python Developer",
+    "FastAPI Expert",
+    "Microservices Architecture",
+    "API Development",
+    "DevOps Engineer",
+    "CI/CD Automation",
+    "Docker Containerization",
+    "PostgreSQL",
+    "Redis Caching",
+    "JWT Authentication",
+    "OAuth 2.0",
+    "SonarQube",
+    "Snyk Security",
+    "Jenkins",
+    "GitHub Actions",
+    "HashiCorp Vault",
+    "NGINX",
+    "SQLAlchemy ORM",
+    "Pydantic Validation",
+    "Andhra Pradesh Developer",
+    "India Backend Developer"
+  ],
+  authors: [{ name: "Kesari Dasaradh" }],
+  creator: "Kesari Dasaradh",
+  publisher: "Kesari Dasaradh",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Kesari Dasaradh - Backend Developer Portfolio",
+    type: "website",
+    locale: "en_US",
+    url: "https://kesari-dasaradh.vercel.app",
+    title: "Kesari Dasaradh - Backend Developer | Python, FastAPI, Microservices Expert",
     description:
-      "Experienced backend developer specializing in Python, FastAPI, and microservices architecture.",
-    images: [{ url: "/og-image.jpg" }],
+      "Results-driven Backend Developer with 2 years of experience in Python, FastAPI, microservices architecture, and DevOps. Specialized in API security, performance optimization, and CI/CD automation.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kesari Dasaradh - Backend Developer Portfolio",
+      },
+    ],
+    siteName: "Kesari Dasaradh Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kesari Dasaradh - Backend Developer Portfolio",
+    title: "Kesari Dasaradh - Backend Developer | Python, FastAPI, Microservices Expert",
     description:
-      "Experienced backend developer specializing in Python, FastAPI, and microservices architecture.",
+      "Results-driven Backend Developer with 2 years of experience in Python, FastAPI, microservices architecture, and DevOps.",
     images: ["/og-image.jpg"],
+    creator: "@kesari_dasaradh",
+  },
+  verification: {
+    google: "your-google-verification-code",
+  },
+  alternates: {
+    canonical: "https://kesari-dasaradh.vercel.app",
   },
 };
 

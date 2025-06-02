@@ -74,25 +74,60 @@ function SkillCategoryCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ 
+        scale: 1.05,
+        y: -5,
+        transition: { duration: 0.2 }
+      }}
       whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-700"
+      className="group relative overflow-hidden bg-card rounded-xl shadow-lg hover:shadow-2xl p-6 border border-border tech-card cursor-pointer"
     >
-      <div
-        className={`absolute top-0 right-0 w-24 h-24 -mr-8 -mt-8 bg-gradient-to-br ${gradient} opacity-10 rounded-full`}
+      {/* Animated Background Gradient */}
+      <motion.div
+        className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+        initial={false}
       />
-      <div className="flex items-center mb-4">
-        <div
-          className={`p-3 rounded-lg bg-gradient-to-br ${gradient} bg-opacity-10`}
-        >
-          <Icon className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+      
+      {/* Floating Decoration */}
+      <motion.div
+        className={`absolute top-0 right-0 w-24 h-24 -mr-8 -mt-8 bg-gradient-to-br ${gradient} opacity-10 rounded-full`}
+        animate={{ 
+          scale: [1, 1.1, 1],
+          rotate: [0, 180, 360]
+        }}
+        transition={{ 
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="flex items-center mb-4">
+          <motion.div
+            className={`p-3 rounded-lg bg-gradient-to-br ${gradient} bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-300`}
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Icon className="w-6 h-6 text-foreground group-hover:scale-110 transition-transform duration-300" />
+          </motion.div>
+          <h4 className="text-xl font-bold ml-4 text-foreground group-hover:text-primary transition-colors duration-300">
+            {category}
+          </h4>
         </div>
-        <h4 className="text-xl font-bold ml-4 text-gray-900 dark:text-gray-100">
-          {category}
-        </h4>
+        <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+          {description}
+        </p>
       </div>
-      <p className="text-gray-600 dark:text-gray-400">{description}</p>
+
+      {/* Hover Effect Border */}
+      <motion.div
+        className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-xl"
+        initial={false}
+        transition={{ duration: 0.3 }}
+      />
     </motion.div>
   );
 }

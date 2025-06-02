@@ -33,62 +33,62 @@ interface AboutProps {
 // Static data (moved outside to prevent redefinition)
 const defaultTimelineEvents: TimelineEvent[] = [
   {
-    title: "🚀 Embarked on Python Journey",
-    date: "2021",
+    title: "🚀 Python Foundation & Academic Excellence",
+    date: "2021-2022",
     description:
-      "Initiated my coding career by mastering Python fundamentals, igniting a passion for problem-solving and innovation.",
-    technologies: ["Python"],
+      "Started programming journey with Python fundamentals while completing B.Tech in Electrical & Electronics Engineering (CGPA: 7.64). Gained foundational experience in Java and OOP during Wipro internship.",
+    technologies: ["Python", "Java", "OOP"],
   },
   {
-    title: "💼 Wipro Internship: Java & OOP",
-    date: "2022",
+    title: "🔍 Professional Entry: API Development",
+    date: "July-Nov 2023",
     description:
-      "Gained hands-on experience in Java and Object-Oriented Programming during my internship at Wipro, while also exploring Python OOP, data structures, HTML, and CSS.",
-    technologies: ["Java", "Python"],
+      "Began professional career as Software Engineer Intern at KaryaHub Solutions. Developed web scraping scripts, built initial FastAPI applications with SQLAlchemy ORM, and explored third-party API integrations.",
+    technologies: ["Python", "FastAPI", "SQLAlchemy", "Web Scraping"],
   },
   {
-    title: "🔍 Karyahub Solutions Internship: API & Web Scraping",
-    date: "2023",
+    title: "🏗️ Backend Mastery & Security Implementation",
+    date: "Nov 2023-2024",
     description:
-      "Developed foundational projects using Python and Flask, delved into web scraping with third-party APIs, and advanced my skills with FastAPI by building user and project management modules.",
-    technologies: ["Python", "FastAPI", "Web Scraping"],
+      "Promoted to Backend Developer. Designed scalable RESTful APIs, implemented JWT/OAuth 2.0 security, optimized database performance by 40%, and developed dynamic design systems using OpenCV/Pillow and Fabric.js.",
+    technologies: ["FastAPI", "JWT", "OAuth 2.0", "PostgreSQL", "Redis", "OpenCV", "Fabric.js"],
   },
   {
-    title: "🖼️ Advanced Backend & Frontend Integration",
-    date: "2024",
+    title: "🔄 Microservices & DevOps Excellence",
+    date: "2024-Present",
     description:
-      "Enhanced my expertise by leveraging image processing libraries like Pillow and OpenCV for dynamic design generation, implementing Fabric.js for interactive frontend rendering, and mastering asynchronous programming with FastAPI—including JWT security and efficient database management.",
-    technologies: ["Python", "FastAPI", "Pillow", "OpenCV", "Fabric.js"],
+      "Architected microservices migration from monolithic applications. Implemented comprehensive CI/CD pipelines with Jenkins, GitHub Actions, SonarQube, and Snyk. Mastered Docker containerization, NGINX reverse proxy, and HashiCorp Vault for secrets management.",
+    technologies: ["Microservices", "Docker", "Jenkins", "SonarQube", "Snyk", "HashiCorp Vault", "NGINX"],
   },
   {
-    title: "☁️ Microservices, CI/CD & Cloud Integration",
-    date: "2025",
+    title: "☁️ Full-Stack & Cloud Expansion",
+    date: "2024-Present",
     description:
-      "Expanding my skillset with microservices architecture, containerization using Docker, and CI/CD pipelines via GitHub Actions and Jenkins. Currently exploring AWS Cloud services for scalable deployments and enhancing full-stack capabilities with React and Next.js.",
-    technologies: ["Docker", "CI/CD", "AWS", "React", "Next.js"],
+      "Expanding expertise in AWS cloud services (EC2, S3, VPC), full-stack development with React/Next.js, and advanced system design. Mentoring junior developers and leading technical documentation initiatives.",
+    technologies: ["AWS", "React", "Next.js", "System Design", "Mentorship"],
   },
 ];
 
 const defaultSummary = [
   {
-    title: "Foundations Over Frameworks",
+    title: "Performance-First Architecture",
     description:
-      "I architect systems to outlast technology trends. While proficient with modern tools like FastAPI, React, and AWS, I prioritize clean abstractions and SOLID principles that enable painless technology migration. Every line of code is written with future maintainers in mind.",
+      "I've consistently delivered 40% API performance improvements through asynchronous programming, strategic caching with Redis, and SQL query optimization. My approach combines algorithmic efficiency with practical database indexing and real-world load testing to ensure systems perform under pressure.",
   },
   {
-    title: "Security as Default State",
+    title: "Security-by-Design Implementation",
     description:
-      "From parameterized queries to automated vulnerability scanning, I bake security into the SDLC—never treat it as an afterthought. My implementations enforce least-privilege access, encrypted data flows, and zero-trust architectures, even in rapid development cycles.",
+      "Security isn't an afterthought—it's built into every layer. I implement JWT (RS256), OAuth 2.0, and Pydantic validation to prevent SQL injection and XSS attacks. My CI/CD pipelines include SonarQube and Snyk scanning, reducing security vulnerabilities by 30% across projects.",
   },
   {
-    title: "Performance with Purpose",
+    title: "Microservices & Scalability Expert",
     description:
-      "I optimize judiciously—70% of speed gains typically come from algorithmic improvements, not language nuances. My approach combines Big O analysis during design, strategic indexing for databases, and load testing against real-world scenarios rather than synthetic benchmarks.",
+      "I've successfully migrated monolithic applications to microservices architecture using Docker, NGINX reverse proxy, and shared-volume strategies. My containerized solutions with Docker Compose enable independent service deployment while maintaining code reusability and system resilience.",
   },
   {
-    title: "APIs as Collaboration Contracts",
+    title: "DevOps Automation Specialist",
     description:
-      "Whether building microservices or REST endpoints, I design interfaces as collaborative agreements between systems. Versioning, comprehensive documentation (OpenAPI/Swagger), and backward compatibility are non-negotiable for sustainable integration.",
+      "I build comprehensive CI/CD pipelines that reduce deployment cycles by 25%. My Jenkins and GitHub Actions workflows integrate automated testing (Pytest), static analysis (SonarQube), vulnerability scanning (Snyk), and secrets management via HashiCorp Vault for enterprise-grade automation.",
   },
   {
     title: "Cloud-Native, Cost-Conscious",

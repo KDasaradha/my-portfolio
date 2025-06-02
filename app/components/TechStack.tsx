@@ -37,7 +37,9 @@ import { TbLetterP } from "react-icons/tb";
 import { IoLogoBuffer } from "react-icons/io5";
 import { MdCode } from "react-icons/md";
 import { BiBook } from "react-icons/bi"; // For MkDocs/Swagger
-import { AiOutlineApi } from "react-icons/ai"; // For Alembic
+import { AiOutlineApi, AiOutlineSecurityScan } from "react-icons/ai"; // For Alembic, SonarQube
+import { VscKey } from "react-icons/vsc"; // For HashiCorp Vault
+import { SiSnyk, SiCaddy, SiPostman, SiPytest } from "react-icons/si"; // Additional tools
 
 const technologies = [
   { name: "Python", icon: SiPython, category: "Programming Languages", description: "High-level programming language" },
@@ -69,6 +71,14 @@ const technologies = [
   { name: "AWS", icon: FaAws, category: "Cloud", description: "Comprehensive cloud computing platform" },
   { name: "Swagger", icon: BiBook, category: "Documentation", description: "API documentation and design tool" },
   { name: "MkDocs", icon: BiBook, category: "Documentation", description: "Static site generator for documentation" },
+  { name: "SonarQube", icon: AiOutlineSecurityScan, category: "DevOps", description: "Static code analysis and quality assurance" },
+  { name: "Snyk", icon: SiSnyk, category: "DevOps", description: "Vulnerability scanning and dependency management" },
+  { name: "HashiCorp Vault", icon: VscKey, category: "DevOps", description: "Secrets management and data protection" },
+  { name: "Caddy", icon: SiCaddy, category: "DevOps", description: "Modern web server with automatic HTTPS" },
+  { name: "Postman", icon: SiPostman, category: "Testing", description: "API development and testing platform" },
+  { name: "Pytest", icon: SiPytest, category: "Testing", description: "Python testing framework for unit and integration tests" },
+  { name: "OAuth 2.0", icon: VscKey, category: "Security", description: "Industry-standard authorization framework" },
+  { name: "JWT", icon: VscKey, category: "Security", description: "JSON Web Tokens for secure authentication" },
 ];
 
 const categories = Array.from(new Set(technologies.map((tech) => tech.category)));

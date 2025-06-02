@@ -12,30 +12,26 @@ import { Timeline, TimelineItem } from "@/app/components/ui/timeline";
 
 const experiences = [
   {
-    title: "Junior Software Developer",
-    company: "KaryaHub Solutions | Hyderabad, Telangana, India",
-    period: "Nov 2023 - Present · 1 yr 4 mos",
+    title: "Backend Developer",
+    company: "KaryaHub Solutions | Hyderabad, India",
+    period: "July 2023 – Present",
     description:
-      "Currently contributing to the development of secure, scalable, and high-performance backend solutions for enterprise-grade applications.",
+      "Leading backend development initiatives for enterprise-grade applications, specializing in scalable API design, microservices architecture, and DevOps automation.",
     achievements: [
-      "Designed and implemented RESTful APIs using FastAPI, SQLAlchemy ORM, and PostgreSQL, ensuring robustness and scalability.",
-      "Optimized database queries, leveraged asynchronous programming, and implemented event triggers to reduce API response times by 40%.",
-      "Architected a microservices-based system by designing scalable project structures and decomposing monolithic applications, deploying containerized solutions with Docker and Nginx for modularity and resilience.",
-      "Enhanced security by integrating JWT (RS256), OAuth 2.0, Pydantic data validation, and asynchronous API routes, mitigating risks like SQL injection, XSS, and CSRF.",
-      "Developed and streamlined CI/CD pipelines using GitHub Actions and Jenkins, shortening deployment cycles by 25% and boosting team efficiency.",
-      "Utilized Fabric.js to create dynamic Canva-style templates, integrating Python imaging libraries (Pillow, OpenCV) for backend rendering.",
-      "Led database schema design and implemented Alembic migrations for seamless schema evolution and efficient tracking of changes.",
-      "Adopted MkDocs and Swagger for comprehensive API documentation, streamlining developer onboarding and maintainability.",
-      "Streamlined development workflows through mastery of Git, comprehensive repository management, and effective documentation practices.",
-      "Integrated robust security measures including proper database pooling and asynchronous context management for optimized performance.",
-      "Gained proficiency in Docker, Nginx, GitHub Actions, and Jenkins to establish CI/CD pipelines tailored for development environments.",
-      "Currently exploring AWS cloud services (EC2, S3, VPC, subnets) to deploy Dockerized applications and establish cloud-based CI/CD workflows, while pursuing full-stack development with JavaScript, React, and Next.js.",
+      "🚀 API Development & Performance: Designed and implemented scalable RESTful APIs using FastAPI, SQLAlchemy, and PostgreSQL. Reduced API response times by 40% through asynchronous endpoints and SQL query optimization.",
+      "🔧 Microservices & Containerization: Migrated a monolithic FastAPI application into microservices behind an NGINX reverse proxy. Containerized backend services with Docker and optimized Docker Compose configurations.",
+      "🔒 Security & Validation: Implemented JWT (RS256) and OAuth 2.0 authentication flows. Used Pydantic for strict input validation to guard against SQL injection and XSS attacks.",
+      "⚡ CI/CD & Infrastructure: Automated deployments with GitHub Actions and Jenkins, shortening release cycles by 25%. Configured Jenkins pipelines with Pytest, SonarQube, and Snyk integration.",
+      "📊 Performance Optimization: Integrated Redis caching for frequently accessed data, improving throughput under load. Managed shared code across services using Docker volumes.",
+      "🛡️ Security Integration: Integrated SonarQube and Snyk into CI pipelines, reducing high-severity issues by 30%. Stored secrets securely via HashiCorp Vault.",
+      "📚 Documentation & Mentorship: Enhanced API documentation using Swagger UI and MkDocs, decreasing developer onboarding time by 35%. Mentored interns on REST API design and Git workflows.",
+      "🎨 Full-Stack Integration: Developed design engine using OpenCV/Pillow, then migrated to Fabric.js for frontend canvas rendering. Modified React components and Next.js pages with Tailwind CSS.",
     ],
   },
   {
     title: "Software Engineer Intern",
     company: "KaryaHub Solutions | Hyderabad, Telangana, India",
-    period: "Aug 2023 - Nov 2023 · 3 mos",
+    period: "July 2023 - Nov 2023",
     description:
       "Gained practical experience in API development, web scraping, and image processing, laying the groundwork for scalable backend systems.",
     achievements: [
@@ -49,7 +45,7 @@ const experiences = [
   {
     title: "Software Development Intern",
     company: "Wipro | Remote",
-    period: "Jul 2022 - Dec 2022 · 6 mos",
+    period: "March 2022 - July 2022",
     description:
       "Initiated my professional journey by mastering foundational programming concepts and applying them in a corporate environment.",
     achievements: [
@@ -61,7 +57,7 @@ const experiences = [
   {
     title: "Self-Taught Developer & B.Tech Student",
     company: "Self-Learning",
-    period: "Jul 2021 - Jul 2022 · 1 yr",
+    period: "Jul 2022 - Jul 2023 · 1 yr",
     description:
       "Began my programming journey during my B.Tech, focusing on self-learning and foundational skills.",
     achievements: [
@@ -79,17 +75,16 @@ const certifications = [
 ];
 
 const keyAchievements = [
-  "Reduced API response times by 40% through query optimization, async programming, and efficient database design.",
-  "Designed and implemented a microservices architecture for scalable applications, transitioning from monolithic systems using Docker and Nginx.",
-  "Automated CI/CD pipelines with Jenkins, GitHub Actions, and Docker, reducing deployment times by 25% and streamlining workflows.",
-  "Enhanced application security with JWT (RS256), OAuth 2.0, Pydantic validation, and API gateway measures, mitigating SQL injection, XSS, and CSRF vulnerabilities.",
-  "Developed dynamic Canva-style templates using Fabric.js and Python imaging libraries (Pillow, OpenCV) for seamless frontend-backend integration.",
-  "Mastered database schema design with Alembic migrations, async query optimization, and event triggers for efficient CRUD operations.",
-  "Built end-to-end web applications using API-driven architectures and third-party API integrations.",
-  "Designed robust database schemas with effective data validation, security best practices, and optimized connection pooling.",
-  "Leveraged tools like Swagger, MkDocs, SonarQube, and Snyk to enhance API documentation and code quality.",
-  "Streamlined development processes through Git proficiency, comprehensive repository management, and advanced FastAPI project structuring.",
-  "Currently expanding expertise in AWS (EC2, S3, VPC) and full-stack development with JavaScript, React, and Next.js.",
+  "🎯 Performance Excellence: Reduced API response times by 40% through asynchronous programming, SQL query optimization, and Redis caching implementation.",
+  "🏗️ Architecture Leadership: Successfully migrated monolithic applications to microservices architecture using Docker, NGINX reverse proxy, and shared-volume code reuse strategies.",
+  "🔄 DevOps Automation: Automated CI/CD pipelines with GitHub Actions and Jenkins, reducing deployment cycles by 25% while integrating quality gates (SonarQube, Snyk, Dependabot).",
+  "🛡️ Security Implementation: Enhanced application security by 30% through JWT (RS256), OAuth 2.0, Pydantic validation, and automated vulnerability scanning with SonarQube/Snyk.",
+  "🎨 Innovation in Design: Developed dynamic design generation system using OpenCV/Pillow, then optimized with Fabric.js for real-time canvas manipulation and template generation.",
+  "📊 Database Mastery: Designed efficient database schemas with SQLAlchemy ORM, implemented Alembic migrations, and optimized async query performance for high-throughput applications.",
+  "🔗 Integration Expertise: Built comprehensive API integrations with third-party services (Brevo, 2factor.io) and implemented multi-tenant architectures for scalable SaaS solutions.",
+  "📚 Knowledge Sharing: Decreased developer onboarding time by 35% through comprehensive API documentation (Swagger UI, MkDocs) and mentoring junior developers.",
+  "☁️ Cloud & Full-Stack Growth: Actively expanding expertise in AWS services (EC2, S3, VPC), React/Next.js development, and modern frontend frameworks for complete full-stack capabilities.",
+  "🔧 Tool Mastery: Proficient in HashiCorp Vault for secrets management, Caddy for local development, and advanced Git workflows for enterprise-level collaboration.",
 ];
 
 export default function Experience() {
