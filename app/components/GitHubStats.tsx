@@ -1,256 +1,25 @@
-// "use client";
-
-// import { motion } from "framer-motion";
-// import {
-//   Card,
-//   CardContent,
-//   CardHeader,
-//   CardTitle,
-// } from "@/app/components/ui/card";
-// import { useEffect, useState } from "react";
-
-// const GITHUB_USERNAME = "KDasaradha";
-// const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN; // Store this securely in .env.local
-
-// export default function GitHubStats() {
-//   const [stats, setStats] = useState({
-//     repos: 0,
-//     stars: 0,
-//     forks: 0,
-//     followers: 0,
-//     contributions: 0,
-//     pullRequests: 0,
-//     issues: 0,
-//     gists: 0,
-//     topLanguage: "",
-//     createdAt: "",
-//     lastContribution: "",
-//   });
-
-//   useEffect(() => {
-//     const fetchGitHubStats = async () => {
-//       try {
-//         const headers: HeadersInit = GITHUB_TOKEN
-//           ? { Authorization: `token ${GITHUB_TOKEN}` }
-//           : {};
-
-//         // Fetch all repositories
-//         const reposRes = await fetch(
-//           `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`,
-//           { headers }
-//         );
-//         const repos = await reposRes.json();
-
-//         let totalStars = 0;
-//         let totalForks = 0;
-//         let languageCount: Record<string, number> = {};
-
-//         repos.forEach((repo: any) => {
-//           totalStars += repo.stargazers_count;
-//           totalForks += repo.forks_count;
-//           if (repo.language) {
-//             languageCount[repo.language] =
-//               (languageCount[repo.language] || 0) + 1;
-//           }
-//         });
-
-//         // Get the most used language
-//         const topLanguage = Object.keys(languageCount).reduce(
-//           (a, b) => (languageCount[a] > languageCount[b] ? a : b),
-//           ""
-//         );
-
-//         // Fetch user details
-//         const userRes = await fetch(
-//           `https://api.github.com/users/${GITHUB_USERNAME}`,
-//           { headers }
-//         );
-//         const userData = await userRes.json();
-
-//         // Fetch total contributions, pull requests, and issues (GitHub GraphQL API)
-//         const graphqlRes = await fetch("https://api.github.com/graphql", {
-//           method: "POST",
-//           headers: {
-//             Authorization: `Bearer ${GITHUB_TOKEN}`,
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({
-//             query: `
-//               {
-//                 user(login: "${GITHUB_USERNAME}") {
-//                   contributionsCollection {
-//                     contributionCalendar {
-//                       totalContributions
-//                     }
-//                     latestRestrictedContributionDate
-//                   }
-//                   pullRequests(first: 100, states: MERGED) {
-//                     totalCount
-//                   }
-//                   issues(first: 100) {
-//                     totalCount
-//                   }
-//                   gists(first: 100) {
-//                     totalCount
-//                   }
-//                   createdAt
-//                 }
-//               }
-//             `,
-//           }),
-//         });
-//         const graphqlData = await graphqlRes.json();
-//         const userGraphQL = graphqlData.data?.user;
-
-//         setStats({
-//           repos: repos.length,
-//           stars: totalStars,
-//           forks: totalForks,
-//           followers: userData.followers || 0,
-//           contributions:
-//             userGraphQL?.contributionsCollection?.contributionCalendar
-//               ?.totalContributions || 0,
-//           pullRequests: userGraphQL?.pullRequests?.totalCount || 0,
-//           issues: userGraphQL?.issues?.totalCount || 0,
-//           gists: userGraphQL?.gists?.totalCount || 0,
-//           topLanguage: topLanguage || "Unknown",
-//           createdAt: new Date(userGraphQL?.createdAt).toDateString(),
-//           lastContribution:
-//             userGraphQL?.contributionsCollection
-//               ?.latestRestrictedContributionDate || "Unknown",
-//         });
-//       } catch (error) {
-//         console.error("Error fetching GitHub stats:", error);
-//       }
-//     };
-
-//     fetchGitHubStats();
-//   }, []);
-
-//   return (
-//     <section id="github-stats" className="py-20 bg-secondary/10">
-//       <div className="container mx-auto px-4">
-//         <h2 className="text-3xl font-bold mb-12 text-center">
-//           <span className="gradient-text">GitHub Activity</span>
-//         </h2>
-//         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-//           {Object.entries(stats).map(([key, value]) => (
-//             <motion.div
-//               key={key}
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.5 }}
-//             >
-//               <Card>
-//                 <CardHeader>
-//                   <CardTitle className="text-center capitalize">
-//                     {key.replace(/([A-Z])/g, " $1")}
-//                   </CardTitle>
-//                 </CardHeader>
-//                 <CardContent>
-//                   <p className="text-2xl font-bold text-center">
-//                     {typeof value === "string" ? value : value.toLocaleString()}
-//                   </p>
-//                 </CardContent>
-//               </Card>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-// "use client";
-
-// import { motion } from "framer-motion";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
-// import { useEffect, useState } from "react";
-
-// export default function GitHubStats() {
-//   const [stats, setStats] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState<string | null>(null);
-
-//   useEffect(() => {
-//     const fetchGitHubStats = async () => {
-//       try {
-//         const response = await fetch("/api/github-stats");
-//         if (!response.ok) throw new Error("Failed to fetch GitHub stats");
-//         const data = await response.json();
-//         setStats(data);
-//       } catch (err) {
-//         if (err instanceof Error) {
-//           setError(err.message);
-//         } else {
-//           setError("An unknown error occurred");
-//         }
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchGitHubStats();
-//   }, []);
-
-//   if (loading) return <p className="text-center">Loading GitHub stats...</p>;
-//   if (error) return <p className="text-center text-red-500">Error: {error}</p>;
-
-//   const labels = {
-//     repos: "Repositories",
-//     stars: "Stars",
-//     forks: "Forks",
-//     followers: "Followers",
-//     contributions: "Contributions",
-//     pullRequests: "Pull Requests",
-//     issues: "Issues",
-//     gists: "Gists",
-//     topLanguage: "Top Language",
-//     createdAt: "Joined GitHub",
-//     lastContribution: "Last Contribution",
-//   };
-
-//   return (
-//     <section id="github-stats" className="py-20 bg-secondary/10">
-//       <div className="container mx-auto px-4">
-//         <h2 className="text-3xl font-bold mb-12 text-center">
-//           <span className="gradient-text">GitHub Activity</span>
-//         </h2>
-//         <div className="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-//           {stats && Object.entries(stats).map(([key, value]: [keyof typeof stats, any]) => (
-//             <motion.div
-//               key={String(key)}
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.5 }}
-//             >
-//               <Card>
-//                 <CardHeader>
-//                   <CardTitle className="text-center">{labels[key as keyof typeof labels]}</CardTitle>
-//                 </CardHeader>
-//                 <CardContent>
-//                   <p className="text-2xl font-bold text-center">
-//                     {typeof value === "string" ? value : (value as number).toLocaleString()}
-//                   </p>
-//                 </CardContent>
-//               </Card>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
 "use client";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { 
+  FaGithub, 
+  FaStar, 
+  FaCodeBranch, 
+  FaUsers, 
+  FaCode, 
+  FaGitAlt, 
+  FaExclamationCircle, 
+  FaFileCode,
+  FaCalendarAlt,
+  FaClock,
+  FaChartLine,
+  FaTrophy
+} from "react-icons/fa";
+import { BiGitRepoForked } from "react-icons/bi";
+import { GoRepo } from "react-icons/go";
 
 export default function GitHubStats() {
   const [stats, setStats] = useState(null);
@@ -278,47 +47,279 @@ export default function GitHubStats() {
     fetchGitHubStats();
   }, []);
 
-  if (loading) return <p className="text-center text-lg text-muted-foreground">Loading GitHub stats...</p>;
-  if (error) return <p className="text-center text-red-500 text-lg">Error: {error}</p>;
+  // Enhanced stat configuration with icons and colors
+  const statConfig = {
+    repos: {
+      label: "Repositories",
+      icon: GoRepo,
+      color: "from-blue-500 to-cyan-500",
+      bgColor: "bg-blue-50 dark:bg-blue-950/20",
+      category: "code"
+    },
+    stars: {
+      label: "Stars Earned",
+      icon: FaStar,
+      color: "from-yellow-500 to-orange-500",
+      bgColor: "bg-yellow-50 dark:bg-yellow-950/20",
+      category: "achievement"
+    },
+    forks: {
+      label: "Forks",
+      icon: BiGitRepoForked,
+      color: "from-green-500 to-emerald-500",
+      bgColor: "bg-green-50 dark:bg-green-950/20",
+      category: "collaboration"
+    },
+    followers: {
+      label: "Followers",
+      icon: FaUsers,
+      color: "from-purple-500 to-pink-500",
+      bgColor: "bg-purple-50 dark:bg-purple-950/20",
+      category: "social"
+    },
+    contributions: {
+      label: "Contributions",
+      icon: FaChartLine,
+      color: "from-indigo-500 to-blue-500",
+      bgColor: "bg-indigo-50 dark:bg-indigo-950/20",
+      category: "activity"
+    },
+    pullRequests: {
+      label: "Pull Requests",
+      icon: FaGitAlt,
+      color: "from-teal-500 to-cyan-500",
+      bgColor: "bg-teal-50 dark:bg-teal-950/20",
+      category: "collaboration"
+    },
+    issues: {
+      label: "Issues",
+      icon: FaExclamationCircle,
+      color: "from-red-500 to-pink-500",
+      bgColor: "bg-red-50 dark:bg-red-950/20",
+      category: "maintenance"
+    },
+    gists: {
+      label: "Gists",
+      icon: FaFileCode,
+      color: "from-gray-500 to-slate-500",
+      bgColor: "bg-gray-50 dark:bg-gray-950/20",
+      category: "code"
+    },
+    topLanguage: {
+      label: "Top Language",
+      icon: FaCode,
+      color: "from-violet-500 to-purple-500",
+      bgColor: "bg-violet-50 dark:bg-violet-950/20",
+      category: "skill"
+    },
+    createdAt: {
+      label: "Joined GitHub",
+      icon: FaCalendarAlt,
+      color: "from-emerald-500 to-teal-500",
+      bgColor: "bg-emerald-50 dark:bg-emerald-950/20",
+      category: "milestone"
+    },
+    lastContribution: {
+      label: "Last Contribution",
+      icon: FaClock,
+      color: "from-orange-500 to-red-500",
+      bgColor: "bg-orange-50 dark:bg-orange-950/20",
+      category: "activity"
+    },
+  };
 
-  const labels = {
-    repos: "Repositories",
-    stars: "Stars",
-    forks: "Forks",
-    followers: "Followers",
-    contributions: "Contributions",
-    pullRequests: "Pull Requests",
-    issues: "Issues",
-    gists: "Gists",
-    topLanguage: "Top Language",
-    createdAt: "Joined GitHub",
-    lastContribution: "Last Contribution",
+  // Loading component
+  if (loading) {
+    return (
+      <section id="github-stats" className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/20"></div>
+        <div className="relative container mx-auto px-4">
+          <div className="text-center">
+            <motion.div
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-xl"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <FaGithub className="text-2xl text-gray-700 dark:text-gray-300 animate-spin" />
+              <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
+                Loading GitHub stats...
+              </span>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Error component
+  if (error) {
+    return (
+      <section id="github-stats" className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-pink-50/30 to-orange-50/20 dark:from-red-950/20 dark:via-pink-950/10 dark:to-orange-950/10"></div>
+        <div className="relative container mx-auto px-4">
+          <div className="text-center">
+            <motion.div
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-xl border border-red-200 dark:border-red-800"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaExclamationCircle className="text-2xl text-red-500" />
+              <div className="text-left">
+                <p className="text-lg font-medium text-red-600 dark:text-red-400">
+                  Error loading GitHub stats
+                </p>
+                <p className="text-sm text-red-500 dark:text-red-300">
+                  {error}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Group stats by category
+  const groupedStats = Object.entries(stats || {}).reduce((acc, [key, value]) => {
+    const config = statConfig[key as keyof typeof statConfig];
+    if (config) {
+      if (!acc[config.category]) {
+        acc[config.category] = [];
+      }
+      acc[config.category].push({ key, value, config });
+    }
+    return acc;
+  }, {} as Record<string, Array<{ key: string; value: any; config: any }>>);
+
+  const categoryLabels = {
+    code: "Code & Repositories",
+    achievement: "Achievements",
+    collaboration: "Collaboration",
+    social: "Community",
+    activity: "Activity",
+    maintenance: "Maintenance",
+    skill: "Skills",
+    milestone: "Milestones"
   };
 
   return (
-    <section id="github-stats" className="py-20 bg-transparent text-foreground">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-extrabold mb-12 text-center text-primary">
-          GitHub Activity
-        </h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {stats && Object.entries(stats).map(([key, value]: [keyof typeof stats, any]) => (
-            <motion.div
-              key={String(key)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
-                <Card className="flex flex-col items-center px-6 py-3 rounded-xl bg-secondary text-secondary-foreground shadow-lg hover:shadow-xl transition-all">
-                <Badge variant="secondary" className="mb-2 text-sm font-medium">{labels[key as keyof typeof labels]}</Badge>
-                <CardContent className="text-xl font-bold text-primary">
-                  {typeof value === "string" ? value : (value as number).toLocaleString()}
-                </CardContent>
-                </Card>
-            </motion.div>
-          ))}
-        </div>
+    <section id="github-stats" className="relative py-16 overflow-hidden">
+      {/* Compact background with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50/50 via-blue-50/20 to-purple-50/10 dark:from-slate-900/50 dark:via-blue-950/20 dark:to-purple-950/10"></div>
+      
+      {/* Reduced animated background elements */}
+      <div className="absolute top-10 left-10 w-48 h-48 bg-blue-200/10 dark:bg-blue-800/5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-10 right-10 w-64 h-64 bg-purple-200/10 dark:bg-purple-800/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+
+      <div className="relative container mx-auto px-4">
+        {/* Compact header section */}
+        <motion.div
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            className="inline-flex items-center gap-3 mb-4 p-3 rounded-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-lg"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+          >
+            <div className="p-2 rounded-lg bg-gradient-to-br from-gray-800 to-black text-white shadow-md">
+              <FaGithub className="text-xl" />
+            </div>
+            <div className="text-left">
+              <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-gray-200 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
+                GitHub Activity
+              </h2>
+              <p className="text-xs text-muted-foreground font-medium">
+                Live Statistics
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Compact stats grid - all in one section */}
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3">
+            {Object.entries(stats || {}).map(([key, value], statIndex) => {
+              const config = statConfig[key as keyof typeof statConfig];
+              if (!config) return null;
+              
+              const Icon = config.icon;
+              return (
+                <motion.div
+                  key={key}
+                  className="group"
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: 5,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: statIndex * 0.03,
+                    type: "spring",
+                    stiffness: 300
+                  }}
+                >
+                  <Card className="github-stats-card-compact relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                    {/* Gradient background overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${config.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                    
+                    <CardContent className="relative z-10 p-3 flex flex-col items-center text-center">
+                      {/* Compact icon container */}
+                      <div className={`mb-2 p-2 rounded-lg ${config.bgColor} group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+                        <Icon className={`text-lg bg-gradient-to-br ${config.color} bg-clip-text text-transparent`} />
+                      </div>
+                      
+                      {/* Compact value */}
+                      <span className={`text-sm font-bold bg-gradient-to-br ${config.color} bg-clip-text text-transparent mb-1`}>
+                        {typeof value === "string" ? value : (value as number).toLocaleString()}
+                      </span>
+                      
+                      {/* Compact label */}
+                      <span className="text-xs text-muted-foreground font-medium text-center leading-tight">
+                        {config.label}
+                      </span>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Compact call to action */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <motion.a
+            href="https://github.com/KDasaradha525"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-gray-800 to-black hover:from-gray-700 hover:to-gray-900"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaGithub className="text-sm group-hover:rotate-12 transition-transform duration-300" />
+            <span>View GitHub Profile</span>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

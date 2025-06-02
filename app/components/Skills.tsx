@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useInView } from "framer-motion";
 import {
   Server,
   Database,
@@ -9,6 +9,7 @@ import {
   Wrench,
   Layout,
 } from "lucide-react";
+import { memo, useRef } from "react";
 
 const skillCategories = [
   {
