@@ -236,7 +236,7 @@ export default function Certificates() {
   };
 
   return (
-    <section id="certificates" className="py-20 bg-gradient-to-br from-background via-secondary/5 to-background relative overflow-hidden">
+    <section id="certificates" className="py-20 bg-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

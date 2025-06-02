@@ -791,7 +791,7 @@ export default function Projects() {
   });
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-background via-secondary/5 to-background">
+    <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Enhanced Header */}
         <motion.div

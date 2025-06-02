@@ -65,7 +65,7 @@ const cardVariants = {
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 overflow-hidden">
+    <section id="testimonials" className="relative py-24 overflow-hidden bg-secondary/5">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-cyan-50/50 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-cyan-950/20"></div>
       

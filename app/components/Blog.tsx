@@ -132,7 +132,7 @@ export default function Blog() {
   const regularPosts = blogPosts.filter(post => !post.featured);
 
   return (
-    <section id="blog" className="relative py-24 overflow-hidden">
+    <section id="blog" className="relative py-24 overflow-hidden bg-secondary/5">
       {/* Enhanced background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 via-red-50/30 to-pink-50/20 dark:from-orange-950/20 dark:via-red-950/10 dark:to-pink-950/10"></div>
       

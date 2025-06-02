@@ -2,24 +2,24 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/app/components/ui/card";
+import { Badge } from "@/app/components/ui/badge";
 import { 
-  FaGithub, 
-  FaStar, 
-  FaCodeBranch, 
-  FaUsers, 
-  FaCode, 
-  FaGitAlt, 
-  FaExclamationCircle, 
-  FaFileCode,
-  FaCalendarAlt,
-  FaClock,
-  FaChartLine,
-  FaTrophy
-} from "react-icons/fa";
-import { BiGitRepoForked } from "react-icons/bi";
-import { GoRepo } from "react-icons/go";
+  Github, 
+  Star, 
+  GitBranch, 
+  Users, 
+  Code, 
+  GitPullRequest, 
+  AlertCircle, 
+  FileText,
+  Calendar,
+  Clock,
+  TrendingUp,
+  Trophy,
+  GitFork,
+  FolderGit2
+} from "lucide-react";
 
 export default function GitHubStats() {
   const [stats, setStats] = useState(null);
@@ -51,77 +51,77 @@ export default function GitHubStats() {
   const statConfig = {
     repos: {
       label: "Repositories",
-      icon: GoRepo,
+      icon: FolderGit2,
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50 dark:bg-blue-950/20",
       category: "code"
     },
     stars: {
       label: "Stars Earned",
-      icon: FaStar,
+      icon: Star,
       color: "from-yellow-500 to-orange-500",
       bgColor: "bg-yellow-50 dark:bg-yellow-950/20",
       category: "achievement"
     },
     forks: {
       label: "Forks",
-      icon: BiGitRepoForked,
+      icon: GitFork,
       color: "from-green-500 to-emerald-500",
       bgColor: "bg-green-50 dark:bg-green-950/20",
       category: "collaboration"
     },
     followers: {
       label: "Followers",
-      icon: FaUsers,
+      icon: Users,
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-purple-50 dark:bg-purple-950/20",
       category: "social"
     },
     contributions: {
       label: "Contributions",
-      icon: FaChartLine,
+      icon: TrendingUp,
       color: "from-indigo-500 to-blue-500",
       bgColor: "bg-indigo-50 dark:bg-indigo-950/20",
       category: "activity"
     },
     pullRequests: {
       label: "Pull Requests",
-      icon: FaGitAlt,
+      icon: GitPullRequest,
       color: "from-teal-500 to-cyan-500",
       bgColor: "bg-teal-50 dark:bg-teal-950/20",
       category: "collaboration"
     },
     issues: {
       label: "Issues",
-      icon: FaExclamationCircle,
+      icon: AlertCircle,
       color: "from-red-500 to-pink-500",
       bgColor: "bg-red-50 dark:bg-red-950/20",
       category: "maintenance"
     },
     gists: {
       label: "Gists",
-      icon: FaFileCode,
+      icon: FileText,
       color: "from-gray-500 to-slate-500",
       bgColor: "bg-gray-50 dark:bg-gray-950/20",
       category: "code"
     },
     topLanguage: {
       label: "Top Language",
-      icon: FaCode,
+      icon: Code,
       color: "from-violet-500 to-purple-500",
       bgColor: "bg-violet-50 dark:bg-violet-950/20",
       category: "skill"
     },
     createdAt: {
       label: "Joined GitHub",
-      icon: FaCalendarAlt,
+      icon: Calendar,
       color: "from-emerald-500 to-teal-500",
       bgColor: "bg-emerald-50 dark:bg-emerald-950/20",
       category: "milestone"
     },
     lastContribution: {
       label: "Last Contribution",
-      icon: FaClock,
+      icon: Clock,
       color: "from-orange-500 to-red-500",
       bgColor: "bg-orange-50 dark:bg-orange-950/20",
       category: "activity"
@@ -140,7 +140,7 @@ export default function GitHubStats() {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <FaGithub className="text-2xl text-gray-700 dark:text-gray-300 animate-spin" />
+              <Github className="text-2xl text-gray-700 dark:text-gray-300 animate-spin" />
               <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
                 Loading GitHub stats...
               </span>
@@ -164,7 +164,7 @@ export default function GitHubStats() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <FaExclamationCircle className="text-2xl text-red-500" />
+              <AlertCircle className="text-2xl text-red-500" />
               <div className="text-left">
                 <p className="text-lg font-medium text-red-600 dark:text-red-400">
                   Error loading GitHub stats
@@ -228,7 +228,7 @@ export default function GitHubStats() {
             transition={{ delay: 0.1, duration: 0.5 }}
           >
             <div className="p-2 rounded-lg bg-gradient-to-br from-gray-800 to-black text-white shadow-md">
-              <FaGithub className="text-xl" />
+              <Github className="text-xl" />
             </div>
             <div className="text-left">
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 dark:from-gray-200 dark:via-gray-400 dark:to-gray-200 bg-clip-text text-transparent">
@@ -316,7 +316,7 @@ export default function GitHubStats() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaGithub className="text-sm group-hover:rotate-12 transition-transform duration-300" />
+            <Github className="text-sm group-hover:rotate-12 transition-transform duration-300" />
             <span>View GitHub Profile</span>
           </motion.a>
         </motion.div>

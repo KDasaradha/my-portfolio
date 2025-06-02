@@ -3,14 +3,14 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ChevronDown, ChevronUp } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/app/components/ui/input";
+import { Button } from "@/app/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/app/components/ui/tooltip";
 import {
   SiPython,
   SiFastapi,
@@ -127,14 +127,14 @@ export default function TechStack() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section id="skills" className="relative py-24 overflow-hidden bg-background">
       {/* Enhanced background with animated elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-900 dark:via-blue-950/30 dark:to-purple-950/20"></div>
       
       {/* Floating background elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/10 dark:bg-blue-800/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/10 dark:bg-purple-800/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-200/10 dark:bg-cyan-800/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/10 dark:bg-blue-800/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/10 dark:bg-purple-800/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-200/10 dark:bg-cyan-800/10 rounded-full blur-3xl"></div>
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Enhanced header section */}
@@ -253,7 +253,7 @@ export default function TechStack() {
                           <div className={`absolute inset-0 bg-gradient-to-br ${getCategoryColor(tech.category)} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}></div>
                           
                           {/* Animated border */}
-                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                           
                           {/* Icon with enhanced styling */}
                           <div className="relative z-10 mb-3 p-3 rounded-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-lg group-hover:shadow-xl transition-all duration-300">

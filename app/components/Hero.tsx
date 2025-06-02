@@ -132,7 +132,7 @@ const Hero = memo(function Hero() {
 
   if (!mounted) {
     return (
-      <section id="home" className="relative py-20 md:py-32 overflow-hidden">
+      <section id="home" className="relative py-20 md:py-32 overflow-hidden bg-background">
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 space-y-6">
@@ -150,7 +150,7 @@ const Hero = memo(function Hero() {
   return (
     <section 
       id="home" 
-      className="relative py-20 md:py-32 overflow-hidden"
+      className="relative py-20 md:py-32 overflow-hidden bg-background"
       aria-label="Hero section with introduction"
     >
       {/* Particles Background */}

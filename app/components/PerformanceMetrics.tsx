@@ -180,7 +180,7 @@ function MetricCard({ metric, index }: { metric: Metric; index: number }) {
 
 export default function PerformanceMetrics() {
   return (
-    <section className="py-20 bg-secondary/10">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           className="text-center mb-16"
