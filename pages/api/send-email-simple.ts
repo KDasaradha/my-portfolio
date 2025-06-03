@@ -1,17 +1,11 @@
 import nodemailer from "nodemailer";
-import { google } from "googleapis";
 import { NextApiRequest, NextApiResponse } from "next";
 
 // Load environment variables
 const {
-  GMAIL_CLIENT_ID,
-  GMAIL_CLIENT_SECRET,
-  GMAIL_REDIRECT_URI,
-  GMAIL_REFRESH_TOKEN,
   GMAIL_USER,
+  GMAIL_APP_PASSWORD, // App password instead of OAuth2
 } = process.env;
-
-
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -25,50 +19,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // Validate environment variables
-  if (!GMAIL_CLIENT_ID || !GMAIL_CLIENT_SECRET || !GMAIL_REDIRECT_URI || !GMAIL_REFRESH_TOKEN || !GMAIL_USER) {
+  if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
     console.error("❌ Missing required environment variables");
     return res.status(500).json({ error: "Server configuration error" });
   }
 
   try {
-    // Configure OAuth2 Client
-    const OAuth2Client = new google.auth.OAuth2(
-      GMAIL_CLIENT_ID,
-      GMAIL_CLIENT_SECRET,
-      GMAIL_REDIRECT_URI
-    );
-
-    // Set credentials
-    OAuth2Client.setCredentials({
-      refresh_token: GMAIL_REFRESH_TOKEN,
-    });
-
-    // Get access token with better error handling
-    let accessToken;
-    try {
-      const { token } = await OAuth2Client.getAccessToken();
-      accessToken = token;
-    } catch (authError) {
-      console.error("❌ OAuth2 authentication failed:", authError);
-      return res.status(500).json({ 
-        error: "Authentication failed. Please check OAuth2 configuration." 
-      });
-    }
-
-    if (!accessToken) {
-      console.error("❌ Failed to generate access token");
-      return res.status(500).json({ error: "Failed to generate access token" });
-    }
-    // Create Nodemailer transporter with OAuth2
+    // Create Nodemailer transporter with App Password
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        type: "OAuth2",
         user: GMAIL_USER,
-        clientId: GMAIL_CLIENT_ID,
-        clientSecret: GMAIL_CLIENT_SECRET,
-        refreshToken: GMAIL_REFRESH_TOKEN,
-        accessToken: accessToken,
+        pass: GMAIL_APP_PASSWORD,
       },
     });
 
@@ -108,14 +70,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
   } catch (error) {
     console.error("❌ Error sending email:", error);
-    
-    // Provide more specific error messages
-    if (typeof error === "object" && error !== null && "message" in error && typeof (error as any).message === "string" && (error as any).message.includes('invalid_grant')) {
-      return res.status(500).json({ 
-        error: "OAuth2 token expired or invalid. Please refresh your authentication." 
-      });
-    }
-    
     return res.status(500).json({ 
       error: "Failed to send email. Please try again later." 
     });
