@@ -1,0 +1,8 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#0f172a"/>
+  <rect x="20" y="20" width="360" height="160" fill="#1e293b" rx="8"/>
+  <text x="200" y="70" text-anchor="middle" dominant-baseline="middle" fill="#f1f5f9" font-family="Arial, sans-serif" font-size="18" font-weight="bold">DocuCraft</text>
+  <text x="200" y="95" text-anchor="middle" dominant-baseline="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="14">AI Documentation Platform</text>
+  <text x="200" y="115" text-anchor="middle" dominant-baseline="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">Dashboard View</text>
+  <text x="200" y="135" text-anchor="middle" dominant-baseline="middle" fill="#475569" font-family="Arial, sans-serif" font-size="10">Next.js 15 • TypeScript • AI</text>
+</svg>

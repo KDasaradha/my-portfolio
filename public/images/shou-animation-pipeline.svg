@@ -1,0 +1,9 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#ea580c"/>
+  <rect x="20" y="20" width="360" height="160" fill="#f97316" rx="8"/>
+  <text x="200" y="60" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Animation Pipeline</text>
+  <text x="200" y="85" text-anchor="middle" dominant-baseline="middle" fill="#fed7aa" font-family="Arial, sans-serif" font-size="14">Production Tracking</text>
+  <text x="200" y="105" text-anchor="middle" dominant-baseline="middle" fill="#fdba74" font-family="Arial, sans-serif" font-size="12">Project Management</text>
+  <text x="200" y="125" text-anchor="middle" dominant-baseline="middle" fill="#fb923c" font-family="Arial, sans-serif" font-size="11">Task & Resource Tracking</text>
+  <text x="200" y="145" text-anchor="middle" dominant-baseline="middle" fill="#fdba74" font-family="Arial, sans-serif" font-size="10">🎬 Pipeline Tracker</text>
+</svg>

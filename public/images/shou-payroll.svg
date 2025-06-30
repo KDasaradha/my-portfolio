@@ -1,0 +1,9 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#7c3aed"/>
+  <rect x="20" y="20" width="360" height="160" fill="#8b5cf6" rx="8"/>
+  <text x="200" y="60" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Payroll Management</text>
+  <text x="200" y="85" text-anchor="middle" dominant-baseline="middle" fill="#e9d5ff" font-family="Arial, sans-serif" font-size="14">Attendance-Based Computation</text>
+  <text x="200" y="105" text-anchor="middle" dominant-baseline="middle" fill="#ddd6fe" font-family="Arial, sans-serif" font-size="12">80% Faster Processing</text>
+  <text x="200" y="125" text-anchor="middle" dominant-baseline="middle" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="11">200+ Employees Managed</text>
+  <text x="200" y="145" text-anchor="middle" dominant-baseline="middle" fill="#ddd6fe" font-family="Arial, sans-serif" font-size="10">💰 Payroll System</text>
+</svg>

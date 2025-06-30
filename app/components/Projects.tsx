@@ -78,9 +78,7 @@ const projects: Project[] = [
     description:
       "A comprehensive design platform with user management, team collaboration, and dynamic design generation using advanced image processing and canvas manipulation technologies.",
     images: [
-      "./images/instade-screenshot.png",
-      "./images/instade-screenshot.png",
-      "./images/instade-screenshot.png",
+      "/images/instade-screenshot.svg",
     ],
     techStack: [
       "FastAPI",
@@ -128,9 +126,7 @@ const projects: Project[] = [
     description:
       "A comprehensive asynchronous school management system with user profiles, document management, library system, real-time chat, attendance tracking, and leave management for educational institutions.",
     images: [
-      "./images/school-erp-screenshot.png",
-      "./images/school-erp-screenshot.png",
-      "./images/school-erp-screenshot.png",
+      "/images/school-erp-screenshot.svg",
     ],
     techStack: ["Async FastAPI", "PostgreSQL", "SQLAlchemy (async)", "Pydantic", "Git"],
     github: "https://github.com/johndoe/school-erp",
@@ -168,9 +164,11 @@ const projects: Project[] = [
     description:
       "A production-grade microservices platform integrating HRMS, payroll management with attendance-based salary computations, and animation pipeline tracking with comprehensive CI/CD automation and security.",
     images: [
-      "./images/shou-screenshot.png",
-      "./images/shou-screenshot.png",
-      "./images/shou-screenshot.png",
+      "/images/shou-dashboard.svg",
+      "/images/shou-microservices.svg",
+      "/images/shou-cicd.svg",
+      "/images/shou-payroll.svg",
+      "/images/shou-animation-pipeline.svg",
     ],
     techStack: ["FastAPI", "Docker", "Jenkins", "Microservices", "NGINX", "Caddy", "PostgreSQL", "Pydantic", "Pytest", "HashiCorp Vault", "SonarQube", "Snyk"],
     github: "https://github.com/johndoe/shou",
@@ -204,13 +202,131 @@ const projects: Project[] = [
     ]
   },
   {
+    title: "DocuCraft – AI-Enhanced Documentation Platform",
+    description:
+      "A comprehensive Next.js-based documentation platform featuring AI-powered code explanation, enhanced search capabilities, dynamic content generation, and modern responsive design. Built with TypeScript, Tailwind CSS, and integrated AI services for intelligent documentation assistance.",
+    images: [
+      "/images/docucraft-dashboard.svg",
+      "/images/docucraft-ai-demo.svg",
+      "/images/docucraft-docs-view.svg",
+      "/images/docucraft-search.svg",
+    ],
+    techStack: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Lucide React",
+      "Gray Matter",
+      "Genkit AI",
+      "Markdown Rendering",
+      "Responsive Design",
+      "Server Components",
+      "API Routes"
+    ],
+    github: "https://github.com/KDasaradha/docucraft",
+    demo: "https://night-fury.vercel.app",
+    challenge:
+      "Creating a modern, scalable documentation platform that combines traditional markdown-based content management with cutting-edge AI capabilities for code explanation and content assistance, while maintaining excellent performance and user experience across all devices.",
+    solution:
+      "Developed a full-stack Next.js application with server-side rendering, dynamic routing for documentation pages, integrated AI services using Genkit for code explanation and documentation assistance. Implemented responsive design with Tailwind CSS, smooth animations with Framer Motion, and comprehensive search functionality. Built modular component architecture with TypeScript for type safety and maintainability.",
+    impact:
+      "Delivered a production-ready documentation platform that enhances developer productivity through AI-powered features, providing instant code explanations, intelligent search, and seamless content navigation with modern UX/UI design.",
+    beforeMetrics:
+      "Traditional static documentation sites with limited interactivity and no AI assistance for code understanding.",
+    afterMetrics:
+      "Dynamic, AI-enhanced documentation platform with real-time code explanation, intelligent search, and responsive design across all devices.",
+    thoughtProcess:
+      "Started with Next.js 15 for modern React features and server components. Integrated AI capabilities early in development to differentiate from standard documentation sites. Focused on developer experience with TypeScript, component reusability, and performance optimization. Implemented comprehensive error handling including custom 404 pages and graceful fallbacks.",
+    category: "Personal Projects",
+    status: "completed",
+    featured: true,
+    metrics: {
+      performance: "95+ Lighthouse score",
+      users: "AI code explanation, enhanced search, responsive design",
+      timeline: "3 months",
+      complexity: "high"
+    },
+    highlights: [
+      "AI-powered code explanation",
+      "Next.js 15 with Server Components",
+      "TypeScript for type safety",
+      "Responsive Tailwind CSS design",
+      "Dynamic markdown rendering",
+      "Custom 404 error handling",
+      "Framer Motion animations",
+      "Modular component architecture"
+    ]
+  },
+  {
+    title: "Mermaid Magic Draw – AI-Powered Diagram Editor",
+    description:
+      "A sophisticated React-based Mermaid diagram editor featuring AI-powered diagram generation, real-time preview, advanced export capabilities, and modern responsive design. Built with TypeScript, Vite, shadcn/ui, and integrated with multiple AI providers for intelligent diagram creation and enhancement.",
+    images: [
+      "/images/mermaid-editor-dashboard.svg",
+      "/images/mermaid-ai-assistant.svg",
+      "/images/mermaid-templates-gallery.svg",
+      "/images/mermaid-export-options.svg",
+      "/images/mermaid-responsive-design.svg",
+    ],
+    techStack: [
+      "React 18",
+      "TypeScript",
+      "Vite",
+      "shadcn/ui",
+      "Tailwind CSS",
+      "Radix UI",
+      "Monaco Editor",
+      "Mermaid.js",
+      "HTML2Canvas",
+      "React Query",
+      "Lucide React",
+      "Multiple AI APIs",
+      "Responsive Design",
+      "PWA Ready"
+    ],
+    github: "https://github.com/yourusername/mermaid-magic-draw",
+    demo: "https://mermaid-magic-draw.vercel.app",
+    challenge:
+      "Creating a comprehensive, user-friendly Mermaid diagram editor that combines powerful editing capabilities with AI assistance, while maintaining excellent performance, responsive design, and supporting multiple export formats. The challenge was to make complex diagram creation accessible to both beginners and advanced users.",
+    solution:
+      "Developed a full-featured React application with Monaco Editor integration for syntax highlighting, real-time Mermaid rendering, AI-powered diagram generation using multiple providers (OpenAI, Gemini, Perplexity), comprehensive template library, advanced export options (SVG, PNG, PDF), responsive design with mobile support, and modern UI/UX with dark/light themes.",
+    impact:
+      "Delivered a production-ready diagram editor that significantly reduces the time needed to create professional Mermaid diagrams, with AI assistance making diagram creation accessible to non-technical users while providing advanced features for power users.",
+    beforeMetrics:
+      "Manual Mermaid diagram creation requiring extensive syntax knowledge and time-consuming trial-and-error process.",
+    afterMetrics:
+      "AI-assisted diagram creation with 80% faster workflow, intuitive template system, and professional export capabilities.",
+    thoughtProcess:
+      "Started with React 18 and Vite for optimal development experience and performance. Integrated Monaco Editor for professional code editing experience. Implemented multiple AI providers for flexibility and reliability. Focused on responsive design and accessibility. Built comprehensive template system and export functionality for professional use cases.",
+    category: "Personal Projects",
+    status: "completed",
+    featured: true,
+    metrics: {
+      performance: "98+ Lighthouse score",
+      users: "50+ diagram templates, 4 AI providers, 5 export formats",
+      timeline: "4 months",
+      complexity: "high"
+    },
+    highlights: [
+      "Multi-AI provider integration (OpenAI, Gemini, Perplexity, Anthropic)",
+      "Real-time Mermaid diagram rendering",
+      "Monaco Editor with syntax highlighting",
+      "50+ professional diagram templates",
+      "Advanced export options (SVG, PNG, PDF, URL sharing)",
+      "Responsive design with mobile support",
+      "Modern emerald-teal theme system",
+      "Auto-save and keyboard shortcuts"
+    ]
+  },
+  {
     title: "AWS Full-Stack CI/CD Pipeline (In Progress)",
     description:
       "Developing a full-stack application using React, Next.js, and FastAPI, with deployment on AWS featuring a CI/CD pipeline.",
     images: [
-      "/images/aws-project-screenshot1.png",
-      "/images/aws-project-screenshot2.png",
-      "/images/aws-project-screenshot3.png",
+      "/images/aws-project-screenshot1.svg",
+      "/images/aws-project-screenshot2.svg",
+      "/images/aws-project-screenshot3.svg",
     ],
     techStack: [
       "React",
@@ -850,7 +966,7 @@ export default function Projects() {
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8"
           layout
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <ProjectCard 
                 key={project.title} 

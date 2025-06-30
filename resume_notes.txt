@@ -1,0 +1,402 @@
+KESARI DASARADHA RAMI REDDY
+Prakasam, India | +91 9032414439 | kdasaradha525@gmail.com
+LinkedIn: linkedin.com/in/kdasaradha525  |  GitHub: github.com/KDasaradha  |  Portfolio: kdasaradha525.vercel.app
+
+Professional Summary
+ Results-driven Backend Developer with 2+ years of experience designing and developing scalable, high-performance RESTful APIs and microservices using Python, FastAPI, and PostgreSQL. Proficient in asynchronous programming, SQLAlchemy (sync/async), and implementing secure API authentication with JWT (RS256) and OAuth 2.0. Skilled in Git, Docker, and Redis, with hands-on experience in applying clean architecture principles, test automation using Pytest, and integrating DevSecOps practices such as shift-left security, SAST tools, and secrets management using HashiCorp Vault. Committed to delivering clean, production-ready code and building resilient backend systems with a strong emphasis on scalability, performance, and security.
+Currently expanding skillset by learning Next.js, Machine Learning, and Generative AI technologies including Prompt Engineering and LLM integration, driven by their rapid innovation and future career potential in AI-powered software development.
+
+Technical Skills
+Languages: Python, JavaScript, SQL
+
+
+Backend Frameworks & Libraries: FastAPI, SQLAlchemy (sync/async), Pydantic (v2), Pytest (sync & async)
+
+
+Databases & Caching: PostgreSQL, Redis
+
+
+API Development & Security: RESTful API Design, JWT (RS256), OAuth 2.0, Pydantic-based Validation
+
+
+DevOps & Infrastructure: Docker (images, Compose), Git, NGINX, Caddy, Jenkins (basic), GitHub Actions (basic)
+
+
+DevSecOps & Security Tools: SonarQube, Snyk, HashiCorp Vault, Familiarity with OWASP Security Concepts
+
+
+Architecture & Design: Asynchronous Programming, Microservices, Clean Architecture
+
+
+Basic Frontend Exposure: HTML, CSS, JavaScript, Fabric.js (AI-assisted development)
+Technical Skills
+Backend: Python, FastAPI, SQLAlchemy (sync/async), Pydantic v2, Pytest
+
+
+Database: PostgreSQL, Redis
+
+
+API & Auth: REST APIs, JWT (RS256), OAuth 2.0, Pydantic Validation
+
+
+DevOps: Docker, Git, NGINX, Caddy
+
+
+Security: Shift Left (SAST), SonarQube, Snyk, HashiCorp Vault, OWASP Practices
+
+
+CI/CD (Basic): Jenkins, GitHub Actions
+
+
+Architecture: Async Programming, Microservices, Clean Architecture
+
+
+Frontend (Basic): HTML, CSS, JavaScript, Fabric.js
+
+
+Tools: Postman, GitHub, GitLab, Markdown
+
+Professional Experience
+Backend Developer
+ KaryaHub Solutions – Hyderabad, India | Jul 2023 – Present
+Designed and developed asynchronous RESTful APIs using FastAPI, SQLAlchemy (sync/async), and PostgreSQL, reducing average API latency by 40% through optimized queries and non-blocking I/O.
+
+
+Refactored a legacy monolith into a modular microservices architecture, fully containerized with Docker, and deployed behind NGINX as a reverse proxy and load balancer, enabling zero-downtime releases.
+
+
+Implemented robust API security using JWT (RS256) and OAuth 2.0; enforced strict request/response schema validation with Pydantic v2, mitigating risks such as SQL injection and XSS.
+
+
+Automated build and deployment workflows using GitHub Actions and Jenkins (basic), reducing manual intervention and accelerating release cycles by 25%.
+
+
+Integrated DevSecOps practices into the CI process by embedding SonarQube for code quality checks and Snyk for real-time vulnerability scanning, resulting in a 30% reduction in critical issues.
+
+
+Led and participated in Agile ceremonies including sprint planning, backlog grooming, and daily stand-ups; practiced Test-Driven Development (TDD) using Pytest for robust coverage.
+
+
+Authored modular backend logic for user roles, permissions, templates, and project management, and built an internal marketing asset module using OpenCV and Pillow, automating 60% of manual image processing.
+
+
+Mentored two junior developers, delivering training sessions on Git workflows, asynchronous programming, and RESTful API design, improving team velocity and code quality.
+Professional Experience
+Backend Developer
+ KaryaHub Solutions – Hyderabad, India | Jul 2023 – Present
+Developed and maintained asynchronous RESTful APIs using FastAPI, SQLAlchemy (sync/async), and PostgreSQL, improving API performance by 40% through optimized queries and non-blocking architecture.
+
+
+Refactored legacy backend components into Dockerized microservices, and configured NGINX and Caddy as reverse proxies for local and staging environments.
+
+
+Strengthened API security by implementing JWT (RS256), OAuth 2.0, and strict Pydantic v2 schema validation to prevent injection, XSS, and other common vulnerabilities.
+
+
+Took ownership of Git repository management and Docker configuration, ensuring efficient collaboration and consistent development environments across teams.
+
+
+Led the implementation of shift-left security practices by introducing local SAST scans, unit/integration test coverage, and pre-commit hooks to catch issues early before CI runs.
+
+
+Wrote unit and integration tests for both sync and async endpoints using Pytest, and managed alembic-based migrations for evolving the PostgreSQL schema safely.
+
+
+Participated actively in Agile development processes, including daily stand-ups, sprint reviews, and peer code reviews to maintain code quality and team velocity.
+
+
+Contributed to building backend modules for user roles, permissions, templates, and project features. Built internal utilities for marketing assets using OpenCV and Pillow, reducing manual image processing effort by 60%.
+
+
+Provided mentorship to junior developers on topics such as Git workflows, asynchronous API development, and backend best practices, improving code consistency and confidence across the team.
+Projects
+
+InstaDe – Instant Design Generator
+ Canva-like web platform for creating marketing assets (posters, brochures, stories) using user-entered business info.
+ Tech Stack: FastAPI, SQLAlchemy, Redis, Fabric.js, Brevo, 2Factor.io, JWT, HTML, CSS, JavaScript
+Built core backend modules for user, project, and team management using FastAPI and SQLAlchemy, supporting design workflows.
+
+
+Implemented secure OTP-based authentication via Brevo (email) and 2Factor.io (SMS) for reliable user verification.
+
+
+Migrated canvas rendering from OpenCV to Fabric.js, enabling JSON-driven real-time editing and improving frontend flexibility.
+
+
+Used Redis caching and short-lived JWTs (RS256) to achieve sub-200ms response times under high load conditions.
+
+
+Delivered a fully functional MVP within 3 months, scaling to support 10,000+ designs/month.
+
+
+
+Efanish – School Management ERP
+ ERP solution for educational institutions, managing admissions, attendance, documents, and staff records.
+ Tech Stack: FastAPI (async), SQLAlchemy (async), PostgreSQL, Pydantic v2, Git
+Developed asynchronous APIs for admissions, user profiles, attendance, and document management, boosting system throughput by 30%.
+
+
+Implemented role-based access control (RBAC), paginated endpoints, and schema-level optimizations for large datasets.
+
+
+Applied strict input validation with Pydantic v2 to enforce data integrity and guard against XSS/SQL injection attacks.
+
+
+Collaborated via Git, handling branching, PRs, and peer reviews as part of a structured Agile workflow.
+
+
+
+SHOU – HRMS & Animation Production Tracker
+ Dual-purpose platform combining HR management with creative task tracking for animation teams.
+ Tech Stack: FastAPI, Docker, Jenkins, PostgreSQL, NGINX, HashiCorp Vault, Pytest, SonarQube, Snyk
+Developed backend logic for attendance-linked payroll, including support for salary components, deductions, and allowances.
+
+
+Refactored monolithic codebase into Dockerized microservices, setting up Docker volumes to share business logic across services.
+
+
+Configured NGINX as a reverse proxy and managed Docker environments locally for modular deployment.
+
+
+Integrated Jenkins-based CI pipelines with SonarQube and Snyk for automated SAST and security scanning.
+
+
+Wrote robust unit and async integration tests using Pytest and maintained alembic-based migrations for database evolution.
+Education
+Bachelor of Technology (B.Tech) – Electrical & Electronics Engineering
+ Vasireddy Venkatadri Institute of Technology, Guntur, India
+ 2018 – 2022 | CGPA: 7.64 / 10
+
+Certifications
+AWS Academy Cloud Foundations – Amazon Web Services
+
+
+Python (Basic) – HackerRank
+
+
+SQL (Basic & Intermediate) – HackerRank
+
+
+MySQL Basics – Great Learning
+
+
+Crash Course to Python – Udemy
+
+
+Programming for Everybody – University of Michigan (Coursera Audit)
+
+
+Python Data Structures – University of Michigan (Coursera Audit)
+
+
+SQL for Data Science – University of California, Davis (Coursera Audit)
+
+
+Introduction to DevOps – Microsoft Learn
+
+
+AWS Academy Cloud Foundations – Amazon Web Services (Cloud Fundamentals – Free)
+
+
+Python (Basic) – HackerRank (Skill Assessment – Free)
+
+
+SQL (Intermediate) – HackerRank (Covers basics + joins, queries – Free)
+
+
+Introduction to DevOps – Microsoft Learn (DevOps principles & CI/CD – Free)
+
+
+Additional Information
+Languages: English (Fluent), Telugu (Native)
+
+
+Soft Skills: Problem Solving, Time Management, Team Collaboration, Effective Communication
+
+
+Other Interests: Exploring Machine Learning, Generative AI, and DevSecOps tools
+✅ Certifications
+Completed Certifications
+AWS Academy Cloud Foundations – Amazon Web Services (Free – AWS Educate/AWS Academy)
+
+
+Python (Basic) – HackerRank (Free)
+
+
+SQL (Basic & Intermediate) – HackerRank (Free)
+
+
+MySQL Basics – Great Learning (Free)
+
+
+Crash Course to Python – Udemy (Free/Paid – depends on offer)
+
+
+Programming for Everybody (Python) – University of Michigan, Coursera (Audit – Free / Certificate – Paid)
+
+
+Python Data Structures – University of Michigan, Coursera (Audit – Free / Certificate – Paid)
+
+
+SQL for Data Science – University of California, Davis (Audit – Free / Certificate – Paid)
+
+
+Introduction to DevOps – Microsoft Learn (Free)
+
+
+
+📌 Recommended Certifications (Based on Your Skills)
+Skill Area
+Recommended Certification
+Platform
+Cost
+Backend (FastAPI / Python)
+✅ Python Intermediate – HackerRank or Coursera
+HackerRank, Coursera
+Free / Paid
+Docker & Containers
+🐳 Docker Essentials – IBM SkillsBuild or Docker for Devs
+IBM SkillsBuild, Udemy
+Free / Paid
+API Security
+🔐 OWASP API Security Top 10 – OWASP Training or APIsec University
+OWASP / APIsecUniversity
+Free
+DevSecOps
+🛡 DevSecOps Fundamentals – Practical DevSecOps or Linux Foundation
+Practical DevSecOps
+Paid
+Git & GitHub
+🔧 GitHub Actions Basics – GitHub Learning Lab
+GitHub
+Free
+Cloud / AWS
+☁️ AWS Certified Developer – Associate (DVA-C02)
+AWS Training / Udemy
+Paid
+PostgreSQL
+🧩 PostgreSQL for Everybody – University of Michigan (via Coursera)
+Coursera
+Audit Free / Paid
+CI/CD Foundations
+🔄 CI/CD with Jenkins or GitHub Actions – Coursera / Pluralsight
+Coursera, Pluralsight
+Paid / Trial
+Security / SAST tools
+🛠 Secure Code Warrior (Python or JS path)
+Secure Code Warrior
+Free
+Async Programming (Python)
+⚙️ Async Python: Programming with asyncio – Real Python or Udemy
+Real Python, Udemy
+Paid
+
+
+LinkedIn Profile content
+
+AboutAbout
+👋 I'm a Backend Developer with 2+ years of experience building scalable, secure APIs and microservices using Python, FastAPI, PostgreSQL, and SQLAlchemy (sync/async). I specialize in asynchronous backends, clean API design, and robust security with JWT (RS256) and OAuth 2.0.
+
+🧠 I’ve worked on real-world systems including:
+ 🎓 School ERP (admissions, attendance, documents)
+ 👥 HRMS & Animation Workflow Manager (payroll, task tracking)
+ 🖼️ Design Automation Tool (like Canva, built with Fabric.js & Redis)
+
+🛠️ My strengths include:
+ Dockerized microservices, Git, NGINX/Caddy reverse proxies
+ Pydantic validation, async API testing with Pytest
+ DevSecOps practices like SAST (SonarQube, Snyk), Git branching & automation
+
+🌱 I'm currently exploring Machine Learning foundations using Python and gradually learning how to build AI-enhanced backend services for smarter automation and decision-making.
+
+🎯 Open to roles: Python Developer | Backend Developer | Junior AI-Backend Engineer | API Engineer roles
+📍 Location Preference: Remote | Hybrid | On-site (Hyderabad, Bengaluru, Chennai)
+
+DASARADHA RAMI REDDY KESARI 
+ He/Him
+Backend Developer | Python & FastAPI | REST APIs | Docker | CI/CD | PostgreSQL | Microservices | Open to Remote/Hybrid
+
+Experience
+
+Karyahub Solutions logo
+Karyahub Solutions
+Karyahub Solutions
+2 yrs2 yrs
+Hyderabad, Telangana, India · On-siteHyderabad, Telangana, India · On-site
+Software Developer
+Software Developer
+Full-timeFull-time
+Nov 2023 - Present · 1 yr 8 mosNov 2023 to Present · 1 yr 8 mos
+Developed and deployed RESTful APIs using FastAPI, SQLAlchemy, and PostgreSQL.
+
+Reduced API latency by 40% using async programming and query optimization.
+
+Implemented JWT (RS256) and OAuth 2.0 for secure user authentication.
+
+Built Dockerized microservices and configured NGINX as reverse proxy.
+
+Automated CI/CD pipelines using Jenkins and GitHub Actions.
+
+Integrated SonarQube and Snyk to maintain code quality and security.
+Developed and deployed RESTful APIs using FastAPI, SQLAlchemy, and PostgreSQL. Reduced API latency by 40% using async programming and query optimization. Implemented JWT (RS256) and OAuth 2.0 for secure user authentication. Built Dockerized microservices and configured NGINX as reverse proxy. Automated CI/CD pipelines using Jenkins and GitHub Actions. Integrated SonarQube and Snyk to maintain code quality and security.
+Skills: REST APIs · FastAPI · SQLAlchemy · Jenkins · Python (Programming Language) · PostgreSQL · Nginx · Redis · Pydantic · Debugging Code · Docker · Microservices Architecture · Git · Code Review · Continuous Integration and Continuous Delivery (CI/CD)
+Skills: REST APIs · FastAPI · SQLAlchemy · Jenkins · Python (Programming Language) · PostgreSQL · Nginx · Redis · Pydantic · Debugging Code · Docker · Microservices Architecture · Git · Code Review · Continuous Integration and Continuous Delivery (CI/CD)
+Software Engineer Intern
+Software Engineer Intern
+InternshipInternship
+Jul 2023 - Oct 2023 · 4 mosJul 2023 to Oct 2023 · 4 mos
+Built modules for user and project management using FastAPI and SQLAlchemy.
+
+Integrated APIs from Pixabay and Unsplash for asset generation.
+
+Developed dynamic image workflows using OpenCV and Pillow.
+
+Performed code analysis with SonarQube to enhance codebase quality.
+Built modules for user and project management using FastAPI and SQLAlchemy. Integrated APIs from Pixabay and Unsplash for asset generation. Developed dynamic image workflows using OpenCV and Pillow. Performed code analysis with SonarQube to enhance codebase quality.
+Skills: HTML5 · FastAPI · Pillow · SQLAlchemy · Python (Programming Language) · SQL
+
+
+Projects
+SHOU – HRMS + Animation Tracker
+SHOU – HRMS + Animation Tracker
+Dec 2024 - May 2025Dec 2024 - May 2025
+Company logo
+Associated with Karyahub Solutions
+Associated with Karyahub Solutions
+A dual-purpose platform for managing HR functions and animation production workflows.
+• Engineered payroll calculation logic with salary breakdowns and attendance-based components.
+• Built and deployed Dockerized microservices behind an NGINX reverse proxy.
+• Implemented CI/CD automation with Jenkins, GitHub Actions, and Docker Compose.
+• Integrated SonarQube, Snyk, and HashiCorp Vault for code security and secret management.
+• Reduced deployment complexity by 40% and improved modular scalability.
+A dual-purpose platform for managing HR functions and animation production workflows. • Engineered payroll calculation logic with salary breakdowns and attendance-based components. • Built and deployed Dockerized microservices behind an NGINX reverse proxy. • Implemented CI/CD automation with Jenkins, GitHub Actions, and Docker Compose. • Integrated SonarQube, Snyk, and HashiCorp Vault for code security and secret management. • Reduced deployment complexity by 40% and improved modular scalability.
+Skills: REST APIs · FastAPI · Docker · SQLAlchemy · PostgreSQL · Nginx · pytest · Sonarqube · HashiCorp Vault
+Skills: REST APIs · FastAPI · Docker · SQLAlchemy · PostgreSQL · Nginx · pytest · Sonarqube · HashiCorp Vault
+Efanish – School Management ERP
+Efanish – School Management ERP
+Oct 2024 - Apr 2025Oct 2024 - Apr 2025
+Company logo
+Associated with Karyahub Solutions
+Associated with Karyahub Solutions
+A comprehensive ERP platform managing student lifecycle from admission to payroll.
+• Developed modular backends for user profiles, attendance, documents, and leaves.
+• Migrated the backend to asynchronous SQLAlchemy, improving data throughput by ~30%.
+• Enforced secure data handling using Pydantic validation and improved schema normalization.
+• Implemented API pagination and filtering for large datasets.
+A comprehensive ERP platform managing student lifecycle from admission to payroll. • Developed modular backends for user profiles, attendance, documents, and leaves. • Migrated the backend to asynchronous SQLAlchemy, improving data throughput by ~30%. • Enforced secure data handling using Pydantic validation and improved schema normalization. • Implemented API pagination and filtering for large datasets.
+Skills: Python · FastAPI · REST APIs · Async · SQLAlchemy · PostgreSQL · Git · Pydantic
+Skills: Python · FastAPI · REST APIs · Async · SQLAlchemy · PostgreSQL · Git · Pydantic
+InstaDe – Instant Design Generator
+InstaDe – Instant Design Generator
+Jul 2023 - Sep 2024Jul 2023 - Sep 2024
+Company logo
+Associated with Karyahub Solutions
+Associated with Karyahub Solutions
+A Canva-style web app for non-designers to generate marketing assets from business input.
+• Built a monolithic MVP using FastAPI, SQLAlchemy, and PostgreSQL.
+• Created customizable design templates using OpenCV and Fabric.js for visual editing.
+• Implemented OTP-based user authentication via Brevo (email) and 2Factor.io (SMS).
+• Improved performance by integrating Redis caching for frequently accessed content.
+A Canva-style web app for non-designers to generate marketing assets from business input. • Built a monolithic MVP using FastAPI, SQLAlchemy, and PostgreSQL. • Created customizable design templates using OpenCV and Fabric.js for visual editing. • Implemented OTP-based user authentication via Brevo (email) and 2Factor.io (SMS). • Improved performance by integrating Redis caching for frequently accessed content.
+Skills: Python · FastAPI · SQLAlchemy · REST APIs · Redis · Fabric.js · JSON Web Token (JWT) · Brevo · 2Factor.io · HTML CSS
+

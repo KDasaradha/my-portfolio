@@ -353,7 +353,7 @@ export default function Certificates() {
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8"
           layout
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {filteredCertificates.map((cert, index) => {
               const config = categoryConfig[cert.category];
               const IconComponent = config.icon;

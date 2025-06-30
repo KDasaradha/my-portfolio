@@ -1,0 +1,8 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#7c3aed"/>
+  <rect x="20" y="20" width="360" height="160" fill="#8b5cf6" rx="8"/>
+  <text x="200" y="70" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="bold">AI Assistant</text>
+  <text x="200" y="95" text-anchor="middle" dominant-baseline="middle" fill="#e9d5ff" font-family="Arial, sans-serif" font-size="14">Multi-Provider Integration</text>
+  <text x="200" y="115" text-anchor="middle" dominant-baseline="middle" fill="#ddd6fe" font-family="Arial, sans-serif" font-size="12">OpenAI • Gemini • Perplexity</text>
+  <text x="200" y="135" text-anchor="middle" dominant-baseline="middle" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="10">🤖 AI Chat Interface</text>
+</svg>
