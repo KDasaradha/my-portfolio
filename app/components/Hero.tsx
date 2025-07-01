@@ -8,9 +8,12 @@ import Typed from "typed.js";
 import Skills from "@/app/components/Skills";
 import dynamic from "next/dynamic";
 import type { Container, Engine } from "tsparticles-engine";
+import ClientOnly from "./ClientOnly";
 
 // Lazy load Particles component for better performance
-const Particles = dynamic(() => import("react-tsparticles"), {
+const Particles = dynamic(() => import("react-tsparticles").catch(() => ({
+  default: () => <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
+})), {
   ssr: false,
   loading: () => <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
 });
@@ -156,12 +159,14 @@ const Hero = memo(function Hero() {
       {/* Particles Background */}
       {!shouldReduceMotion && (
         <div className="absolute top-0 left-0 w-full h-full -z-10" aria-hidden="true">
-          <Particles
-            id="tsparticles"
-            init={particlesInit}
-            loaded={particlesLoaded}
-            options={particlesOptions()}
-          />
+          <ClientOnly fallback={<div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />}>
+            <Particles
+              id="tsparticles"
+              init={particlesInit}
+              loaded={particlesLoaded}
+              options={particlesOptions()}
+            />
+          </ClientOnly>
         </div>
       )}
 
@@ -177,12 +182,23 @@ const Hero = memo(function Hero() {
             variants={itemVariants}
           >
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold"
+              className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent"
               variants={itemVariants}
             >
-              <span className="sr-only">Kesari Dasaradh - </span>
-              <span aria-hidden="true">Kesari Dasaradh</span>
+              <span className="sr-only">Kesari Dasaradha Rami Reddy - </span>
+              <span aria-hidden="true">Kesari Dasaradha</span>
+              <br />
+              <span aria-hidden="true" className="text-3xl md:text-4xl font-medium text-muted-foreground">
+                Rami Reddy
+              </span>
             </motion.h1>
+            
+            <motion.div
+              className="text-lg md:text-xl text-muted-foreground font-medium"
+              variants={itemVariants}
+            >
+              Full-Stack Developer | Backend Specialist
+            </motion.div>
             
             <motion.div
               className="text-2xl md:text-3xl text-primary min-h-[3rem]"
@@ -198,11 +214,11 @@ const Hero = memo(function Hero() {
               className="text-lg text-muted-foreground leading-relaxed"
               variants={itemVariants}
             >
-              Results-driven Backend Developer with 2 years of hands-on experience 
-              designing and deploying scalable RESTful APIs using Python and FastAPI. 
-              Proficient in asynchronous programming, SQLAlchemy ORM, and microservices 
-              architecture. Expert in implementing API security standards (JWT, OAuth 2.0), 
-              containerizing services with Docker, and automating CI/CD pipelines.
+              Results-driven Backend Developer with 2 years of experience designing and implementing 
+              scalable RESTful APIs using Python and FastAPI. Proficient in asynchronous programming, 
+              SQLAlchemy ORM, and microservices architecture. Skilled in API security standards (JWT, 
+              OAuth 2.0), Docker containerization, CI/CD pipelines, and NGINX reverse proxy setup. 
+              Actively expanding full-stack knowledge in React, Next.js, and AWS cloud services.
             </motion.p>
             
             <motion.div 
@@ -215,9 +231,24 @@ const Hero = memo(function Hero() {
                 <span className="px-3 py-1 bg-primary/10 text-primary rounded-full">⚡ Performance Optimization</span>
                 <span className="px-3 py-1 bg-primary/10 text-primary rounded-full">🔄 CI/CD</span>
               </div>
-              <p className="text-sm text-muted-foreground">
-                📍 Prakasam, Andhra Pradesh, India | 📧 kdasaradha525@gmail.com | 📱 +91 9032414439
-              </p>
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <span className="text-primary">📍</span>
+                  <span>Prakasam, India</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="text-primary">📧</span>
+                  <a href="mailto:kdasaradha525@gmail.com" className="hover:text-primary transition-colors">
+                    kdasaradha525@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="text-primary">📱</span>
+                  <a href="tel:+919032414439" className="hover:text-primary transition-colors">
+                    +91 9032414439
+                  </a>
+                </div>
+              </div>
             </motion.div>
             
             <motion.div 

@@ -13,14 +13,19 @@ import MkDocsLink from "@/app/components/MkDocsLink";
 import PerformanceMetrics from "@/app/components/PerformanceMetrics";
 import ScrollProgress from "@/app/components/ScrollProgress";
 import BackToTop from "@/app/components/BackToTop";
+import ClientOnly from "@/app/components/ClientOnly";
 
 export default function HomePage() {
   return (
     <>
-      <ScrollProgress />
+      <ClientOnly>
+        <ScrollProgress />
+      </ClientOnly>
       <Hero />
       <About />
-      <PerformanceMetrics />
+      <ClientOnly>
+        <PerformanceMetrics />
+      </ClientOnly>
       <Education />
       <Projects />
       <Experience />
@@ -28,10 +33,14 @@ export default function HomePage() {
       <Testimonials />
       <Certificates />
       <Blog />
-      <GitHubStats />
+      <ClientOnly>
+        <GitHubStats />
+      </ClientOnly>
       <MkDocsLink />
       <Contact />
-      <BackToTop />
+      <ClientOnly>
+        <BackToTop />
+      </ClientOnly>
     </>
   );
 }

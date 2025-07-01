@@ -96,7 +96,7 @@ const projects: Project[] = [
     challenge:
       "Building a scalable design platform that could handle thousands of marketing assets with real-time canvas manipulation, secure authentication, and efficient template generation while maintaining high performance under concurrent usage.",
     solution:
-      "Implemented a monolithic FastAPI architecture with core modules for user, project, and team management. Integrated OTP-based login with JWT authentication, Brevo for emails, and 2factor.io for SMS. Developed design engine using OpenCV/Pillow, then migrated to Fabric.js for JSON template generation. Used Redis for session caching and template optimization.",
+      "Implemented a monolithic FastAPI architecture with core modules for user, project, and team management. Integrated OTP-based login with JWT authentication, Brevo for emails, and 2factor.io for SMS. Developed design engine initially using Python OpenCV to draw text on canvases, later transitioning to Fabric.js for generating Fabric JSON and rendering designs on the frontend. Used Redis for caching and designed database with hardcoded coordinates for design combinations.",
     impact:
       "Delivered an MVP capable of generating thousands of marketing assets over 8 months with real-time editing capabilities and seamless user experience.",
     beforeMetrics:
@@ -104,7 +104,7 @@ const projects: Project[] = [
     afterMetrics:
       "Dynamic canvas-based design platform generating thousands of assets with real-time collaboration features.",
     thoughtProcess:
-      "Started with Python image processing for backend template generation, but realized frontend canvas manipulation was essential for user experience. Migrated to Fabric.js for JSON-based templates while maintaining Python backend for business logic and data management.",
+      "Started with Python OpenCV for backend template generation by drawing text on canvases, but realized frontend canvas manipulation was essential for user experience. Migrated to Fabric.js for JSON-based templates while maintaining Python backend for business logic and data management. Understood software development workflows, canvas manipulation, and performance optimization techniques.",
     category: "Full-Stack Platform",
     status: "completed",
     featured: true,
@@ -130,11 +130,11 @@ const projects: Project[] = [
     ],
     techStack: ["Async FastAPI", "PostgreSQL", "SQLAlchemy (async)", "Pydantic", "Git"],
     github: "https://github.com/johndoe/school-erp",
-    demo: "https://myschoolitaly-app.vercel.app/",
+    demo: "https://efanish.com/",
     challenge:
       "Building a scalable ERP system that could handle large volumes of student/staff data with complex relational integrity, efficient pagination for thousands of records, and strict security validations to prevent SQL injection and XSS attacks.",
     solution:
-      "Built asynchronous backend modules using async FastAPI and SQLAlchemy for optimal database performance. Redefined database schema for proper relational integrity and implemented efficient pagination strategies. Enforced strict Pydantic validations and collaborated via Git with proper branching and code review processes.",
+      "Developed modules for user management, user profile management (including documents), library, chat, leaves, holidays, and attendance. Transitioned the application from synchronous to asynchronous SQLAlchemy queries, optimizing database performance. Improved database schema design, established better table relationships, and implemented API pagination for efficiency. Used Pydantic for input validation to prevent SQL injections and cross-site scripting.",
     impact:
       "Improved database performance significantly through async queries and optimized schema relations while strengthening security posture with rigorous input validation.",
     beforeMetrics:
@@ -142,7 +142,7 @@ const projects: Project[] = [
     afterMetrics:
       "High-performance async operations with enterprise-grade security and efficient handling of large record volumes.",
     thoughtProcess:
-      "Focused on async architecture from the beginning to handle concurrent operations efficiently. Prioritized database schema optimization and security through Pydantic validations, ensuring the system could scale while maintaining data integrity and security standards.",
+      "Focused on transitioning from synchronous to asynchronous architecture to handle concurrent operations efficiently. Prioritized database schema optimization and security through Pydantic validations. Gained expertise in asynchronous programming, database optimization, and breaking down project requirements into modules while learning Git workflows.",
     category: "Enterprise ERP",
     status: "completed",
     featured: true,
@@ -172,11 +172,11 @@ const projects: Project[] = [
     ],
     techStack: ["FastAPI", "Docker", "Jenkins", "Microservices", "NGINX", "Caddy", "PostgreSQL", "Pydantic", "Pytest", "HashiCorp Vault", "SonarQube", "Snyk"],
     github: "https://github.com/johndoe/shou",
-    demo: "https://getshou.com/",
+    demo: "https://shou-only-ui.vercel.app/",
     challenge:
       "Migrating from a monolithic FastAPI application to independently deployable microservices while implementing enterprise-grade CI/CD pipelines, security scanning, and managing shared code redundancy across services.",
     solution:
-      "Engineered modular backend services for leaves, holidays, payroll, and animation pipeline management. Migrated to microservices architecture with Docker Compose orchestration, NGINX reverse proxy for production, and Caddy for local development. Implemented comprehensive Jenkins CI/CD with automated testing (Pytest), static analysis (SonarQube), vulnerability scanning (Snyk), and secrets management via HashiCorp Vault.",
+      "Implemented modules for leaves, holidays, payroll, and pipeline management. Developed payroll logic with salary breakdowns (basic, HRA, conveyance) and attendance-based calculations, validated using Pydantic. Containerized the application with Docker, creating Dockerfiles and docker-compose files. Set up Jenkins pipeline for CI/CD, integrating SonarQube, Snyk, and Dependabot. Converted from monolithic to microservices architecture, using NGINX as reverse proxy and managing code duplication with Docker shared volumes.",
     impact:
       "Delivered a production-grade HRMS with seamless payroll and animation pipeline integration, achieving improved resilience, modularity, and security through microservices architecture.",
     beforeMetrics:
@@ -184,7 +184,7 @@ const projects: Project[] = [
     afterMetrics:
       "Scalable microservices with automated CI/CD, comprehensive security scanning, and enterprise-grade secrets management.",
     thoughtProcess:
-      "Started with monolithic architecture but recognized the need for microservices scalability. Implemented Docker containerization first, then gradually decomposed services while establishing robust CI/CD pipelines and security measures. Used shared Docker volumes to eliminate code duplication across services.",
+      "Started with monolithic architecture but recognized the need for microservices scalability. Implemented Docker containerization first, then gradually decomposed services while establishing robust CI/CD pipelines and security measures. Mastered DevOps tools, microservices architecture, and CI/CD pipelines while managing code duplication with shared Docker volumes.",
     category: "Microservices Platform",
     status: "completed",
     featured: true,
@@ -225,7 +225,7 @@ const projects: Project[] = [
       "API Routes"
     ],
     github: "https://github.com/KDasaradha/docucraft",
-    demo: "https://night-fury.vercel.app",
+    demo: "https://docucraft-blue.vercel.app/",
     challenge:
       "Creating a modern, scalable documentation platform that combines traditional markdown-based content management with cutting-edge AI capabilities for code explanation and content assistance, while maintaining excellent performance and user experience across all devices.",
     solution:
@@ -286,7 +286,7 @@ const projects: Project[] = [
       "PWA Ready"
     ],
     github: "https://github.com/yourusername/mermaid-magic-draw",
-    demo: "https://mermaid-magic-draw.vercel.app",
+    demo: "https://preview--mermaid-magic-draw.lovable.app/",
     challenge:
       "Creating a comprehensive, user-friendly Mermaid diagram editor that combines powerful editing capabilities with AI assistance, while maintaining excellent performance, responsive design, and supporting multiple export formats. The challenge was to make complex diagram creation accessible to both beginners and advanced users.",
     solution:

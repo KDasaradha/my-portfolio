@@ -74,47 +74,53 @@ interface Metric {
 const experiences: Experience[] = [
   {
     id: 1,
-    title: "Backend Developer",
+    title: "Software Developer",
     company: "KaryaHub Solutions",
     location: "Hyderabad, India",
-    period: "July 2023 – Present",
-    startDate: "2023-07",
+    period: "November 2023 – Present",
+    startDate: "2023-11",
     endDate: "Present",
     description:
-      "Leading backend development initiatives for enterprise-grade applications, specializing in scalable API design, microservices architecture, and DevOps automation.",
+      "Leading backend development initiatives for enterprise-grade applications, specializing in scalable API design, microservices architecture, and DevOps automation. Promoted from Software Engineer Intern to full-time developer role.",
     achievements: [
       {
         title: "API Development & Performance",
-        description: "Designed and implemented scalable RESTful APIs using FastAPI, SQLAlchemy, and PostgreSQL. Reduced API response times by 40% through asynchronous endpoints and SQL query optimization.",
+        description: "Designed and implemented scalable RESTful APIs using FastAPI, SQLAlchemy, and PostgreSQL. Reduced API response times by 40% through asynchronous programming and SQL query optimization.",
         impact: "40% performance improvement",
         icon: Rocket
       },
       {
-        title: "Microservices & Containerization",
-        description: "Migrated a monolithic FastAPI application into microservices behind an NGINX reverse proxy. Containerized backend services with Docker and optimized Docker Compose configurations.",
-        impact: "Improved scalability",
+        title: "Microservices Architecture & Deployment",
+        description: "Designed and deployed Dockerized microservices behind an NGINX reverse proxy, enhancing application scalability and modularity. Migrated monolithic applications to microservices architecture.",
+        impact: "Enhanced scalability",
         icon: Server
       },
       {
-        title: "Security & Validation",
-        description: "Implemented JWT (RS256) and OAuth 2.0 authentication flows. Used Pydantic for strict input validation to guard against SQL injection and XSS attacks.",
-        impact: "30% security improvement",
+        title: "Security Implementation",
+        description: "Implemented robust API security with JWT (RS256) and OAuth 2.0, using Pydantic validation to mitigate SQL injection and XSS vulnerabilities.",
+        impact: "30% reduction in vulnerabilities",
         icon: Shield
       },
       {
-        title: "CI/CD & Infrastructure",
-        description: "Automated deployments with GitHub Actions and Jenkins, shortening release cycles by 25%. Configured Jenkins pipelines with Pytest, SonarQube, and Snyk integration.",
-        impact: "25% faster deployments",
+        title: "CI/CD Automation",
+        description: "Automated deployments with CI/CD pipelines using GitHub Actions and Jenkins, reducing release cycles by 25%. Integrated SonarQube and Snyk for static code analysis.",
+        impact: "25% faster release cycles",
         icon: Zap
       },
       {
-        title: "Documentation & Mentorship",
-        description: "Enhanced API documentation using Swagger UI and MkDocs, decreasing developer onboarding time by 35%. Mentored interns on REST API design and Git workflows.",
+        title: "Documentation & Team Leadership",
+        description: "Enhanced internal and external API documentation using Swagger and MkDocs, improving developer onboarding time by 35%. Mentored interns on REST API design, Git workflows, and best practices.",
         impact: "35% faster onboarding",
         icon: Users
+      },
+      {
+        title: "Backend Module Development",
+        description: "Developed backend modules for user and project management, and automated image workflows by integrating Pixabay and Unsplash APIs. Enhanced image processing capabilities using OpenCV and Pillow libraries.",
+        impact: "Automated workflows",
+        icon: Code
       }
     ],
-    technologies: ["FastAPI", "PostgreSQL", "Redis", "Docker", "Jenkins", "AWS", "React", "Next.js"],
+    technologies: ["FastAPI", "SQLAlchemy", "PostgreSQL", "Redis", "Docker", "Jenkins", "NGINX", "GitHub Actions", "SonarQube", "Snyk", "Swagger", "MkDocs", "OpenCV", "Pillow", "Pixabay API", "Unsplash API"],
     type: "full-time",
     icon: Briefcase,
     color: "from-blue-500 to-purple-500",
@@ -131,34 +137,35 @@ const experiences: Experience[] = [
     title: "Software Engineer Intern",
     company: "KaryaHub Solutions",
     location: "Hyderabad, India",
-    period: "July 2023 - Nov 2023",
+    period: "July 2023 - October 2023",
     startDate: "2023-07",
-    endDate: "2023-11",
+    endDate: "2023-10",
     description:
-      "Gained practical experience in API development, web scraping, and image processing, laying the groundwork for scalable backend systems.",
+      "Built foundational modules for user and project management, automated asset generation workflows, and enhanced image processing capabilities for template-based visual content generation.",
     achievements: [
       {
-        title: "Web Scraping Solutions",
-        description: "Developed web scraping scripts using BeautifulSoup to fetch images from Pixabay and Unsplash APIs for internal use.",
-        icon: Globe
+        title: "User & Project Management Modules",
+        description: "Built foundational modules for user and project management using FastAPI and SQLAlchemy for clean, scalable architecture.",
+        icon: Users
       },
       {
-        title: "FastAPI Applications",
-        description: "Built initial FastAPI applications with user and project management modules, integrating SQLAlchemy ORM.",
-        icon: Code
+        title: "Automated Asset Generation",
+        description: "Automated asset generation workflows by integrating external APIs such as Pixabay and Unsplash, reducing manual effort by 50% through workflow automation.",
+        impact: "50% reduction in manual effort",
+        icon: Zap
       },
       {
-        title: "Third-party Integrations",
-        description: "Explored third-party API integrations, mastering their usage and implementation in real-world scenarios.",
-        icon: ExternalLink
-      },
-      {
-        title: "Image Processing",
-        description: "Experimented with Python imaging libraries (Pillow, OpenCV) to generate Canva-style templates with static data.",
+        title: "Image Processing Enhancement",
+        description: "Enhanced image processing capabilities utilizing Pillow and OpenCV for dynamic image manipulation, enabling template-based generation of visual content for improved UX.",
         icon: Star
+      },
+      {
+        title: "Static Code Analysis",
+        description: "Performed static code analysis with SonarQube, identifying and resolving critical code quality and security issues proactively.",
+        icon: Shield
       }
     ],
-    technologies: ["Python", "FastAPI", "SQLAlchemy", "BeautifulSoup", "OpenCV", "Pillow"],
+    technologies: ["Python", "FastAPI", "SQLAlchemy", "Pixabay API", "Unsplash API", "OpenCV", "Pillow", "SonarQube"],
     type: "internship",
     icon: Code,
     color: "from-green-500 to-blue-500",

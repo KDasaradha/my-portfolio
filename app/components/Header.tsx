@@ -30,42 +30,72 @@ export default function Header() {
   useEffect(() => {
     setMounted(true);
     
-    // Handle scroll effect and progress
+    // Optimized scroll handler with throttling
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      
-      setIsScrolled(scrollTop > 50);
-      setScrollProgress(progress);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+          
+          setIsScrolled(scrollTop > 50);
+          setScrollProgress(progress);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     // Handle active section detection with improved logic
     const handleActiveSection = () => {
-      const sections = ["home", "about", "education", "projects", "experience", "skills", "certificates", "blog", "contact"];
-      const scrollPosition = window.scrollY + 120;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sections = ["home", "about", "education", "projects", "experience", "skills", "certificates", "contact"];
+          const scrollPosition = window.scrollY + 120;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop } = element;
-          if (scrollPosition >= offsetTop) {
-            setActiveSection(section);
-            break;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            const element = document.getElementById(section);
+            if (element) {
+              const { offsetTop } = element;
+              if (scrollPosition >= offsetTop) {
+                setActiveSection(section);
+                break;
+              }
+            }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", handleActiveSection);
+    // Handle keyboard navigation for mobile menu
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    // Combined scroll handler for better performance
+    const combinedScrollHandler = () => {
+      handleScroll();
+      handleActiveSection();
+    };
+
+    window.addEventListener("scroll", combinedScrollHandler, { passive: true });
+    window.addEventListener("keydown", handleKeyDown);
+    
+    // Initial call to set active section
+    handleActiveSection();
     
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("scroll", handleActiveSection);
+      window.removeEventListener("scroll", combinedScrollHandler);
+      window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   const navItems = useMemo(
     () => [
@@ -75,6 +105,7 @@ export default function Header() {
       { name: "Projects", href: "#projects", icon: "🚀" },
       { name: "Experience", href: "#experience", icon: "💼" },
       { name: "Skills", href: "#skills", icon: "⚡" },
+      { name: "Certificates", href: "#certificates", icon: "🏆" },
       { name: "Contact", href: "#contact", icon: "📧" },
     ],
     []
@@ -84,14 +115,14 @@ export default function Header() {
     () => [
       {
         name: "GitHub",
-        href: "https://github.com/kdasaradh",
+        href: "https://github.com/kdasaradha",
         icon: Github,
         color: "hover:text-gray-900 dark:hover:text-white",
         bgColor: "hover:bg-gray-100 dark:hover:bg-gray-800"
       },
       {
         name: "LinkedIn",
-        href: "https://www.linkedin.com/in/dasaradharami-reddy-kesari-b8471417b",
+        href: "https://www.linkedin.com/in/kdasaradha525",
         icon: Linkedin,
         color: "hover:text-blue-600",
         bgColor: "hover:bg-blue-50 dark:hover:bg-blue-900/20"
@@ -109,21 +140,47 @@ export default function Header() {
 
   const handleNavClick = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    try {
+      const target = document.querySelector(href);
+      if (target) {
+        // Update active section immediately for better UX
+        const sectionId = href.slice(1);
+        setActiveSection(sectionId);
+        
+        target.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "start",
+          inline: "nearest"
+        });
+      }
+    } catch (error) {
+      console.warn(`Failed to navigate to ${href}:`, error);
     }
   };
 
   const handleMobileNavClick = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     setIsMenuOpen(false);
+    
+    // Use a shorter timeout for better UX
     setTimeout(() => {
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      try {
+        const target = document.querySelector(href);
+        if (target) {
+          // Update active section immediately for better UX
+          const sectionId = href.slice(1);
+          setActiveSection(sectionId);
+          
+          target.scrollIntoView({ 
+            behavior: "smooth", 
+            block: "start",
+            inline: "nearest"
+          });
+        }
+      } catch (error) {
+        console.warn(`Failed to navigate to ${href}:`, error);
       }
-    }, 300);
+    }, 200);
   };
 
   const headerVariants = {
@@ -190,6 +247,29 @@ export default function Header() {
     })
   };
 
+  // Show loading state on server-side rendering to prevent hydration issues
+  if (!mounted) {
+    return (
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border/50">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold">Kesari Dasaradha</h1>
+              <p className="text-xs text-muted-foreground hidden sm:block">Backend Developer</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-10 h-10 rounded-full bg-primary/10 animate-pulse"></div>
+            <div className="w-10 h-10 rounded-full bg-primary/10 lg:hidden animate-pulse"></div>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <>
       {/* Scroll Progress Bar */}
@@ -237,11 +317,11 @@ export default function Header() {
               />
             </div>
             <div className="cursor-pointer">
-              <h1 className="text-xl font-bold gradient-text">
-                Kesari Dasaradh
+              <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                Kesari Dasaradha
               </h1>
               <p className="text-xs text-muted-foreground hidden sm:block">
-                Full Stack Developer
+                Backend Developer
               </p>
             </div>
           </motion.div>
@@ -335,7 +415,7 @@ export default function Header() {
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="rounded-full hover:bg-primary/10 transition-all duration-300"
-                aria-label="Toggle theme"
+                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
               >
                 <motion.div
                   initial={false}
@@ -361,7 +441,9 @@ export default function Header() {
                 size="icon"
                 className="lg:hidden rounded-full hover:bg-primary/10 transition-all duration-300"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
+                aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <motion.div
                   initial={false}
@@ -379,12 +461,14 @@ export default function Header() {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav 
+              id="mobile-menu"
               className="lg:hidden bg-background/98 backdrop-blur-xl border-b border-border/50"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="hidden"
               role="navigation"
+              aria-label="Mobile navigation menu"
             >
               <div className="p-6 space-y-4">
                 {/* Mobile Navigation Items */}

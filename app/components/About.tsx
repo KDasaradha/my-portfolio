@@ -85,44 +85,44 @@ const defaultTimelineEvents: TimelineEvent[] = [
   },
   {
     title: "Professional Entry: API Development",
-    date: "July-Nov 2023",
+    date: "July-Oct 2023",
     description:
-      "Began professional career as Software Engineer Intern at KaryaHub Solutions. Developed web scraping scripts, built initial FastAPI applications with SQLAlchemy ORM, and explored third-party API integrations.",
-    technologies: ["Python", "FastAPI", "SQLAlchemy", "Web Scraping", "APIs"],
+      "Began professional career as Software Engineer Intern at KaryaHub Solutions. Built foundational modules for user and project management, automated asset generation workflows, and enhanced image processing capabilities.",
+    technologies: ["Python", "FastAPI", "SQLAlchemy", "Pixabay API", "Unsplash API", "OpenCV", "Pillow", "SonarQube"],
     icon: Code,
     color: "from-blue-500 to-cyan-500",
     achievements: [
-      "Built first production APIs",
-      "Implemented web scraping solutions",
-      "Mastered SQLAlchemy ORM"
+      "Built user & project management modules",
+      "50% reduction in manual asset generation",
+      "Enhanced image processing with OpenCV/Pillow"
     ]
   },
   {
     title: "Backend Mastery & Security Implementation",
     date: "Nov 2023-2024",
     description:
-      "Promoted to Backend Developer. Designed scalable RESTful APIs, implemented JWT/OAuth 2.0 security, optimized database performance by 40%, and developed dynamic design systems using OpenCV/Pillow and Fabric.js.",
-    technologies: ["FastAPI", "JWT", "OAuth 2.0", "PostgreSQL", "Redis", "OpenCV", "Fabric.js"],
+      "Promoted to Software Developer. Designed scalable RESTful APIs, implemented JWT/OAuth 2.0 security, optimized database performance by 40%, and developed dynamic design systems using OpenCV/Pillow and Fabric.js. Enhanced API documentation and mentored team members.",
+    technologies: ["FastAPI", "JWT", "OAuth 2.0", "PostgreSQL", "Redis", "OpenCV", "Fabric.js", "Swagger", "MkDocs"],
     icon: Shield,
     color: "from-purple-500 to-pink-500",
     achievements: [
-      "40% performance improvement",
-      "Implemented JWT/OAuth 2.0",
-      "Built dynamic design systems"
+      "40% API performance improvement",
+      "Implemented robust security with JWT/OAuth 2.0",
+      "35% faster developer onboarding through documentation"
     ]
   },
   {
     title: "Microservices & DevOps Excellence",
     date: "2024-Present",
     description:
-      "Architected microservices migration from monolithic applications. Implemented comprehensive CI/CD pipelines with Jenkins, GitHub Actions, SonarQube, and Snyk. Mastered Docker containerization, NGINX reverse proxy, and HashiCorp Vault for secrets management.",
-    technologies: ["Microservices", "Docker", "Jenkins", "SonarQube", "Snyk", "HashiCorp Vault", "NGINX"],
+      "Architected microservices migration from monolithic applications. Implemented comprehensive CI/CD pipelines with Jenkins, GitHub Actions, SonarQube, and Snyk. Mastered Docker containerization, NGINX reverse proxy, and HashiCorp Vault for secrets management. Reduced critical vulnerabilities by 30%.",
+    technologies: ["Microservices", "Docker", "Jenkins", "GitHub Actions", "SonarQube", "Snyk", "HashiCorp Vault", "NGINX"],
     icon: Server,
     color: "from-orange-500 to-red-500",
     achievements: [
-      "Migrated to microservices",
+      "Migrated monolithic to microservices architecture",
       "25% faster deployment cycles",
-      "Implemented CI/CD pipelines"
+      "30% reduction in critical vulnerabilities"
     ]
   },
   {
