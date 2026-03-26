@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, useCallback, memo } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
 import Typed from "typed.js";
 import Skills from "@/app/components/Skills";
@@ -110,7 +110,7 @@ const Hero = memo(function Hero() {
   }, [mounted, shouldReduceMotion]);
 
   // Animation variants for better performance
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -121,7 +121,7 @@ const Hero = memo(function Hero() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -214,11 +214,7 @@ const Hero = memo(function Hero() {
               className="text-lg text-muted-foreground leading-relaxed"
               variants={itemVariants}
             >
-              Results-driven Backend Developer with 2 years of experience designing and implementing 
-              scalable RESTful APIs using Python and FastAPI. Proficient in asynchronous programming, 
-              SQLAlchemy ORM, and microservices architecture. Skilled in API security standards (JWT, 
-              OAuth 2.0), Docker containerization, CI/CD pipelines, and NGINX reverse proxy setup. 
-              Actively expanding full-stack knowledge in React, Next.js, and AWS cloud services.
+              Backend-focused Python Engineer with nearly 3 years of experience designing scalable, high-performance API systems using FastAPI, SQLAlchemy, and PostgreSQL. I specialize in asynchronous REST API development, modular backend architecture, and secure authentication (OAuth2, JWT, RBAC). With a proven track record of optimizing database queries and delivering production-ready microservices, I build reliable, robust backend architectures that drive system efficiency and performance.
             </motion.p>
             
             <motion.div 
@@ -291,7 +287,7 @@ const Hero = memo(function Hero() {
                 aria-label="Download my resume PDF"
               >
                 <a 
-                  href="/Dasaradha_Kesari_Developer_Resume.pdf" 
+                  href="/KESARI_DASARADHA_PYTHON_BACKEND_DEVELOPER_RESUME.pdf" 
                   download="Kesari_Dasaradh_Resume.pdf"
                   className="flex items-center space-x-2"
                 >
@@ -315,7 +311,7 @@ const Hero = memo(function Hero() {
               aria-label="Professional statistics"
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">2+</div>
+                <div className="text-2xl font-bold text-primary">~3</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center">

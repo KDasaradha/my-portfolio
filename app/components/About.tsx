@@ -287,8 +287,7 @@ export default function About({
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A passionate full-stack developer with a journey from electrical engineering to crafting 
-            scalable, secure, and innovative software solutions.
+            A results-driven Python Backend Engineer with a strong foundation in OOP and system design, transitioning from electrical engineering to crafting scalable, production-grade API architectures using FastAPI and PostgreSQL.
           </p>
         </motion.div>
 
