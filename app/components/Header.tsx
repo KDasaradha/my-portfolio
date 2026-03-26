@@ -16,7 +16,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 
 export default function Header() {
@@ -183,19 +183,19 @@ export default function Header() {
     }, 200);
   };
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { y: -100, opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
       transition: { 
         duration: 0.6,
-        ease: [0.6, -0.05, 0.01, 0.99]
+        ease: [0.6, -0.05, 0.01, 0.99] as [number, number, number, number]
       }
     }
   };
 
-  const logoVariants = {
+  const logoVariants: Variants = {
     hover: { 
       scale: 1.05,
       rotate: [0, -1, 1, 0],
@@ -210,7 +210,7 @@ export default function Header() {
     tap: { scale: 0.95 }
   };
 
-  const navItemVariants = {
+  const navItemVariants: Variants = {
     hover: { 
       y: -2,
       transition: { duration: 0.2 }
@@ -218,7 +218,7 @@ export default function Header() {
     tap: { scale: 0.95 }
   };
 
-  const mobileMenuVariants = {
+  const mobileMenuVariants: Variants = {
     hidden: { 
       opacity: 0, 
       height: 0,
@@ -229,12 +229,12 @@ export default function Header() {
       height: "auto",
       transition: { 
         duration: 0.4,
-        ease: [0.04, 0.62, 0.23, 0.98]
+        ease: [0.04, 0.62, 0.23, 0.98] as [number, number, number, number]
       }
     }
   };
 
-  const mobileItemVariants = {
+  const mobileItemVariants: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: (i: number) => ({
       opacity: 1,
@@ -242,7 +242,7 @@ export default function Header() {
       transition: {
         delay: i * 0.1,
         duration: 0.4,
-        ease: [0.04, 0.62, 0.23, 0.98]
+        ease: [0.04, 0.62, 0.23, 0.98] as [number, number, number, number]
       }
     })
   };
@@ -400,7 +400,7 @@ export default function Header() {
                 className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-blue-200 dark:border-blue-800 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-900/50 dark:hover:to-purple-900/50 transition-all duration-300 shadow-sm hover:shadow-md"
                 asChild
               >
-                <a href="/Dasaradha_Kesari_Developer_Resume.pdf" download>
+                <a href="/KESARI_DASARADHA_PYTHON_BACKEND_DEVELOPER_RESUME.pdf" download>
                   <Download size={16} />
                   <span>Resume</span>
                   <ExternalLink size={12} className="opacity-60" />
@@ -518,7 +518,7 @@ export default function Header() {
                     className="w-full justify-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-blue-200 dark:border-blue-800"
                     asChild
                   >
-                    <a href="/Dasaradha_Kesari_Developer_Resume.pdf" download>
+                    <a href="/KESARI_DASARADHA_PYTHON_BACKEND_DEVELOPER_RESUME.pdf" download>
                       <Download size={18} />
                       <span>Download Resume</span>
                       <ExternalLink size={14} className="opacity-60" />
