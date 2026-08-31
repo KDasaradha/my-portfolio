@@ -10,6 +10,7 @@ import type React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+  metadataBase: new URL("https://kesari-dasaradh.vercel.app"),
   title: "Kesari Dasaradh - Backend Developer | Python, FastAPI, Microservices Expert",
   description:
     "Results-driven Backend Developer with 2 years of experience in Python, FastAPI, microservices architecture, and DevOps. Specialized in API security, performance optimization, and CI/CD automation. Based in Andhra Pradesh, India.",
@@ -60,9 +61,9 @@ export const metadata = {
       "Results-driven Backend Developer with 2 years of experience in Python, FastAPI, microservices architecture, and DevOps. Specialized in API security, performance optimization, and CI/CD automation.",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/images/captivating-cartoon.png",
+        width: 400,
+        height: 400,
         alt: "Kesari Dasaradh - Backend Developer Portfolio",
       },
     ],
@@ -71,13 +72,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Kesari Dasaradh - Backend Developer | Python, FastAPI, Microservices Expert",
-    description:
-      "Results-driven Backend Developer with 2 years of experience in Python, FastAPI, microservices architecture, and DevOps.",
-    images: ["/og-image.jpg"],
+    description: "Results-driven Backend Developer with 2 years of experience in Python, FastAPI, microservices architecture, and DevOps.",
+    images: ["/images/captivating-cartoon.png"],
     creator: "@kesari_dasaradh",
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
   alternates: {
     canonical: "https://kesari-dasaradh.vercel.app",

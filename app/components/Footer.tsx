@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PhoneCall, Heart, Code, Coffee } from "lucide-react";
-import { SiGithub, SiLinkedin, SiX, SiWhatsapp, SiGmail } from "react-icons/si";
+import { SiGithub, SiLinkedin, SiWhatsapp, SiGmail } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -17,13 +17,6 @@ const socialLinks = [
     icon: SiLinkedin,
     label: "LinkedIn",
     color: "hover:text-blue-600",
-    bgColor: "hover:bg-blue-50 dark:hover:bg-blue-900/20"
-  },
-  {
-    href: "https://twitter.com/your-twitter-handle",
-    icon: SiX,
-    label: "Twitter",
-    color: "hover:text-blue-400",
     bgColor: "hover:bg-blue-50 dark:hover:bg-blue-900/20"
   },
   {
@@ -139,8 +132,8 @@ export default function Footer() {
               <motion.a
                 key={social.label}
                 href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={social.href.startsWith("http") ? "_blank" : undefined}
+                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className={`p-3 rounded-full transition-all duration-300 ${social.color} ${social.bgColor}`}
                 aria-label={social.label}
                 whileHover={{ scale: 1.1, y: -2 }}

@@ -2,13 +2,13 @@
 
 import React from "react";
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaPython, FaRocket, FaCode, FaDatabase, FaShieldAlt, FaCogs } from "react-icons/fa";
 import { MdOutlineMenuBook, MdSpeed, MdSecurity, MdCloud } from "react-icons/md";
 import { SiPydantic, SiFastapi, SiPytest } from "react-icons/si";
 
 // Animation variants
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,

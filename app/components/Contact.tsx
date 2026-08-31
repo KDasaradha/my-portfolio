@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useInView } from "framer-motion";
+import { motion, useReducedMotion, useInView, Variants } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
 import {
   Card,
@@ -128,7 +128,7 @@ export default function Contact() {
     }
   }, [formData, validateForm]);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -139,7 +139,7 @@ export default function Contact() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,

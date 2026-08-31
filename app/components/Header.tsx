@@ -12,7 +12,6 @@ import {
   Linkedin, 
   Mail, 
   Sparkles,
-  ChevronDown,
   ExternalLink
 } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
@@ -25,7 +24,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     setMounted(true);
@@ -36,12 +34,7 @@ export default function Header() {
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          const scrollTop = window.scrollY;
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
-          
-          setIsScrolled(scrollTop > 50);
-          setScrollProgress(progress);
+          setIsScrolled(window.scrollY > 50);
           ticking = false;
         });
         ticking = true;
@@ -74,7 +67,7 @@ export default function Header() {
 
     // Handle keyboard navigation for mobile menu
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMenuOpen) {
+      if (e.key === "Escape") {
         setIsMenuOpen(false);
       }
     };
@@ -95,8 +88,34 @@ export default function Header() {
       window.removeEventListener("scroll", combinedScrollHandler);
       window.removeEventListener("keydown", handleKeyDown);
     };
+  }, []);
+
+  // Lock body scroll while the mobile menu is open so the page cannot
+  // scroll behind the overlay.
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
   }, [isMenuOpen]);
 
+  // Primary navigation shown in the desktop header — intentionally short so the
+  // bar never feels crowded. Home is reachable via the logo; Education and
+  // Certificates remain available in the mobile menu and by scrolling.
+  const primaryNavItems = useMemo(
+    () => [
+      { name: "About", href: "#about" },
+      { name: "Projects", href: "#projects" },
+      { name: "Experience", href: "#experience" },
+      { name: "Skills", href: "#skills" },
+      { name: "Contact", href: "#contact" },
+    ],
+    []
+  );
+
+  // Full navigation used by the mobile menu, where vertical space is not an issue.
   const navItems = useMemo(
     () => [
       { name: "Home", href: "#home", icon: "🏠" },
@@ -272,15 +291,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-[60] origin-left"
-        style={{ scaleX: scrollProgress / 100 }}
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: scrollProgress / 100 }}
-        transition={{ duration: 0.1 }}
-      />
-
       <motion.header 
         className={`sticky top-0 z-50 transition-all duration-500 ${
           isScrolled 
@@ -327,9 +337,9 @@ export default function Header() {
           </motion.div>
           
           {/* Enhanced Desktop Navigation */}
-          <nav className="hidden lg:block">
+          <nav className="hidden lg:block" aria-label="Primary navigation">
             <ul className="flex items-center space-x-1">
-              {navItems.map((item, index) => (
+              {primaryNavItems.map((item, index) => (
                 <motion.li 
                   key={item.name}
                   variants={navItemVariants}
@@ -339,14 +349,14 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className={`group relative px-4 py-2 rounded-xl transition-all duration-300 flex items-center space-x-2 ${
+                    aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
+                    className={`group relative px-4 py-2 rounded-xl transition-all duration-300 ${
                       activeSection === item.href.slice(1)
                         ? 'text-primary bg-primary/10 shadow-md'
                         : 'hover:text-primary hover:bg-primary/5'
                     }`}
                     onClick={handleNavClick(item.href)}
                   >
-                    <span className="text-sm">{item.icon}</span>
                     <span className="font-medium">{item.name}</span>
                     {activeSection === item.href.slice(1) && (
                       <motion.div
@@ -483,6 +493,7 @@ export default function Header() {
                     >
                       <Link
                         href={item.href}
+                        aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
                         className={`flex items-center space-x-3 py-3 px-4 rounded-xl transition-all duration-300 ${
                           activeSection === item.href.slice(1)
                             ? 'text-primary bg-primary/10 shadow-md'

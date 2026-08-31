@@ -71,6 +71,11 @@
     @apply border-border;
   }
 
+  html {
+    /* Offset anchor jumps so sticky header doesn't cover section headings */
+    scroll-padding-top: 5rem;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
