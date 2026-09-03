@@ -241,7 +241,7 @@ export default function Education() {
             <Sparkles className="w-6 h-6 text-yellow-500" />
           </motion.div>
           
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
+          <h2 className="section-heading mb-5">
             Education Journey
           </h2>
           
@@ -259,43 +259,25 @@ export default function Education() {
           </motion.div>
         </motion.div>
 
-        {/* Timeline Connector */}
-        <div className="hidden lg:block absolute left-1/2 top-80 bottom-20 w-px bg-gradient-to-b from-blue-200 via-purple-200 to-pink-200 dark:from-blue-800 dark:via-purple-800 dark:to-pink-800 transform -translate-x-1/2" />
-
-        {/* Enhanced Education Cards */}
-        <motion.div
-          className="space-y-12 lg:space-y-16"
+        {/* Horizontal Education Marquee */}
+        <div className="horizontal-marquee" aria-label="Education history">
+          <motion.div
+            className="horizontal-marquee__track"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-        >
-          {educationDetails.map((edu, index) => (
+          >
+          {[...educationDetails, ...educationDetails].map((edu, index) => (
             <motion.div
-              key={edu.id}
+              key={`${edu.id}-${index}`}
               variants={itemVariants}
-              className={`flex flex-col lg:flex-row items-center gap-8 ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              }`}
+              className="horizontal-marquee__item"
               onHoverStart={() => setHoveredCard(edu.id)}
               onHoverEnd={() => setHoveredCard(null)}
             >
-              {/* Timeline Node */}
-              <div className="hidden lg:block relative">
-                <motion.div
-                  className="w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg"
-                  whileHover={{ scale: 1.5 }}
-                  animate={hoveredCard === edu.id ? { scale: 1.3 } : { scale: 1 }}
-                />
-                <motion.div
-                  className="absolute inset-0 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-30"
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </div>
-
               {/* Education Card */}
               <motion.div
-                className="flex-1 max-w-2xl"
+                className="h-full"
                 variants={cardHoverVariants}
                 whileHover="hover"
                 whileTap="tap"
@@ -453,7 +435,8 @@ export default function Education() {
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Enhanced Summary Section */}
         <motion.div

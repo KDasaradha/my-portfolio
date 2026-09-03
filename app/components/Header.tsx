@@ -12,7 +12,14 @@ import {
   Linkedin, 
   Mail, 
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Home,
+  UserRound,
+  GraduationCap,
+  Rocket,
+  Briefcase,
+  Zap,
+  Award
 } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -118,14 +125,14 @@ export default function Header() {
   // Full navigation used by the mobile menu, where vertical space is not an issue.
   const navItems = useMemo(
     () => [
-      { name: "Home", href: "#home", icon: "🏠" },
-      { name: "About", href: "#about", icon: "👨‍💻" },
-      { name: "Education", href: "#education", icon: "🎓" },
-      { name: "Projects", href: "#projects", icon: "🚀" },
-      { name: "Experience", href: "#experience", icon: "💼" },
-      { name: "Skills", href: "#skills", icon: "⚡" },
-      { name: "Certificates", href: "#certificates", icon: "🏆" },
-      { name: "Contact", href: "#contact", icon: "📧" },
+      { name: "Home", href: "#home", icon: Home },
+      { name: "About", href: "#about", icon: UserRound },
+      { name: "Education", href: "#education", icon: GraduationCap },
+      { name: "Projects", href: "#projects", icon: Rocket },
+      { name: "Experience", href: "#experience", icon: Briefcase },
+      { name: "Skills", href: "#skills", icon: Zap },
+      { name: "Certificates", href: "#certificates", icon: Award },
+      { name: "Contact", href: "#contact", icon: Mail },
     ],
     []
   );
@@ -269,20 +276,20 @@ export default function Header() {
   // Show loading state on server-side rendering to prevent hydration issues
   if (!mounted) {
     return (
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border/50">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 border-b border-white/20 shadow-lg shadow-purple-950/20">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold">Kesari Dasaradha</h1>
-              <p className="text-xs text-muted-foreground hidden sm:block">Backend Developer</p>
+              <h1 className="text-xl font-bold text-white">Kesari Dasaradha</h1>
+              <p className="text-xs text-white/75 hidden sm:block">Backend Developer</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-primary/10 animate-pulse"></div>
-            <div className="w-10 h-10 rounded-full bg-primary/10 lg:hidden animate-pulse"></div>
+            <div className="w-10 h-10 rounded-full bg-white/15 animate-pulse"></div>
+            <div className="w-10 h-10 rounded-full bg-white/15 lg:hidden animate-pulse"></div>
           </div>
         </div>
       </header>
@@ -293,9 +300,9 @@ export default function Header() {
     <>
       <motion.header 
         className={`sticky top-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-black/5' 
-            : 'bg-background/80 backdrop-blur-md border-b border-border/30'
+            isScrolled 
+            ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 backdrop-blur-xl border-b border-white/25 shadow-lg shadow-purple-950/25' 
+            : 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 backdrop-blur-md border-b border-white/20'
         }`}
         variants={headerVariants}
         initial="hidden"
@@ -304,7 +311,7 @@ export default function Header() {
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           {/* Enhanced Logo */}
           <motion.div
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-3"
             variants={logoVariants}
             whileHover="hover"
             whileTap="tap"
@@ -312,25 +319,27 @@ export default function Header() {
           >
             <div className="relative">
               <motion.div
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg"
+                className="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center shadow-lg shadow-purple-950/20"
                 whileHover={{ 
-                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
+                  boxShadow: "0 0 25px rgba(255, 255, 255, 0.35)",
                   scale: 1.05
                 }}
               >
                 <Sparkles className="w-5 h-5 text-white" />
               </motion.div>
               <motion.div
-                className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-background"
-                animate={{ scale: [1, 1.2, 1] }}
+                className="absolute -top-1 -right-1 w-3 h-3 bg-green-300 rounded-full border-2 border-purple-600 shadow-sm"
+                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
+                aria-label="Available for work"
               />
             </div>
-            <div className="cursor-pointer">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                Kesari Dasaradha
+            <div className="cursor-pointer hidden sm:block">
+              <h1 className="text-lg font-bold leading-tight">
+                <span className="text-white">Kesari</span>
+                <span className="text-white/75 ml-1">Dasaradha</span>
               </h1>
-              <p className="text-xs text-muted-foreground hidden sm:block">
+              <p className="text-[10px] text-white/70 font-medium tracking-wider uppercase">
                 Backend Developer
               </p>
             </div>
@@ -338,42 +347,40 @@ export default function Header() {
           
           {/* Enhanced Desktop Navigation */}
           <nav className="hidden lg:block" aria-label="Primary navigation">
-            <ul className="flex items-center space-x-1">
-              {primaryNavItems.map((item, index) => (
-                <motion.li 
-                  key={item.name}
-                  variants={navItemVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                  custom={index}
-                >
-                  <Link
-                    href={item.href}
-                    aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
-                    className={`group relative px-4 py-2 rounded-xl transition-all duration-300 ${
-                      activeSection === item.href.slice(1)
-                        ? 'text-primary bg-primary/10 shadow-md'
-                        : 'hover:text-primary hover:bg-primary/5'
-                    }`}
-                    onClick={handleNavClick(item.href)}
+            <ul className="flex items-center space-x-1 bg-black/10 backdrop-blur-sm rounded-full px-2 py-1 border border-white/20">
+              {primaryNavItems.map((item, index) => {
+                const isActive = activeSection === item.href.slice(1);
+                return (
+                  <motion.li 
+                    key={item.name}
+                    variants={navItemVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    custom={index}
                   >
-                    <span className="font-medium">{item.name}</span>
-                    {activeSection === item.href.slice(1) && (
-                      <motion.div
-                        className="absolute bottom-0 left-1/2 w-1 h-1 bg-primary rounded-full"
-                        layoutId="activeIndicator"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                        style={{ x: "-50%" }}
-                      />
-                    )}
-                    <motion.div
-                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      initial={false}
-                    />
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={item.href}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                        isActive
+                          ? 'text-slate-900 bg-white shadow-md shadow-purple-950/20'
+                          : 'text-white/80 hover:text-white hover:bg-white/15'
+                      }`}
+                      onClick={handleNavClick(item.href)}
+                    >
+                      <span>{item.name}</span>
+                      {isActive && (
+                        <motion.div
+                          className="absolute inset-0 rounded-full bg-white -z-10"
+                          layoutId="activeNav"
+                          initial={false}
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
           </nav>
           
@@ -386,7 +393,7 @@ export default function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className={`rounded-full transition-all duration-300 ${social.color} ${social.bgColor}`}
+                    className="rounded-full text-white/80 hover:text-white hover:bg-white/15 transition-all duration-300"
                     asChild
                   >
                     <a 
@@ -405,15 +412,15 @@ export default function Header() {
             {/* Enhanced Resume Download */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
-                variant="outline"
+                variant="default"
                 size="sm"
-                className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-blue-200 dark:border-blue-800 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-900/50 dark:hover:to-purple-900/50 transition-all duration-300 shadow-sm hover:shadow-md"
+                className="hidden sm:flex items-center space-x-2 bg-white hover:bg-white/90 text-slate-900 border-0 transition-colors duration-200 shadow-sm"
                 asChild
               >
                 <a href="/KESARI_DASARADHA_PYTHON_BACKEND_DEVELOPER_RESUME.pdf" download>
-                  <Download size={16} />
-                  <span>Resume</span>
-                  <ExternalLink size={12} className="opacity-60" />
+                  <Download size={14} />
+                  <span className="font-medium">Resume</span>
+                  <ExternalLink size={10} className="opacity-70" />
                 </a>
               </Button>
             </motion.div>
@@ -424,7 +431,7 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="rounded-full hover:bg-primary/10 transition-all duration-300"
+                className="rounded-full text-white hover:bg-white/15 transition-all duration-300"
                 aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
               >
                 <motion.div
@@ -449,7 +456,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="lg:hidden rounded-full hover:bg-primary/10 transition-all duration-300"
+                className="lg:hidden rounded-full text-white hover:bg-white/15 transition-all duration-300"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={isMenuOpen}
@@ -472,7 +479,7 @@ export default function Header() {
           {isMenuOpen && (
             <motion.nav 
               id="mobile-menu"
-              className="lg:hidden bg-background/98 backdrop-blur-xl border-b border-border/50"
+              className="lg:hidden bg-gradient-to-br from-blue-700 via-purple-700 to-pink-700 backdrop-blur-xl border-b border-white/20"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
@@ -482,38 +489,41 @@ export default function Header() {
             >
               <div className="p-6 space-y-4">
                 {/* Mobile Navigation Items */}
-                <div className="space-y-2">
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.name}
-                      variants={mobileItemVariants}
-                      initial="hidden"
-                      animate="visible"
-                      custom={index}
-                    >
-                      <Link
-                        href={item.href}
-                        aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
-                        className={`flex items-center space-x-3 py-3 px-4 rounded-xl transition-all duration-300 ${
-                          activeSection === item.href.slice(1)
-                            ? 'text-primary bg-primary/10 shadow-md'
-                            : 'hover:text-primary hover:bg-primary/5'
-                        }`}
-                        onClick={handleMobileNavClick(item.href)}
+                <div className="space-y-1">
+                  {navItems.map((item, index) => {
+                    const isActive = activeSection === item.href.slice(1);
+                    return (
+                      <motion.div
+                        key={item.name}
+                        variants={mobileItemVariants}
+                        initial="hidden"
+                        animate="visible"
+                        custom={index}
                       >
-                        <span className="text-lg">{item.icon}</span>
-                        <span className="font-medium">{item.name}</span>
-                        {activeSection === item.href.slice(1) && (
-                          <motion.div
-                            className="ml-auto w-2 h-2 bg-primary rounded-full"
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                          />
-                        )}
-                      </Link>
-                    </motion.div>
-                  ))}
+                        <Link
+                          href={item.href}
+                          aria-current={isActive ? "page" : undefined}
+                          className={`flex items-center space-x-3 py-3 px-4 rounded-xl transition-all duration-300 ${
+                            isActive
+                              ? 'text-slate-900 bg-white shadow-lg shadow-purple-950/20'
+                              : 'text-white/90 hover:bg-white/15'
+                          }`}
+                          onClick={handleMobileNavClick(item.href)}
+                        >
+                          <item.icon className={`h-5 w-5 ${isActive ? '' : 'opacity-70'}`} aria-hidden="true" />
+                          <span className="font-medium">{item.name}</span>
+                          {isActive && (
+                            <motion.div
+                              className="ml-auto w-2 h-2 bg-purple-600 rounded-full"
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                            />
+                          )}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
                 </div>
                 
                 {/* Mobile Actions */}
@@ -526,7 +536,7 @@ export default function Header() {
                   {/* Mobile Resume Download */}
                   <Button
                     variant="outline"
-                    className="w-full justify-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-blue-200 dark:border-blue-800"
+                    className="w-full justify-center space-x-2 bg-white text-slate-900 border-white hover:bg-white/90"
                     asChild
                   >
                     <a href="/KESARI_DASARADHA_PYTHON_BACKEND_DEVELOPER_RESUME.pdf" download>

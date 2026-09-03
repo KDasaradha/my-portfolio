@@ -42,7 +42,8 @@ import {
   Eye,
   Star,
   Calendar,
-  Users
+  Users,
+  ArrowRight
 } from "lucide-react";
 
 // Define the Project type with enhanced properties
@@ -507,18 +508,13 @@ const ProjectCard = ({
         type: "spring",
         stiffness: 100
       }}
-      whileHover={{ 
-        y: -10,
-        rotateX: 5,
-        transition: { duration: 0.3 }
-      }}
-      className="group perspective-1000"
+      whileHover={{ y: -6, transition: { duration: 0.25 } }}
+      className="group"
     >
-      <Card className="h-full min-h-[500px] flex flex-col shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 overflow-hidden bg-card/95 backdrop-blur-sm relative">
+      <Card className="h-full min-h-[500px] flex flex-col shadow-sm hover:shadow-xl transition-shadow duration-300 border border-border/70 overflow-hidden bg-card/95 backdrop-blur-sm relative">
         {/* Status Badge */}
         <div className="absolute top-4 left-4 z-10 flex items-center space-x-2">
           <div className={`w-2 h-2 rounded-full ${getStatusDotColor(project.status)} shadow-sm`} />
-          <br/>
           <span className="text-xs font-medium bg-background/90 backdrop-blur-sm px-2 py-1 rounded-full border border-border/30 text-foreground/80">
             {project.status.replace('-', ' ').toUpperCase()}
           </span>
@@ -528,7 +524,7 @@ const ProjectCard = ({
         {project.featured && (
           <div className="absolute top-4 right-4 z-10">
             <motion.div
-              className="bg-gradient-to-r from-amber-400 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1 shadow-lg border border-white/20"
+              className="bg-gradient-to-r from-amber-400 to-orange-500 text-white px-2.5 py-1 rounded-full text-xs font-bold flex items-center space-x-1 shadow-lg border border-white/20"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -538,10 +534,8 @@ const ProjectCard = ({
           </div>
         )}
 
-
-
         <CardHeader className="relative z-10 pb-3 p-4">
-          <CardTitle className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-3 mt-6 line-clamp-2">
+          <CardTitle className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-200 mb-3 mt-6 line-clamp-2">
             {project.title}
           </CardTitle>
           <div className="flex items-center space-x-2 mb-3">
@@ -917,27 +911,39 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <motion.div
+            className="section-kicker mb-5"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Code2 className="w-4 h-4" />
+            <span className="text-sm font-semibold tracking-wide">Portfolio Showcase</span>
+          </motion.div>
+
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="section-heading mx-auto mb-5 max-w-3xl"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="gradient-text">Featured Projects</span>
+            <span>Featured Projects</span>
           </motion.h2>
           <motion.p
-            className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed mb-8"
+            className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             Explore my portfolio of backend development projects, showcasing expertise in 
-            Python, FastAPI, microservices architecture, and DevOps automation.
+            <span className="font-semibold text-foreground/80"> Python</span>, 
+            <span className="font-semibold text-foreground/80"> FastAPI</span>, 
+            microservices architecture, and DevOps automation.
           </motion.p>
 
           {/* Filter Buttons */}
           <motion.div
-            className="flex flex-wrap justify-center gap-2"
+            className="inline-flex flex-wrap justify-center gap-2 rounded-xl border border-border/70 bg-card/70 p-1.5 backdrop-blur-sm"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -950,12 +956,21 @@ export default function Projects() {
             ].map((filterOption) => (
               <Button
                 key={filterOption.key}
-                variant={filter === filterOption.key ? 'default' : 'outline'}
+                variant={filter === filterOption.key ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => setFilter(filterOption.key as any)}
-                className="transition-all duration-300"
+                className={`rounded-full transition-all duration-300 ${
+                  filter === filterOption.key
+                    ? 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90'
+                    : 'hover:bg-background/60'
+                }`}
               >
-                {filterOption.label} ({filterOption.count})
+                {filterOption.label}
+                <span className={`ml-1.5 px-1.5 py-0.5 rounded-full text-xs ${
+                  filter === filterOption.key ? 'bg-white/20' : 'bg-secondary'
+                }`}>
+                  {filterOption.count}
+                </span>
               </Button>
             ))}
           </motion.div>
@@ -999,24 +1014,33 @@ export default function Projects() {
 
         {/* Call to Action */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-muted-foreground mb-6">
-            Interested in collaborating or learning more about my work?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="btn-primary-enhanced">
-              <a href="#contact">Get In Touch</a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href="https://github.com/KDasaradha" target="_blank" rel="noopener noreferrer">
-                View All Projects
-              </a>
-            </Button>
+          <div className="max-w-3xl mx-auto border-l-4 border-primary bg-card/80 p-8 md:p-10 shadow-sm backdrop-blur-sm">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
+              Interested in collaborating?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              Let's discuss how I can help bring your next backend project to life with scalable, secure, and high-performance solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground shadow-sm hover:bg-primary/90">
+                <a href="#contact" className="flex items-center gap-2">
+                  Get In Touch
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
+                <a href="https://github.com/KDasaradha" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <Github className="w-4 h-4" />
+                  View All Projects
+                </a>
+              </Button>
+            </div>
           </div>
         </motion.div>
       </div>

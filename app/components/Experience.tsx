@@ -344,28 +344,29 @@ export default function Experience() {
       <div className="container mx-auto px-6 lg:px-12 relative z-10" ref={ref}>
         {/* Enhanced Page Title */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           variants={titleVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.div
-            className="inline-flex items-center space-x-2 mb-4"
-            whileHover={{ scale: 1.05 }}
+            className="section-kicker mb-5"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="p-3 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-600 shadow-lg">
-              <Briefcase className="w-8 h-8 text-white" />
-            </div>
-            <Sparkles className="w-6 h-6 text-yellow-500" />
+            <Briefcase className="w-4 h-4" />
+            <span className="text-sm font-semibold tracking-wide">Career Journey</span>
+            <Sparkles className="w-4 h-4 text-yellow-500" />
           </motion.div>
           
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 text-transparent bg-clip-text">
+          <h2 className="section-heading mb-5">
             Professional Experience
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             A journey of continuous growth, from self-taught programming to leading backend development 
-            initiatives in enterprise-grade applications.
+            initiatives in <span className="font-semibold text-foreground/80">enterprise-grade</span> applications.
           </p>
           
           <motion.div
@@ -374,24 +375,23 @@ export default function Experience() {
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <div className="h-1 w-24 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full" />
+            <div className="h-1 w-20 bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-500 rounded-full" />
           </motion.div>
         </motion.div>
 
-        {/* Enhanced Experience Timeline */}
-        <motion.div
-          className="space-y-12"
+        {/* Horizontal Experience Marquee */}
+        <div className="horizontal-marquee" aria-label="Professional experience history">
+          <motion.div
+          className="horizontal-marquee__track"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-        >
-          {experiences.map((experience, index) => (
+          >
+          {[...experiences, ...experiences].map((experience, index) => (
             <motion.div
-              key={experience.id}
+              key={`${experience.id}-${index}`}
               variants={itemVariants}
-              className={`flex flex-col lg:flex-row items-start gap-8 ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              }`}
+              className="horizontal-marquee__item"
               onHoverStart={() => setActiveExperience(experience.id)}
               onHoverEnd={() => setActiveExperience(null)}
             >
@@ -408,7 +408,7 @@ export default function Experience() {
 
               {/* Experience Content */}
               <motion.div
-                className="flex-1 max-w-4xl"
+                className="flex-1"
                 whileHover={{ y: -5 }}
               >
                 <Card className={`overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border-0 ${experience.bgColor}`}>
@@ -454,20 +454,22 @@ export default function Experience() {
                   <CardContent className="p-6 space-y-6">
                     {/* Metrics */}
                     {experience.metrics && (
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         {experience.metrics.map((metric, metricIndex) => (
                           <motion.div
                             key={metricIndex}
-                            className="text-center p-4 rounded-xl bg-background/50 border"
+                            className="text-center p-4 rounded-xl bg-background/60 backdrop-blur-sm border border-border/40 hover:border-primary/40 hover:shadow-md transition-all duration-300"
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                             transition={{ delay: index * 0.1 + metricIndex * 0.05 }}
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.05, y: -2 }}
                           >
-                            <metric.icon className="w-6 h-6 mx-auto mb-2 text-primary" />
-                            <div className="text-2xl font-bold text-primary">{metric.value}</div>
-                            <div className="text-xs text-muted-foreground">{metric.improvement}</div>
-                            <div className="text-xs font-medium">{metric.label}</div>
+                            <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-br from-primary/10 to-purple-500/10 flex items-center justify-center">
+                              <metric.icon className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">{metric.value}</div>
+                            <div className="text-xs text-muted-foreground mt-0.5">{metric.improvement}</div>
+                            <div className="text-xs font-semibold mt-1">{metric.label}</div>
                           </motion.div>
                         ))}
                       </div>
@@ -479,24 +481,26 @@ export default function Experience() {
                         <Award className="w-5 h-5 mr-2 text-yellow-500" />
                         Key Achievements
                       </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {experience.achievements.map((achievement, achIndex) => (
                           <motion.div
                             key={achIndex}
-                            className="flex items-start space-x-3 p-4 rounded-xl bg-background/30 hover:bg-background/50 transition-colors"
+                            className="flex items-start space-x-3 p-4 rounded-xl bg-background/60 backdrop-blur-sm border border-border/40 hover:border-primary/40 hover:shadow-md transition-all duration-300"
                             initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                             transition={{ delay: index * 0.1 + achIndex * 0.05 }}
-                            whileHover={{ x: 5 }}
+                            whileHover={{ x: 4, scale: 1.01 }}
                           >
-                            <achievement.icon className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center flex-shrink-0">
+                              <achievement.icon className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
+                            </div>
                             <div>
                               <h5 className="font-semibold text-sm mb-1">{achievement.title}</h5>
                               <p className="text-sm text-muted-foreground leading-relaxed">
                                 {achievement.description}
                               </p>
                               {achievement.impact && (
-                                <Badge variant="outline" className="mt-2 text-xs">
+                                <Badge variant="secondary" className="mt-2 text-xs bg-yellow-500/10 text-yellow-700 dark:text-yellow-300 border-yellow-500/20">
                                   {achievement.impact}
                                 </Badge>
                               )}
@@ -519,11 +523,11 @@ export default function Experience() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                             transition={{ delay: index * 0.1 + techIndex * 0.02 }}
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.05, y: -2 }}
                           >
                             <Badge 
                               variant="secondary" 
-                              className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                              className="bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/30 border border-border/30 transition-all duration-200"
                             >
                               {tech}
                             </Badge>
@@ -536,7 +540,8 @@ export default function Experience() {
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Enhanced Key Achievements Section */}
         <motion.div
@@ -546,30 +551,39 @@ export default function Experience() {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4 flex items-center justify-center space-x-2">
-              <Star className="w-8 h-8 text-yellow-500" />
-              <span>Key Achievements</span>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center space-x-2">
+              <Star className="w-8 h-8 text-yellow-500 fill-yellow-500" />
+              <span className="bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">Key Achievements</span>
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground max-w-xl mx-auto">
               Highlights of my technical contributions and measurable impact
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {keyAchievements.map((achievement, index) => (
               <motion.div
                 key={index}
-                className="p-6 rounded-2xl bg-background/50 border hover:shadow-lg transition-all duration-300"
+                className="group p-6 rounded-2xl bg-background/60 backdrop-blur-sm border border-border/40 hover:border-primary/40 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
+                whileHover={{ y: -6, scale: 1.02 }}
               >
-                <achievement.icon className={`w-8 h-8 mb-4 ${achievement.color}`} />
-                <h4 className="font-bold text-lg mb-2">{achievement.title}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {achievement.description}
-                </p>
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 transition-all duration-500" />
+                
+                <div className="relative z-10">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-purple-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <achievement.icon className={`w-6 h-6 ${achievement.color}`} />
+                  </div>
+                  <h4 className="font-bold text-lg mb-2 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                    {achievement.title}
+                  </h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {achievement.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -582,23 +596,31 @@ export default function Experience() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 1 }}
         >
-          <div className="max-w-4xl mx-auto p-8 rounded-3xl bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 border border-purple-200/50 dark:border-purple-800/50">
-            <h3 className="text-2xl font-bold mb-4 text-foreground">
+          <div className="max-w-4xl mx-auto p-8 md:p-10 rounded-3xl bg-gradient-to-br from-purple-50/80 via-blue-50/60 to-indigo-50/40 dark:from-purple-950/30 dark:via-blue-950/20 dark:to-indigo-950/10 border border-purple-200/40 dark:border-purple-800/30 backdrop-blur-sm relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-purple-500/10 to-transparent rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-blue-500/10 to-transparent rounded-full blur-3xl" />
+            
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground relative z-10">
               Ready to Build Something Amazing?
             </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto relative z-10">
               With proven experience in backend development, microservices architecture, and DevOps automation, 
               I'm ready to tackle your next challenging project and deliver exceptional results.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
-                <span>Let's Collaborate</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300">
+                <span className="flex items-center gap-2">
+                  Let's Collaborate
+                  <ArrowRight className="w-4 h-4" />
+                </span>
               </Button>
-              <Button variant="outline" size="lg">
-                <span>View Projects</span>
-                <ChevronRight className="w-4 h-4 ml-2" />
+              <Button variant="outline" size="lg" className="border-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
+                <span className="flex items-center gap-2">
+                  View Projects
+                  <ChevronRight className="w-4 h-4" />
+                </span>
               </Button>
             </div>
           </div>

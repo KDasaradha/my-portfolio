@@ -265,30 +265,39 @@ export default function About({
       <div className="container mx-auto px-6 lg:px-12 relative z-10" ref={ref}>
         {/* Enhanced Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4"
+            className="section-kicker mb-5"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <User className="w-4 h-4" />
-            <span className="text-sm font-medium">Get to know me</span>
+            <span className="text-sm font-semibold tracking-wide">Get to know me</span>
           </motion.div>
           
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              About Me
-            </span>
+          <h2 className="section-heading mb-5">
+            <span>About Me</span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A results-driven Python Backend Engineer with a strong foundation in OOP and system design, transitioning from electrical engineering to crafting scalable, production-grade API architectures using FastAPI and PostgreSQL.
+          <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            A results-driven Python Backend Engineer with a strong foundation in OOP and system design, 
+            transitioning from electrical engineering to crafting <span className="font-semibold text-foreground/80">scalable</span>, 
+            <span className="font-semibold text-foreground/80"> production-grade</span> API architectures.
           </p>
+          
+          <motion.div
+            className="mt-8 flex justify-center"
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full" />
+          </motion.div>
         </motion.div>
 
         {/* Main Content Grid */}
@@ -377,53 +386,54 @@ export default function About({
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-0 shadow-xl">
+            <Card className="bg-gradient-to-br from-blue-50/80 to-purple-50/80 dark:from-blue-950/30 dark:to-purple-950/30 border-0 shadow-xl backdrop-blur-sm">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-green-500 to-blue-600">
+                  <div className="p-2.5 rounded-xl bg-gradient-to-br from-green-500 to-blue-600 shadow-lg shadow-green-500/20">
                     <TrendingUp className="w-5 h-5 text-white" />
                   </div>
-                  <CardTitle className="text-xl">Quick Stats</CardTitle>
+                  <CardTitle className="text-xl font-bold">Quick Stats</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 rounded-lg bg-background/50">
-                    <div className="text-2xl font-bold text-primary">3+</div>
-                    <div className="text-sm text-muted-foreground">Years Experience</div>
-                  </div>
-                  <div className="text-center p-4 rounded-lg bg-background/50">
-                    <div className="text-2xl font-bold text-primary">40%</div>
-                    <div className="text-sm text-muted-foreground">Performance Boost</div>
-                  </div>
-                  <div className="text-center p-4 rounded-lg bg-background/50">
-                    <div className="text-2xl font-bold text-primary">25%</div>
-                    <div className="text-sm text-muted-foreground">Faster Deployments</div>
-                  </div>
-                  <div className="text-center p-4 rounded-lg bg-background/50">
-                    <div className="text-2xl font-bold text-primary">30%</div>
-                    <div className="text-sm text-muted-foreground">Security Improvement</div>
-                  </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { value: "3+", label: "Years Experience", gradient: "from-blue-600 to-cyan-600" },
+                    { value: "40%", label: "Performance Boost", gradient: "from-green-600 to-emerald-600" },
+                    { value: "25%", label: "Faster Deployments", gradient: "from-purple-600 to-pink-600" },
+                    { value: "30%", label: "Security Improvement", gradient: "from-orange-600 to-red-600" },
+                  ].map((stat) => (
+                    <motion.div
+                      key={stat.label}
+                      className="text-center p-4 rounded-xl bg-background/60 backdrop-blur-sm border border-border/30 hover:shadow-md transition-all duration-300"
+                      whileHover={{ y: -3, scale: 1.02 }}
+                    >
+                      <div className={`text-2xl font-extrabold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
+                        {stat.value}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1 font-medium">{stat.label}</div>
+                    </motion.div>
+                  ))}
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold flex items-center gap-2">
+                  <h4 className="font-bold flex items-center gap-2 text-sm">
                     <MapPin className="w-4 h-4 text-primary" />
                     Location & Availability
                   </h4>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Globe className="w-3 h-3" />
-                      Based in India
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Coffee className="w-3 h-3" />
-                      Available for remote work
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-3 h-3" />
-                      Open to new opportunities
-                    </div>
+                  <div className="space-y-2.5 text-sm text-muted-foreground">
+                    {[
+                      { icon: Globe, text: "Based in India" },
+                      { icon: Coffee, text: "Available for remote work" },
+                      { icon: Calendar, text: "Open to new opportunities" },
+                    ].map((item) => (
+                      <div key={item.text} className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-background/50 transition-colors">
+                        <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center">
+                          <item.icon className="w-3 h-3 text-primary" />
+                        </div>
+                        <span className="font-medium">{item.text}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </CardContent>
@@ -461,16 +471,19 @@ export default function About({
                       initial={{ opacity: 0, y: 20 }}
                       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                       transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-                      whileHover={{ y: -5 }}
+                      whileHover={{ y: -6 }}
                     >
-                      <Card className="h-full bg-gradient-to-br from-background to-secondary/20 border-0 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                        <CardContent className="p-6">
+                      <Card className="h-full bg-gradient-to-br from-background to-secondary/20 border border-border/40 shadow-md group-hover:shadow-xl group-hover:border-primary/30 transition-all duration-300 overflow-hidden relative">
+                        {/* Subtle gradient overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 transition-all duration-500" />
+                        
+                        <CardContent className="p-6 relative z-10">
                           <div className="flex items-start gap-4">
-                            <div className={`p-3 rounded-xl ${point.bgColor} flex-shrink-0`}>
+                            <div className={`p-3 rounded-xl ${point.bgColor} flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
                               <IconComponent className={`w-6 h-6 ${point.color}`} />
                             </div>
-                            <div className="space-y-3">
-                              <h3 className="font-bold text-lg text-primary group-hover:text-primary/80 transition-colors">
+                            <div className="space-y-2">
+                              <h3 className="font-bold text-lg text-foreground group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                                 {point.title}
                               </h3>
                               <p className="text-muted-foreground leading-relaxed text-sm">
@@ -508,16 +521,19 @@ export default function About({
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {learningTopics.map((topic, index) => (
                     <motion.div
                       key={topic}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-background/50 hover:bg-background/80 transition-colors"
+                      className="flex items-center gap-3 p-3 rounded-xl bg-background/60 hover:bg-background border border-border/30 hover:border-primary/30 transition-all duration-300 group cursor-default"
                       initial={{ opacity: 0, x: -20 }}
                       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                       transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                      whileHover={{ x: 4 }}
                     >
-                      <ArrowRight className="w-4 h-4 text-primary flex-shrink-0" />
+                      <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-green-500/20 to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <ArrowRight className="w-3.5 h-3.5 text-primary" />
+                      </div>
                       <span className="text-sm font-medium">{topic}</span>
                     </motion.div>
                   ))}

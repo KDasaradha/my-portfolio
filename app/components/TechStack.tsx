@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, ChevronDown, ChevronUp } from "lucide-react";
+import { Search, ChevronDown, ChevronUp, Zap } from "lucide-react";
 import { Input } from "@/app/components/ui/input";
 import { Button } from "@/app/components/ui/button";
 import {
@@ -42,46 +42,46 @@ import { VscKey } from "react-icons/vsc"; // For HashiCorp Vault
 import { SiSnyk, SiCaddy, SiPostman, SiPytest } from "react-icons/si"; // Additional tools
 
 const technologies = [
-  { name: "Python", icon: SiPython, category: "Programming Languages", description: "High-level programming language" },
-  { name: "Java", icon: FaJava, category: "Programming Languages", description: "Platform-independent programming language" },
-  { name: "JavaScript", icon: SiJavascript, category: "Programming Languages", description: "Core language for web development" },
-  { name: "HTML", icon: SiHtml5, category: "Frontend", description: "Markup language for web pages" },
-  { name: "CSS", icon: SiCss3, category: "Frontend", description: "Stylesheet language for web design" },
-  { name: "FastAPI", icon: SiFastapi, category: "Backend", description: "Modern, fast web framework for building APIs with Python" },
-  { name: "Flask", icon: SiFlask, category: "Backend", description: "Lightweight Python web framework" },
-  { name: "SQLAlchemy", icon: DiDatabase, category: "Backend", description: "SQL toolkit and ORM library for Python" },
-  { name: "Pydantic", icon: TbLetterP, category: "Backend", description: "Data validation using Python type annotations" },
-  { name: "Alembic", icon: AiOutlineApi, category: "Backend", description: "Database migration tool for SQLAlchemy" },
-  { name: "OpenCV", icon: SiOpencv, category: "Image Processing", description: "Computer vision and machine learning library" },
-  { name: "Pillow", icon: IoLogoBuffer, category: "Image Processing", description: "Python Imaging Library" },
-  { name: "Pandas", icon: SiPython, category: "Data Processing", description: "Data analysis and manipulation library" },
-  { name: "NumPy", icon: SiPython, category: "Data Processing", description: "Library for numerical computations" },
-  { name: "Fabric.js", icon: MdCode, category: "Frontend", description: "JavaScript library for canvas manipulation" },
-  { name: "Next.js", icon: SiNextdotjs, category: "Frontend", description: "React framework for production-grade applications" },
-  { name: "React", icon: SiReact, category: "Frontend", description: "JavaScript library for building user interfaces" },
-  { name: "Third-Party APIs", icon: SiRapid, category: "Integration", description: "External service integrations" },
-  { name: "Pixabay API", icon: SiRapid, category: "Integration", description: "Image search and download API" },
-  { name: "Unsplash API", icon: SiRapid, category: "Integration", description: "High-quality photo API" },
-  { name: "Brevo", icon: SiMailgun, category: "Integration", description: "Email marketing and automation service" },
-  { name: "2factor.io", icon: SiMailgun, category: "Integration", description: "SMS OTP service for authentication" },
-  { name: "PostgreSQL", icon: SiPostgresql, category: "Database", description: "Advanced open-source relational database" },
-  { name: "Redis", icon: SiRedis, category: "Database", description: "In-memory data structure store used as a cache" },
-  { name: "Docker", icon: SiDocker, category: "DevOps", description: "Platform for containerized applications" },
-  { name: "Jenkins", icon: SiJenkins, category: "DevOps", description: "Open-source automation server for CI/CD" },
-  { name: "GitHub Actions", icon: SiGithub, category: "DevOps", description: "CI/CD workflows for GitHub repositories" },
-  { name: "Nginx", icon: SiNginx, category: "DevOps", description: "High-performance web server and reverse proxy" },
-  { name: "Git", icon: SiGit, category: "Version Control", description: "Distributed version control system" },
-  { name: "AWS", icon: FaAws, category: "Cloud", description: "Comprehensive cloud computing platform" },
-  { name: "Swagger", icon: BiBook, category: "Documentation", description: "API documentation and design tool" },
-  { name: "MkDocs", icon: BiBook, category: "Documentation", description: "Static site generator for documentation" },
-  { name: "SonarQube", icon: AiOutlineSecurityScan, category: "DevOps", description: "Static code analysis and quality assurance" },
-  { name: "Snyk", icon: SiSnyk, category: "DevOps", description: "Vulnerability scanning and dependency management" },
-  { name: "HashiCorp Vault", icon: VscKey, category: "DevOps", description: "Secrets management and data protection" },
-  { name: "Caddy", icon: SiCaddy, category: "DevOps", description: "Modern web server with automatic HTTPS" },
-  { name: "Postman", icon: SiPostman, category: "Testing", description: "API development and testing platform" },
-  { name: "Pytest", icon: SiPytest, category: "Testing", description: "Python testing framework for unit and integration tests" },
-  { name: "OAuth 2.0", icon: VscKey, category: "Security", description: "Industry-standard authorization framework" },
-  { name: "JWT", icon: VscKey, category: "Security", description: "JSON Web Tokens for secure authentication" },
+  { name: "Python", icon: SiPython, category: "Programming Languages", description: "High-level programming language", proficiency: 95 },
+  { name: "Java", icon: FaJava, category: "Programming Languages", description: "Platform-independent programming language", proficiency: 75 },
+  { name: "JavaScript", icon: SiJavascript, category: "Programming Languages", description: "Core language for web development", proficiency: 85 },
+  { name: "HTML", icon: SiHtml5, category: "Frontend", description: "Markup language for web pages", proficiency: 90 },
+  { name: "CSS", icon: SiCss3, category: "Frontend", description: "Stylesheet language for web design", proficiency: 85 },
+  { name: "FastAPI", icon: SiFastapi, category: "Backend", description: "Modern, fast web framework for building APIs with Python", proficiency: 95 },
+  { name: "Flask", icon: SiFlask, category: "Backend", description: "Lightweight Python web framework", proficiency: 80 },
+  { name: "SQLAlchemy", icon: DiDatabase, category: "Backend", description: "SQL toolkit and ORM library for Python", proficiency: 90 },
+  { name: "Pydantic", icon: TbLetterP, category: "Backend", description: "Data validation using Python type annotations", proficiency: 90 },
+  { name: "Alembic", icon: AiOutlineApi, category: "Backend", description: "Database migration tool for SQLAlchemy", proficiency: 85 },
+  { name: "OpenCV", icon: SiOpencv, category: "Image Processing", description: "Computer vision and machine learning library", proficiency: 80 },
+  { name: "Pillow", icon: IoLogoBuffer, category: "Image Processing", description: "Python Imaging Library", proficiency: 85 },
+  { name: "Pandas", icon: SiPython, category: "Data Processing", description: "Data analysis and manipulation library", proficiency: 80 },
+  { name: "NumPy", icon: SiPython, category: "Data Processing", description: "Library for numerical computations", proficiency: 80 },
+  { name: "Fabric.js", icon: MdCode, category: "Frontend", description: "JavaScript library for canvas manipulation", proficiency: 75 },
+  { name: "Next.js", icon: SiNextdotjs, category: "Frontend", description: "React framework for production-grade applications", proficiency: 85 },
+  { name: "React", icon: SiReact, category: "Frontend", description: "JavaScript library for building user interfaces", proficiency: 85 },
+  { name: "Third-Party APIs", icon: SiRapid, category: "Integration", description: "External service integrations", proficiency: 85 },
+  { name: "Pixabay API", icon: SiRapid, category: "Integration", description: "Image search and download API", proficiency: 80 },
+  { name: "Unsplash API", icon: SiRapid, category: "Integration", description: "High-quality photo API", proficiency: 80 },
+  { name: "Brevo", icon: SiMailgun, category: "Integration", description: "Email marketing and automation service", proficiency: 75 },
+  { name: "2factor.io", icon: SiMailgun, category: "Integration", description: "SMS OTP service for authentication", proficiency: 75 },
+  { name: "PostgreSQL", icon: SiPostgresql, category: "Database", description: "Advanced open-source relational database", proficiency: 90 },
+  { name: "Redis", icon: SiRedis, category: "Database", description: "In-memory data structure store used as a cache", proficiency: 85 },
+  { name: "Docker", icon: SiDocker, category: "DevOps", description: "Platform for containerized applications", proficiency: 90 },
+  { name: "Jenkins", icon: SiJenkins, category: "DevOps", description: "Open-source automation server for CI/CD", proficiency: 85 },
+  { name: "GitHub Actions", icon: SiGithub, category: "DevOps", description: "CI/CD workflows for GitHub repositories", proficiency: 90 },
+  { name: "Nginx", icon: SiNginx, category: "DevOps", description: "High-performance web server and reverse proxy", proficiency: 85 },
+  { name: "Git", icon: SiGit, category: "Version Control", description: "Distributed version control system", proficiency: 90 },
+  { name: "AWS", icon: FaAws, category: "Cloud", description: "Comprehensive cloud computing platform", proficiency: 75 },
+  { name: "Swagger", icon: BiBook, category: "Documentation", description: "API documentation and design tool", proficiency: 85 },
+  { name: "MkDocs", icon: BiBook, category: "Documentation", description: "Static site generator for documentation", proficiency: 80 },
+  { name: "SonarQube", icon: AiOutlineSecurityScan, category: "DevOps", description: "Static code analysis and quality assurance", proficiency: 80 },
+  { name: "Snyk", icon: SiSnyk, category: "DevOps", description: "Vulnerability scanning and dependency management", proficiency: 80 },
+  { name: "HashiCorp Vault", icon: VscKey, category: "DevOps", description: "Secrets management and data protection", proficiency: 75 },
+  { name: "Caddy", icon: SiCaddy, category: "DevOps", description: "Modern web server with automatic HTTPS", proficiency: 70 },
+  { name: "Postman", icon: SiPostman, category: "Testing", description: "API development and testing platform", proficiency: 85 },
+  { name: "Pytest", icon: SiPytest, category: "Testing", description: "Python testing framework for unit and integration tests", proficiency: 85 },
+  { name: "OAuth 2.0", icon: VscKey, category: "Security", description: "Industry-standard authorization framework", proficiency: 85 },
+  { name: "JWT", icon: VscKey, category: "Security", description: "JSON Web Tokens for secure authentication", proficiency: 90 },
 ];
 
 const categories = Array.from(new Set(technologies.map((tech) => tech.category)));
@@ -148,14 +148,25 @@ export default function TechStack() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
+          <motion.div
+            className="section-kicker mb-5"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Zap className="w-4 h-4" />
+            <span className="text-sm font-semibold tracking-wide">Technologies & Tools</span>
+          </motion.div>
+
           <motion.h3
-            className="text-5xl md:text-6xl font-bold mb-6"
+            className="section-heading mb-5"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="gradient-text">Tech Stack I'm Using</span>
+            <span>Tech Stack I'm Using</span>
           </motion.h3>
           <motion.p
             className="text-lg text-muted-foreground max-w-3xl mx-auto"
@@ -164,7 +175,9 @@ export default function TechStack() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            A comprehensive collection of technologies, frameworks, and tools I use to build modern, scalable applications.
+            A comprehensive collection of technologies, frameworks, and tools I use to build 
+            <span className="font-semibold text-foreground/80"> modern</span>, 
+            <span className="font-semibold text-foreground/80"> scalable</span> applications.
           </motion.p>
         </motion.div>
 
@@ -223,7 +236,7 @@ export default function TechStack() {
 
         {/* Enhanced tech grid */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-5"
           layout
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -233,6 +246,7 @@ export default function TechStack() {
           <AnimatePresence mode="popLayout">
             {visibleTech.map((tech, index) => {
               const Icon = tech.icon;
+              const proficiency = tech.proficiency || 80;
               return (
                 <motion.div
                   key={tech.name}
@@ -244,7 +258,7 @@ export default function TechStack() {
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <motion.div
-                          className="tech-stack-card relative flex flex-col items-center p-6 rounded-2xl cursor-pointer overflow-hidden"
+                          className="tech-stack-card relative flex flex-col items-center p-5 rounded-2xl cursor-pointer overflow-hidden"
                           whileHover={{
                             scale: 1.05,
                             rotateY: 10,
@@ -268,6 +282,21 @@ export default function TechStack() {
                             {tech.name}
                           </span>
                           
+                          {/* Proficiency indicator */}
+                          <div className="relative z-10 w-full mt-2">
+                            <div className="h-1.5 bg-secondary/50 rounded-full overflow-hidden">
+                              <motion.div
+                                className={`h-full bg-gradient-to-r ${getCategoryColor(tech.category)} rounded-full`}
+                                initial={{ width: 0 }}
+                                animate={{ width: `${proficiency}%` }}
+                                transition={{ duration: 1, delay: 0.3 + index * 0.05, ease: "easeOut" }}
+                              />
+                            </div>
+                            <span className="absolute right-0 top-[-14px] text-[10px] font-medium text-muted-foreground">
+                              {proficiency}%
+                            </span>
+                          </div>
+                          
                           {/* Category badge */}
                           <div className={`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getCategoryColor(tech.category)} text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
                             {tech.category}
@@ -278,8 +307,13 @@ export default function TechStack() {
                         <div className="space-y-2">
                           <p className="font-semibold text-foreground">{tech.name}</p>
                           <p className="text-sm text-muted-foreground">{tech.description}</p>
-                          <div className={`inline-block px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getCategoryColor(tech.category)} text-white`}>
-                            {tech.category}
+                          <div className="flex items-center justify-between">
+                            <div className={`inline-block px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getCategoryColor(tech.category)} text-white`}>
+                              {tech.category}
+                            </div>
+                            <div className="text-xs font-medium text-muted-foreground">
+                              Proficiency: {proficiency}%
+                            </div>
                           </div>
                         </div>
                       </TooltipContent>
