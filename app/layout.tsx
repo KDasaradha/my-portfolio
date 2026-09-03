@@ -6,6 +6,7 @@ import Footer from "@/app/components/Footer";
 import { Toaster } from "@/app/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
 import type React from "react";
+import type { Viewport } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -79,6 +80,15 @@ export const metadata = {
   alternates: {
     canonical: "https://kesari-dasaradh.vercel.app",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf7ef" },
+    { media: "(prefers-color-scheme: dark)", color: "#020617" },
+  ],
 };
 
 export default function RootLayout({

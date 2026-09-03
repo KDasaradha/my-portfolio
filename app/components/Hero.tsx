@@ -320,7 +320,7 @@ const Hero = memo(function Hero() {
 
             {/* Quick Stats */}
             <motion.div 
-              className="grid grid-cols-3 gap-4 pt-8"
+              className="grid grid-cols-3 gap-2 sm:gap-4 pt-8"
               variants={itemVariants}
               role="region"
               aria-label="Professional statistics"
@@ -332,7 +332,7 @@ const Hero = memo(function Hero() {
               ].map((stat) => (
                 <motion.div
                   key={stat.label}
-                  className="text-center p-4 rounded-2xl glass-card group cursor-default"
+                  className="text-center p-3 sm:p-4 rounded-2xl glass-card group cursor-default"
                   whileHover={{ y: -4, scale: 1.03 }}
                   transition={{ duration: 0.3 }}
                 >

@@ -2,6 +2,7 @@
 
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef, useState } from "react";
+import HorizontalScrollGallery from "./HorizontalScrollGallery";
 import {
   Card,
   CardContent,
@@ -284,34 +285,6 @@ const keyAchievements = [
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30,
-    scale: 0.95
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0.04, 0.62, 0.23, 0.98]
-    }
-  }
-};
-
 const titleVariants: Variants = {
   hidden: { 
     opacity: 0, 
@@ -335,13 +308,16 @@ export default function Experience() {
   const [activeExperience, setActiveExperience] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden bg-secondary/5">
+    <section id="experience" className="py-24 relative bg-secondary/5">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-blue-50/20 to-indigo-50/30 dark:from-purple-950/10 dark:via-blue-950/5 dark:to-indigo-950/10" />
-      <div className="absolute top-20 right-10 w-72 h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-6 lg:px-12 relative z-10" ref={ref}>
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-blue-50/20 to-indigo-50/30 dark:from-purple-950/10 dark:via-blue-950/5 dark:to-indigo-950/10" />
+        <div className="absolute top-20 right-10 w-72 h-72 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10" ref={ref}>
+        <div className="container mx-auto px-6 lg:px-12">
         {/* Enhanced Page Title */}
         <motion.div
           className="text-center mb-20"
@@ -378,29 +354,23 @@ export default function Experience() {
             <div className="h-1 w-20 bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-500 rounded-full" />
           </motion.div>
         </motion.div>
+        </div>
 
-        {/* Horizontal Experience Marquee */}
-        <div className="horizontal-marquee" aria-label="Professional experience history">
-          <motion.div
-          className="horizontal-marquee__track"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          >
-          {[...experiences, ...experiences].map((experience, index) => (
-            <motion.div
-              key={`${experience.id}-${index}`}
-              variants={itemVariants}
-              className="horizontal-marquee__item"
-              onHoverStart={() => setActiveExperience(experience.id)}
-              onHoverEnd={() => setActiveExperience(null)}
-            >
+        {/* Sticky Horizontal Experience Gallery */}
+        <HorizontalScrollGallery
+          ariaLabel="Professional experience history"
+          progressGradient="from-purple-500 via-blue-500 to-indigo-500"
+          items={experiences}
+          renderItem={(experience, index) => (
+            <>
               {/* Experience Icon */}
               <div className="flex-shrink-0">
                 <motion.div
                   className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${experience.color} shadow-lg flex items-center justify-center`}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   animate={activeExperience === experience.id ? { scale: 1.05 } : { scale: 1 }}
+                  onHoverStart={() => setActiveExperience(experience.id)}
+                  onHoverEnd={() => setActiveExperience(null)}
                 >
                   <experience.icon className="w-10 h-10 text-white" />
                 </motion.div>
@@ -538,11 +508,11 @@ export default function Experience() {
                   </CardContent>
                 </Card>
               </motion.div>
-            </motion.div>
-          ))}
-          </motion.div>
-        </div>
+            </>
+          )}
+        />
 
+        <div className="container mx-auto px-6 lg:px-12">
         {/* Enhanced Key Achievements Section */}
         <motion.div
           className="mt-20"
@@ -625,6 +595,7 @@ export default function Experience() {
             </div>
           </div>
         </motion.div>
+        </div>
       </div>
     </section>
   );

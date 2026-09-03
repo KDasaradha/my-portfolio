@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useInView, Variants } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import HorizontalScrollGallery from "./HorizontalScrollGallery";
 import {
   Card,
   CardContent,
@@ -121,34 +122,6 @@ const educationDetails = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { 
-    opacity: 0, 
-    y: 50,
-    scale: 0.9
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.04, 0.62, 0.23, 0.98]
-    }
-  }
-};
-
 const cardHoverVariants: Variants = {
   hover: {
     y: -8,
@@ -186,7 +159,6 @@ const titleVariants: Variants = {
 export default function Education() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const getGradeColor = (grade: string, type: string) => {
     if (type === "CGPA") {
@@ -217,13 +189,16 @@ export default function Education() {
   };
 
   return (
-    <section id="education" className="py-24 relative overflow-hidden bg-secondary/5">
+    <section id="education" className="py-24 relative bg-secondary/5">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-pink-950/20" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-6 lg:px-12 relative z-10" ref={ref}>
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-pink-950/20" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative z-10" ref={ref}>
+        <div className="container mx-auto px-6 lg:px-12">
         {/* Enhanced Page Title */}
         <motion.div
           className="text-center mb-16"
@@ -258,31 +233,22 @@ export default function Education() {
             <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
           </motion.div>
         </motion.div>
+        </div>
 
-        {/* Horizontal Education Marquee */}
-        <div className="horizontal-marquee" aria-label="Education history">
-          <motion.div
-            className="horizontal-marquee__track"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          >
-          {[...educationDetails, ...educationDetails].map((edu, index) => (
+        {/* Sticky Horizontal Education Gallery */}
+        <HorizontalScrollGallery
+          ariaLabel="Education history"
+          progressGradient="from-blue-500 via-purple-500 to-pink-500"
+          items={educationDetails}
+          renderItem={(edu) => (
             <motion.div
-              key={`${edu.id}-${index}`}
-              variants={itemVariants}
-              className="horizontal-marquee__item"
-              onHoverStart={() => setHoveredCard(edu.id)}
-              onHoverEnd={() => setHoveredCard(null)}
+              className="h-full"
+              variants={cardHoverVariants}
+              whileHover="hover"
+              whileTap="tap"
             >
               {/* Education Card */}
-              <motion.div
-                className="h-full"
-                variants={cardHoverVariants}
-                whileHover="hover"
-                whileTap="tap"
-              >
-                <Card className={`overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border-0 ${edu.bgPattern}`}>
+              <Card className={`overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border-0 ${edu.bgPattern}`}>
                   {/* Enhanced Card Header */}
                   <CardHeader className={`bg-gradient-to-r ${edu.color} p-6 relative overflow-hidden`}>
                     <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
@@ -432,12 +398,11 @@ export default function Education() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
             </motion.div>
-          ))}
-          </motion.div>
-        </div>
+          )}
+        />
 
+        <div className="container mx-auto px-6 lg:px-12">
         {/* Enhanced Summary Section */}
         <motion.div
           className="mt-20 text-center"
@@ -472,6 +437,7 @@ export default function Education() {
             </div>
           </div>
         </motion.div>
+        </div>
       </div>
     </section>
   );

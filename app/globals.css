@@ -78,6 +78,9 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Safety net against horizontal scrollbars from decorative blobs,
+       while still allowing position: sticky (unlike overflow-x: hidden). */
+    overflow-x: clip;
     background-image: linear-gradient(rgba(35, 45, 43, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(35, 45, 43, 0.045) 1px, transparent 1px);
     background-size: 32px 32px;
     background-position: center top;
@@ -99,6 +102,16 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile usability: 16px inputs prevent iOS Safari from auto-zooming
+   when a form field gains focus. */
+@media (max-width: 767px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  textarea,
+  select {
+    font-size: 16px;
   }
 }
 
@@ -143,42 +156,6 @@
 
 @keyframes blink {
   50% { border-color: transparent; }
-}
-
-@keyframes horizontal-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 0.75rem)); }
-}
-
-.horizontal-marquee {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  overflow: hidden;
-  padding: 1rem 0 2rem;
-}
-
-.horizontal-marquee__track {
-  display: flex;
-  width: max-content;
-  gap: 1.5rem;
-  padding-left: 1.5rem;
-  animation: horizontal-marquee 90s linear infinite;
-}
-
-.horizontal-marquee:hover .horizontal-marquee__track,
-.horizontal-marquee:focus-within .horizontal-marquee__track {
-  animation-play-state: paused;
-}
-
-.horizontal-marquee__item {
-  width: min(86vw, 54rem);
-  flex: 0 0 min(86vw, 54rem);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .horizontal-marquee__track {
-    animation: none;
-  }
 }
 
 /* Custom Utility Classes */

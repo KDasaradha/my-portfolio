@@ -7,7 +7,13 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      // Responsive gutter: small on phones so content isn't squeezed,
+      // roomier as screens grow.
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2rem",
+      },
       screens: {
         "2xl": "1400px",
       },
